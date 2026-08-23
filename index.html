@@ -153,6 +153,41 @@ h1{
 }
 
 /* =========================================================
+   CHALLENGE VISIBLE SUR L'ACCUEIL
+   ========================================================= */
+
+.challenge-launch{
+  margin-top:18px;
+  width:100%;
+  border:1px solid #b9c9e5;
+  background:linear-gradient(135deg,#eef5ff,#f8fbff);
+  color:var(--primary-dark);
+  border-radius:14px;
+  padding:15px 16px;
+  cursor:pointer;
+  text-align:left;
+  transition:.18s ease;
+}
+
+.challenge-launch:hover{
+  transform:translateY(-1px);
+  border-color:var(--primary);
+  box-shadow:0 6px 18px rgba(36,87,166,.12);
+}
+
+.challenge-launch-title{
+  font-weight:800;
+  font-size:16px;
+}
+
+.challenge-launch-text{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+
+/* =========================================================
    CHAT
    ========================================================= */
 
@@ -436,6 +471,11 @@ h1{
   cursor:pointer;
 }
 
+.challenge-button:disabled{
+  opacity:.6;
+  cursor:default;
+}
+
 .challenge-result{
   margin-top:13px;
 }
@@ -495,7 +535,8 @@ h1{
   flex-wrap:wrap;
 }
 
-.like-button{
+.like-button,
+.dislike-button{
   border:1px solid var(--border);
   background:#fff;
   border-radius:12px;
@@ -505,7 +546,8 @@ h1{
   transition:.18s ease;
 }
 
-.like-button:hover{
+.like-button:hover,
+.dislike-button:hover{
   border-color:var(--primary);
   transform:translateY(-1px);
 }
@@ -516,9 +558,21 @@ h1{
   color:var(--primary-dark);
 }
 
+.dislike-button.selected{
+  background:#f2f4f7;
+  border-color:#98a2b3;
+  color:#344054;
+}
+
 .like-count{
   font-size:13px;
   color:var(--muted);
+}
+
+.feedback-message{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:13px;
 }
 
 /* =========================================================
@@ -614,6 +668,15 @@ h1{
   .challenge-button{
     width:100%;
   }
+
+  .like-area{
+    align-items:stretch;
+  }
+
+  .like-button,
+  .dislike-button{
+    flex:1;
+  }
 }
 </style>
 </head>
@@ -622,95 +685,84 @@ h1{
 
 <div class="app">
 
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
+<header class="header">
 
-  <header class="header">
+  <div class="brand">
 
-    <div class="brand">
+    <div class="logo">🪄</div>
 
-      <div class="logo">🪄</div>
+    <div>
 
-      <div>
-        <h1>Assistant RH</h1>
+      <h1>Assistant RH</h1>
 
-        <div class="subtitle" id="orgName">
-          Mairie de Conflans-Sainte-Honorine
-        </div>
+      <div class="subtitle" id="orgName">
+        Mairie de Conflans-Sainte-Honorine
       </div>
 
     </div>
 
-  </header>
-
-
-  <!-- =====================================================
-       CONTENU
-       ===================================================== -->
-
-  <main class="content">
-
-    <!-- CADRE D'ACCUEIL UNIQUE -->
-
-    <section class="welcome">
-
-      <h2>👋 Bienvenue</h2>
-
-      <p>
-        Je suis votre Assistant RH.
-        Posez-moi votre question et je vous
-        orienterai vers le bon interlocuteur
-        ou la bonne ressource.
-      </p>
-
-      <div class="suggestions" id="suggestions"></div>
-
-    </section>
-
-
-    <!-- CHAT -->
-
-    <section
-      class="chat"
-      id="chat"
-      aria-live="polite">
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       BARRE DE RECHERCHE
-       ===================================================== -->
-
-  <div class="searchbar">
-
-    <form
-      class="form"
-      id="questionForm">
-
-      <input
-        id="question"
-        autocomplete="off"
-        placeholder="Ex. « Je ne comprends pas mon bulletin de salaire »"
-        aria-label="Votre question"
-      >
-
-      <button
-        class="send"
-        type="submit">
-        Envoyer
-      </button>
-
-    </form>
-
-    <div class="disclaimer">
-      Cet assistant est conçu pour vous orienter de manière générale.
-      Pour une situation individuelle, contactez l'interlocuteur indiqué.
-    </div>
-
   </div>
+
+</header>
+
+
+<main class="content">
+
+<section class="welcome">
+
+  <h2>👋 Bienvenue</h2>
+
+  <p>
+    Je suis votre Assistant RH.
+    Posez-moi votre question et je vous
+    orienterai vers le bon interlocuteur
+    ou la bonne ressource.
+  </p>
+
+  <div class="suggestions" id="suggestions"></div>
+
+  <!-- CHALLENGE VISIBLE -->
+  <div id="challengeHome"></div>
+
+</section>
+
+
+<section
+  class="chat"
+  id="chat"
+  aria-live="polite">
+</section>
+
+</main>
+
+
+<div class="searchbar">
+
+  <form
+    class="form"
+    id="questionForm">
+
+    <input
+      id="question"
+      autocomplete="off"
+      placeholder="Ex. « Je ne comprends pas mon bulletin de salaire »"
+      aria-label="Votre question"
+    >
+
+    <button
+      class="send"
+      type="submit">
+      Envoyer
+    </button>
+
+  </form>
+
+  <div class="disclaimer">
+    Cet assistant est conçu pour vous orienter de manière générale.
+    Pour une situation individuelle, contactez l'interlocuteur indiqué.
+  </div>
+
+</div>
 
 </div>
 
@@ -771,21 +823,6 @@ const CONTACTS = {
 /*
 ============================================================
 DOCUMENTS / RESSOURCES
-
-IMPORTANT :
-On distingue maintenant clairement :
-
-PDF
-→ "📄 Ouvrir le PDF"
-
-Article / page intranet
-→ "🌐 Ouvrir la page"
-
-Formulaire
-→ "📝 Au formulaire"
-
-Annuaire
-→ "👤 Trouver mon gestionnaire"
 ============================================================
 */
 
@@ -922,353 +959,173 @@ const FAQ = [
   {
     id:"conges",
     category:"Congés / Absences",
-
     keywords:[
-      "congé",
-      "conges",
-      "congés",
-      "congés annuels",
-      "solde congés",
-      "poser congé",
-      "poser mes congés",
-      "annuler congé",
-      "modifier congé",
-      "reporter congé",
-      "congés non pris",
-      "jours de congés",
-      "vacances",
-      "RTT",
-      "rtt",
-      "absence",
-      "CET",
-      "solde CET",
-      "compte épargne temps",
-      "congé bonifié",
+      "congé","conges","congés","congés annuels",
+      "solde congés","poser congé","poser mes congés",
+      "annuler congé","modifier congé","reporter congé",
+      "congés non pris","jours de congés","vacances",
+      "RTT","rtt","absence","CET","solde CET",
+      "compte épargne temps","congé bonifié",
       "temps de travail"
     ],
-
-    title:
-      "Question sur vos congés, votre solde ou votre CET",
-
+    title:"Question sur vos congés, votre solde ou votre CET",
     answer:
       "Pour une question concernant vos congés, votre CET, votre solde de jours ou une anomalie dans votre compteur, contactez votre gestionnaire carrière.",
-
     contact:"gestionnaireCarriere",
-
-    documents:[
-      "Gestcarr",
-      "tempstravail",
-      "cet"
-    ]
+    documents:["Gestcarr","tempstravail","cet"]
   },
-
 
   {
     id:"asa",
     category:"Congés / Absences",
-
     keywords:[
-      "mariage",
-      "PACS",
-      "déménagement",
-      "demenagement",
-      "décès",
-      "deces",
-      "enfant malade",
-      "mon enfant est malade",
-      "ASA",
+      "mariage","PACS","déménagement","demenagement",
+      "décès","deces","enfant malade",
+      "mon enfant est malade","ASA",
       "autorisation spéciale d'absence",
-      "absence exceptionnelle",
-      "absence urgente",
+      "absence exceptionnelle","absence urgente",
       "justificatif d'absence"
     ],
-
-    title:
-      "Question sur une absence exceptionnelle (ASA)",
-
+    title:"Question sur une absence exceptionnelle (ASA)",
     answer:
       "Pour une question concernant une absence exceptionnelle ou une ASA, contactez votre gestionnaire carrière.",
-
     contact:"gestionnaireCarriere",
-
-    documents:[
-      "transmissiondocument",
-      "Gestcarr"
-    ]
+    documents:["transmissiondocument","Gestcarr"]
   },
-
 
   {
     id:"salaire",
     category:"Paie",
-
     keywords:[
-      "bulletin",
-      "salaire",
-      "paie",
-      "paye",
-      "remuneration",
-      "rémunération",
-      "fiche de paie",
-      "fiche de salaire",
-      "bulletin de salaire",
-      "prime",
-      "prélèvement",
-      "prelevement",
-      "remboursement",
-      "abonnement",
-      "transports",
-      "Navigo",
-      "indemnité",
-      "régime indemnitaire",
-      "RIFSEEP",
-      "IFSE",
-      "CIA",
-      "NBI",
-      "indice majoré",
-      "SFT",
-      "supplément familial",
-      "prélèvement à la source",
-      "retenue sur salaire",
-      "régularisation",
-      "heures supplémentaires",
-      "astreinte",
-      "permanence"
+      "bulletin","salaire","paie","paye","remuneration",
+      "rémunération","fiche de paie","fiche de salaire",
+      "bulletin de salaire","prime","prélèvement",
+      "prelevement","remboursement","abonnement",
+      "transports","Navigo","indemnité",
+      "régime indemnitaire","RIFSEEP","IFSE","CIA",
+      "NBI","indice majoré","SFT","supplément familial",
+      "prélèvement à la source","retenue sur salaire",
+      "régularisation","heures supplémentaires",
+      "astreinte","permanence"
     ],
-
-    title:
-      "Question sur votre bulletin de salaire",
-
+    title:"Question sur votre bulletin de salaire",
     answer:
       "Pour toute question sur votre dernier bulletin de salaire, son contenu, une prime, une retenue ou une variation de rémunération, contactez le secteur Paie.",
-
     contact:"rhPaie",
-
-    documents:[
-      "versementsalaire"
-    ]
+    documents:["versementsalaire"]
   },
-
 
   {
     id:"rib",
     category:"Paie",
-
     keywords:[
-      "RIB",
-      "modifier RIB",
-      "changer RIB",
-      "changement RIB",
-      "nouvelle banque",
-      "nouveau RIB",
-      "coordonnées bancaires",
-      "coordonnees bancaires",
-      "compte bancaire",
-      "changer de banque",
-      "changement de banque"
+      "RIB","modifier RIB","changer RIB","changement RIB",
+      "nouvelle banque","nouveau RIB","coordonnées bancaires",
+      "coordonnees bancaires","compte bancaire",
+      "changer de banque","changement de banque"
     ],
-
-    title:
-      "Changement de coordonnées bancaires",
-
+    title:"Changement de coordonnées bancaires",
     answer:
       "Pour transmettre votre nouveau RIB, utilisez le formulaire ci-dessous. Si nécessaire, contactez également le secteur Paie.",
-
     contact:"rhPaie",
-
-    documents:[
-      "formulaireRIB"
-    ]
+    documents:["formulaireRIB"]
   },
-
 
   {
     id:"frais-mission",
     category:"Paie",
-
     keywords:[
-      "frais de mission",
-      "frais de déplacement",
-      "remboursement mission",
-      "hotel",
-      "hôtel",
-      "restauration",
-      "frais kilométriques",
-      "formulaire frais",
-      "déplacement",
-      "transports"
+      "frais de mission","frais de déplacement",
+      "remboursement mission","hotel","hôtel",
+      "restauration","frais kilométriques",
+      "formulaire frais","déplacement","transports"
     ],
-
-    title:
-      "Question concernant des frais de mission ou de déplacement",
-
+    title:"Question concernant des frais de mission ou de déplacement",
     answer:
       "Pour obtenir des informations sur le remboursement des frais liés à vos missions ou déplacements, contactez le service concerné.",
-
     contact:"rhPaie"
   },
-
 
   {
     id:"carte-pluxee",
     category:"Paie",
-
     keywords:[
-      "adhésion",
-      "adhérer",
-      "carte déjeuner",
-      "déjeuner",
-      "ticket restaurant",
-      "tickets restaurant",
-      "carte Pluxee",
-      "pluxee"
+      "adhésion","adhérer","carte déjeuner","déjeuner",
+      "ticket restaurant","tickets restaurant",
+      "carte Pluxee","pluxee"
     ],
-
-    title:
-      "Question concernant la carte déjeuner Pluxee",
-
+    title:"Question concernant la carte déjeuner Pluxee",
     answer:
       "Contactez le service Paie qui vous renseignera sur les modalités d'adhésion et son fonctionnement.",
-
     contact:"rhPaie",
-
-    documents:[
-      "CartePluxee"
-    ]
+    documents:["CartePluxee"]
   },
-
 
   {
     id:"adresse",
     category:"Dossier administratif",
-
     keywords:[
-      "adresse",
-      "modifier adresse",
-      "changement adresse",
-      "nouvelle adresse",
-      "déménagement",
-      "demenagement"
+      "adresse","modifier adresse","changement adresse",
+      "nouvelle adresse","déménagement","demenagement"
     ],
-
-    title:
-      "J'ai déménagé, comment modifier mon adresse ?",
-
+    title:"J'ai déménagé, comment modifier mon adresse ?",
     answer:
       "Pour modifier votre adresse, contactez votre gestionnaire carrière afin de connaître la procédure à suivre et les éventuels justificatifs à transmettre.",
-
     contact:"gestionnaireCarriere",
-
-    documents:[
-      "Gestcarr"
-    ]
+    documents:["Gestcarr"]
   },
-
 
   {
     id:"dossier-agent",
     category:"Dossier administratif",
-
     keywords:[
-      "dossier agent",
-      "dossier administratif",
-      "gestion administrative",
-      "domicile",
-      "coordonnées personnelles",
-      "situation familiale",
-      "mariage",
-      "PACS",
-      "divorce",
-      "naissance",
-      "enfant",
-      "livret de famille",
-      "arrêté",
-      "numéro d'agent",
-      "matricule",
-      "correction dossier",
+      "dossier agent","dossier administratif",
+      "gestion administrative","domicile",
+      "coordonnées personnelles","situation familiale",
+      "mariage","PACS","divorce","naissance","enfant",
+      "livret de famille","arrêté","numéro d'agent",
+      "matricule","correction dossier",
       "rectification données personnelles"
     ],
-
-    title:
-      "Question concernant votre dossier administratif",
-
+    title:"Question concernant votre dossier administratif",
     answer:
       "Pour une question concernant votre dossier administratif ou vos informations personnelles, contactez votre gestionnaire carrière.",
-
     contact:"gestionnaireCarriere",
-
-    documents:[
-      "Gestcarr"
-    ]
+    documents:["Gestcarr"]
   },
-
 
   {
     id:"carriere",
     category:"Dossier administratif",
-
     keywords:[
-      "carrière",
-      "carriere",
-      "avancement",
-      "promotion",
-      "grade",
-      "échelon",
-      "echelon",
-      "titularisation",
-      "mutation",
-      "mobilité",
-      "mobilite",
+      "carrière","carriere","avancement","promotion",
+      "grade","échelon","echelon","titularisation",
+      "mutation","mobilité","mobilite",
       "entretien professionnel"
     ],
-
-    title:
-      "Question concernant votre carrière",
-
+    title:"Question concernant votre carrière",
     answer:
       "Pour une question sur votre situation administrative, votre grade, votre échelon, un avancement ou votre évolution de carrière, contactez votre gestionnaire carrière.",
-
     contact:"gestionnaireCarriere",
-
-    documents:[
-      "Gestcarr"
-    ]
+    documents:["Gestcarr"]
   },
-
 
   {
     id:"formation",
     category:"Formation",
-
     keywords:[
-      "formation",
-      "former",
-      "stage",
-      "CNFPT",
-      "catalogue",
-      "formation professionnelle",
-      "absence formation",
-      "inscription formation",
-      "demande formation",
-      "financement formation",
-      "bilan de compétences",
-      "VAE",
-      "validation des acquis",
-      "congé de formation",
-      "reconversion",
-      "projet professionnel",
-      "formation obligatoire",
-      "attestation de formation"
+      "formation","former","stage","CNFPT","catalogue",
+      "formation professionnelle","absence formation",
+      "inscription formation","demande formation",
+      "financement formation","bilan de compétences",
+      "VAE","validation des acquis","congé de formation",
+      "reconversion","projet professionnel",
+      "formation obligatoire","attestation de formation"
     ],
-
-    title:
-      "Question sur une formation",
-
+    title:"Question sur une formation",
     answer:
       "Pour une demande de formation, une question sur le catalogue ou le suivi d'une inscription, contactez le Service Formation.",
-
     contact:"formation",
-
     documents:[
       "CatalogueCNFPT",
       "Formulaireinscriptionformation",
@@ -1276,222 +1133,123 @@ const FAQ = [
     ]
   },
 
-
   {
     id:"concours-examens",
     category:"Formation",
-
     keywords:[
-      "concours",
-      "inscription concours",
-      "calendrier concours",
-      "préparation concours",
-      "prépa concours",
-      "examen",
-      "examen professionnel",
-      "examens professionnels"
+      "concours","inscription concours",
+      "calendrier concours","préparation concours",
+      "prépa concours","examen",
+      "examen professionnel","examens professionnels"
     ],
-
-    title:
-      "Renseignements sur les concours ou examens professionnels",
-
+    title:"Renseignements sur les concours ou examens professionnels",
     answer:
       "Contactez le service Formation afin de connaître la marche à suivre.",
-
     contact:"formation",
-
-    documents:[
-      "Calendrierconcours",
-      "Prepaconcours"
-    ]
+    documents:["Calendrierconcours","Prepaconcours"]
   },
-
 
   {
     id:"cpf",
     category:"Formation",
-
     keywords:[
-      "CPF",
-      "compte personnel de formation",
-      "heures CPF",
-      "compteur CPF",
-      "solde CPF"
+      "CPF","compte personnel de formation",
+      "heures CPF","compteur CPF","solde CPF"
     ],
-
-    title:
-      "Question concernant votre CPF",
-
+    title:"Question concernant votre CPF",
     answer:
       "Pour obtenir des informations sur votre compte CPF ou son utilisation, contactez le service Formation.",
-
     contact:"formation"
   },
-
 
   {
     id:"connexion-intranet",
     category:"Intranet",
-
     keywords:[
-      "intranet",
-      "connexion intranet",
-      "connecter intranet",
-      "mot de passe intranet",
-      "identifiant intranet",
-      "login intranet",
-      "accès intranet",
-      "acces intranet",
-      "C.Conflans"
+      "intranet","connexion intranet",
+      "connecter intranet","mot de passe intranet",
+      "identifiant intranet","login intranet",
+      "accès intranet","acces intranet","C.Conflans"
     ],
-
-    title:
-      "Problème de connexion à l'intranet",
-
+    title:"Problème de connexion à l'intranet",
     answer:
       "Si vous n'arrivez pas à vous connecter à l'intranet, contactez la personne référente indiquée ci-dessous.",
-
     contact:"jessyca"
   },
-
 
   {
     id:"connexion-SMD",
     category:"Compte SMD",
-
     keywords:[
-      "connexion SMD",
-      "connecter SMD",
-      "connexion à SMD",
-      "connexion au SMD",
-      "compte SMD",
-      "compte smd",
-      "mot de passe SMD",
-      "mot de passe du SMD",
-      "identifiant SMD",
-      "identifiants SMD",
-      "identifiant du SMD",
-      "identifiants du SMD",
-      "login SMD",
-      "login du SMD",
-      "accès SMD",
-      "acces SMD",
+      "connexion SMD","connecter SMD",
+      "connexion à SMD","connexion au SMD",
+      "compte SMD","compte smd",
+      "mot de passe SMD","mot de passe du SMD",
+      "identifiant SMD","identifiants SMD",
+      "identifiant du SMD","identifiants du SMD",
+      "login SMD","login du SMD",
+      "accès SMD","acces SMD",
       "je ne connais pas mes identifiants"
     ],
-
-    title:
-      "Problème de connexion à votre compte SMD",
-
+    title:"Problème de connexion à votre compte SMD",
     answer:
       "Si vous n'arrivez pas à vous connecter à votre compte SMD, contactez votre gestionnaire carrière.",
-
     contact:"gestionnaireCarriere",
-
-    documents:[
-      "Gestcarr",
-      "ConnexionSMD"
-    ]
+    documents:["Gestcarr","ConnexionSMD"]
   },
-
 
   {
     id:"retraite",
     category:"Retraite",
-
     keywords:[
-      "retraite",
-      "départ retraite",
-      "depart retraite",
-      "partir en retraite",
-      "âge retraite",
-      "age retraite",
-      "trimestres",
-      "carrière retraite",
-      "erreur carrière",
-      "retraite progressive",
-      "pension"
+      "retraite","départ retraite","depart retraite",
+      "partir en retraite","âge retraite","age retraite",
+      "trimestres","carrière retraite","erreur carrière",
+      "retraite progressive","pension"
     ],
-
-    title:
-      "Question concernant la retraite",
-
+    title:"Question concernant la retraite",
     answer:
       "Pour obtenir des informations sur votre retraite, contactez votre gestionnaire carrière.",
-
     contact:"gestionnaireCarriere"
   },
-
 
   {
     id:"etat-services",
     category:"Documents / Attestations",
-
     keywords:[
-      "état des services",
-      "etat des services",
-      "état services",
-      "etat services"
+      "état des services","etat des services",
+      "état services","etat services"
     ],
-
-    title:
-      "Je souhaite obtenir mon état des services",
-
+    title:"Je souhaite obtenir mon état des services",
     answer:
       "Pour obtenir votre état des services, contactez le service Formation.",
-
     contact:"formation"
   },
-
 
   {
     id:"informatique",
     category:"Informatique",
-
     keywords:[
-      "ordinateur",
-      "PC",
-      "ordinateur portable",
-      "imprimante",
-      "informatique",
-      "souris",
-      "clavier",
-      "logiciel",
-      "écran",
-      "ecran",
-      "panne informatique"
+      "ordinateur","PC","ordinateur portable",
+      "imprimante","informatique","souris","clavier",
+      "logiciel","écran","ecran","panne informatique"
     ],
-
-    title:
-      "Problème informatique",
-
+    title:"Problème informatique",
     answer:
       "Pour un problème matériel ou informatique, contactez le service informatique de la collectivité.",
-
     contact:"informatique"
   },
-
-
-  /*
-  ==========================================================
-  EASTER EGG CLASSIQUE
-  ==========================================================
-  */
 
   {
     id:"easter-egg",
     category:"Humour",
-
     keywords:[
       "licorne",
       "en pls"
     ],
-
-    title:
-      "Nous allons prendre soin de vous 🦄",
-
+    title:"Nous allons prendre soin de vous 🦄",
     answer:
       "Calmez-vous, prenez une grande inspiration… on arrive ! 😄",
-
     contact:"informatique"
   }
 
@@ -1506,50 +1264,15 @@ SUGGESTIONS
 
 const suggestions = [
 
-  [
-    "🏖️ Congés / Absences",
-    "J'ai un problème avec mes congés"
-  ],
-
-  [
-    "💶 Paie",
-    "Je ne comprends pas mon dernier bulletin de salaire"
-  ],
-
-  [
-    "🗂️ Dossier administratif",
-    "Comment modifier mon adresse ?"
-  ],
-
-  [
-    "🎓 Formation",
-    "Je souhaite faire une formation"
-  ],
-
-  [
-    "💻 Intranet",
-    "Je n'arrive pas à me connecter à l'intranet"
-  ],
-
-  [
-    "🎯 Compte SMD",
-    "Je ne connais pas mes identifiants"
-  ],
-
-  [
-    "📑 Documents",
-    "J'ai besoin d'une attestation"
-  ],
-
-  [
-    "👩‍🦳 Retraite",
-    "Quand pourrai-je partir à la retraite ?"
-  ],
-
-  [
-    "❓ Autre demande RH",
-    "J'ai une autre question RH"
-  ]
+  ["🏖️ Congés / Absences","J'ai un problème avec mes congés"],
+  ["💶 Paie","Je ne comprends pas mon dernier bulletin de salaire"],
+  ["🗂️ Dossier administratif","Comment modifier mon adresse ?"],
+  ["🎓 Formation","Je souhaite faire une formation"],
+  ["💻 Intranet","Je n'arrive pas à me connecter à l'intranet"],
+  ["🎯 Compte SMD","Je ne connais pas mes identifiants"],
+  ["📑 Documents","J'ai besoin d'une attestation"],
+  ["👩‍🦳 Retraite","Quand pourrai-je partir à la retraite ?"],
+  ["❓ Autre demande RH","J'ai une autre question RH"]
 
 ];
 
@@ -1574,7 +1297,6 @@ function escapeHtml(s){
 
   return String(s).replace(
     /[&<>"']/g,
-
     c => ({
       "&":"&amp;",
       "<":"&lt;",
@@ -2069,26 +1791,6 @@ function addMessage(
 ============================================================
 CHALLENGE
 ============================================================
-
-Le mot-clé est volontairement caché dans la logique.
-
-Énigme :
-
-"Je suis une commune des Yvelines.
-Mon nom commence comme quelque chose
-qui permet de traverser une rivière,
-et je termine comme un animal qui aime
-beaucoup le lait.
-
-Qui suis-je ?"
-
-Réponse : CONFLANS
-
-On accepte également :
-CONFLANS-SAINTE-HONORINE
-CONFLANS SAINTE HONORINE
-
-============================================================
 */
 
 const CHALLENGE_ANSWER =
@@ -2173,6 +1875,27 @@ function challengeHtml(){
 
 /*
 ============================================================
+AFFICHER LE CHALLENGE DEPUIS L'ACCUEIL
+============================================================
+*/
+
+function showChallenge(){
+
+  addMessage(`
+
+    <div class="answer">
+
+      ${challengeHtml()}
+
+    </div>
+
+  `);
+
+}
+
+
+/*
+============================================================
 VALIDATION CHALLENGE
 ============================================================
 */
@@ -2196,7 +1919,7 @@ function checkChallenge(event){
       .replace(/[-']/g," ")
       .trim();
 
-  if(answer === "conflans"){
+  if(answer === CHALLENGE_ANSWER){
 
     result.innerHTML = `
 
@@ -2228,9 +1951,12 @@ function checkChallenge(event){
 
     input.disabled = true;
 
-    event.target
-      .querySelector("button")
-      .disabled = true;
+    const button =
+      event.target.querySelector("button");
+
+    if(button){
+      button.disabled = true;
+    }
 
   }else{
 
@@ -2262,10 +1988,10 @@ FEEDBACK
 
 function feedbackHtml(){
 
-  const alreadyLiked =
+  const vote =
     localStorage.getItem(
-      "assistantRH_liked"
-    ) === "true";
+      "assistantRH_vote"
+    );
 
   return `
 
@@ -2277,14 +2003,14 @@ function feedbackHtml(){
 
       <div class="feedback-text">
 
-        Cet assistant a été conçu pour vous
-        faire gagner du temps et vous aider
-        à trouver rapidement la bonne
-        information.
+        Maintenant, vous savez vous servir
+        de votre Assistant RH ! 😉
 
-        <br>
+        <br><br>
 
-        Est-ce que vous le trouvez utile ?
+        N'hésitez pas à nous dire si vous aimez
+        cet outil en appuyant sur le pouce
+        ci-dessous.
 
       </div>
 
@@ -2292,22 +2018,41 @@ function feedbackHtml(){
 
         <button
           id="likeButton"
-          class="like-button ${alreadyLiked ? "liked" : ""}"
+          class="like-button ${vote === "like" ? "liked" : ""}"
           type="button"
-          onclick="likeAssistant()">
+          onclick="voteAssistant('like')">
 
           👍
-          ${alreadyLiked ? "Merci !" : "J'aime cet outil"}
+          ${vote === "like"
+            ? "Merci !"
+            : "J'aime cet outil"}
 
         </button>
 
-        <span
-          class="like-count"
-          id="likeCount">
+        <button
+          id="dislikeButton"
+          class="dislike-button ${vote === "dislike" ? "selected" : ""}"
+          type="button"
+          onclick="voteAssistant('dislike')">
 
-          Merci pour votre avis !
+          👎
+          ${vote === "dislike"
+            ? "Merci !"
+            : "Pas vraiment"}
 
-        </span>
+        </button>
+
+      </div>
+
+      <div
+        id="feedbackMessage"
+        class="feedback-message">
+
+        ${
+          vote
+            ? "Merci pour votre retour ❤️"
+            : ""
+        }
 
       </div>
 
@@ -2320,95 +2065,94 @@ function feedbackHtml(){
 
 /*
 ============================================================
-LIKE
+VOTE 👍 / 👎
+============================================================
+
+Pour l'instant, le vote est mémorisé dans le navigateur.
+
+Cela empêche un même navigateur de voter plusieurs fois.
 
 IMPORTANT :
-Le compteur ci-dessous est LOCAL.
+Ce mécanisme ne donne PAS le nombre total de votes
+de tous les agents.
 
-Pour connaître le nombre total de likes
-de TOUS les agents, il faudra connecter
-cette fonction à une base de données.
-
-Exemple possible :
-Supabase / Firebase / petit backend.
-
-Le point d'intégration est volontairement
-isolé ici.
-
+Pour cela, il faudra connecter cette fonction
+à une base de données commune.
 ============================================================
 */
 
-async function likeAssistant(){
+function voteAssistant(type){
 
-  const button =
+  const likeButton =
     document.getElementById(
       "likeButton"
     );
 
-  const count =
+  const dislikeButton =
     document.getElementById(
-      "likeCount"
+      "dislikeButton"
     );
 
-  if(!button || !count){
+  const message =
+    document.getElementById(
+      "feedbackMessage"
+    );
+
+  if(!likeButton || !dislikeButton){
     return;
   }
 
-  const alreadyLiked =
+  const previousVote =
     localStorage.getItem(
-      "assistantRH_liked"
-    ) === "true";
+      "assistantRH_vote"
+    );
 
-  if(alreadyLiked){
+  if(previousVote === type){
 
-    count.textContent =
-      "Merci, votre avis est déjà enregistré 👍";
+    if(message){
+
+      message.textContent =
+        "Votre avis est déjà enregistré. Merci ! ❤️";
+
+    }
 
     return;
 
   }
-
-  /*
-  ----------------------------------------------------------
-  VERSION ACTUELLE : stockage local
-  ----------------------------------------------------------
-  */
 
   localStorage.setItem(
-    "assistantRH_liked",
-    "true"
+    "assistantRH_vote",
+    type
   );
 
-  button.classList.add("liked");
+  likeButton.classList.toggle(
+    "liked",
+    type === "like"
+  );
 
-  button.innerHTML =
-    "👍 Merci !";
+  dislikeButton.classList.toggle(
+    "selected",
+    type === "dislike"
+  );
 
-  count.textContent =
-    "Merci pour votre avis ! ❤️";
+  likeButton.innerHTML =
+    type === "like"
+      ? "👍 Merci !"
+      : "👍 J'aime cet outil";
 
-  /*
-  ----------------------------------------------------------
-  FUTUR COMPTEUR GLOBAL
+  dislikeButton.innerHTML =
+    type === "dislike"
+      ? "👎 Merci !"
+      : "👎 Pas vraiment";
 
-  C'est ici qu'on pourra envoyer le vote
-  vers une base de données.
+  if(message){
 
-  Exemple :
+    message.textContent =
+      type === "like"
+        ? "Merci pour votre retour ! ❤️"
+        : "Merci pour votre retour, il nous aide à améliorer l'outil. ❤️";
 
-  await fetch("URL_DE_TON_API", {
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      type:"like",
-      application:"assistant-rh"
-    })
-  });
-
-  ----------------------------------------------------------
-  */
+  }
 
 }
 
@@ -2462,13 +2206,11 @@ function answer(question){
 
   }
 
-
   const best =
     matches[0];
 
   const second =
     matches[1];
-
 
   let html = `
 
@@ -2498,7 +2240,6 @@ function answer(question){
 
   `;
 
-
   if(best.item.documents){
 
     html +=
@@ -2513,11 +2254,8 @@ function answer(question){
 
   }
 
-
   /*
-  ----------------------------------------------------------
-  CHALLENGE
-  ----------------------------------------------------------
+  CHALLENGE EASTER EGG
   */
 
   if(
@@ -2528,13 +2266,6 @@ function answer(question){
       challengeHtml();
 
   }
-
-
-  /*
-  ----------------------------------------------------------
-  DEUXIEME RESULTAT
-  ----------------------------------------------------------
-  */
 
   if(
     second &&
@@ -2567,11 +2298,9 @@ function answer(question){
 
   }
 
-
   html += `
     </div>
   `;
-
 
   addMessage(html);
 
@@ -2645,7 +2374,6 @@ const suggestionsContainer =
     "suggestions"
   );
 
-
 suggestions.forEach(
   ([label,question]) => {
 
@@ -2676,7 +2404,37 @@ suggestions.forEach(
 
 /*
 ============================================================
+BOUTON CHALLENGE DANS L'ACCUEIL
+============================================================
+*/
+
+document.getElementById(
+  "challengeHome"
+).innerHTML = `
+
+  <button
+    class="challenge-launch"
+    type="button"
+    onclick="showChallenge()">
+
+    <div class="challenge-launch-title">
+      🎯 Challenge RH
+    </div>
+
+    <div class="challenge-launch-text">
+      Une petite énigme sur Conflans vous attend…
+      Saurez-vous trouver le mot-clé ? 😉
+    </div>
+
+  </button>
+
+`;
+
+
+/*
+============================================================
 MESSAGE DE DEMARRAGE
+============================================================
 
 On ne remet volontairement PAS de gros message
 "Bonjour / Posez votre question" ici :
