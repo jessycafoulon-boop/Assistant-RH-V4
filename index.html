@@ -23,13 +23,9 @@
   --radius:18px;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -38,14 +34,8 @@ body{
   color:var(--text);
 }
 
-button,
-input{
-  font:inherit;
-}
-
-button{
-  -webkit-tap-highlight-color:transparent;
-}
+button,input{font:inherit}
+button{-webkit-tap-highlight-color:transparent}
 
 .app{
   max-width:920px;
@@ -55,9 +45,7 @@ button{
   flex-direction:column;
 }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
+/* HEADER */
 
 .header{
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
@@ -65,7 +53,7 @@ button{
   padding:24px;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:20;
   box-shadow:0 4px 18px rgba(23,61,120,.18);
 }
 
@@ -96,18 +84,14 @@ h1{
   opacity:.88;
 }
 
-/* =========================================================
-   CONTENT
-   ========================================================= */
+/* CONTENT */
 
 .content{
   padding:22px 18px 30px;
   flex:1;
 }
 
-/* =========================================================
-   WELCOME
-   ========================================================= */
+/* WELCOME */
 
 .welcome{
   background:var(--card);
@@ -129,11 +113,35 @@ h1{
   line-height:1.5;
 }
 
+.top-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:18px;
+}
+
+.challenge-launch{
+  border:0;
+  background:linear-gradient(135deg,#2457a6,#173d78);
+  color:#fff;
+  border-radius:12px;
+  padding:11px 15px;
+  cursor:pointer;
+  font-weight:800;
+  box-shadow:0 6px 16px rgba(36,87,166,.22);
+  transition:.18s ease;
+}
+
+.challenge-launch:hover{
+  transform:translateY(-2px);
+  box-shadow:0 9px 22px rgba(36,87,166,.28);
+}
+
 .suggestions{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  margin-top:18px;
+  margin-top:13px;
 }
 
 .chip{
@@ -152,33 +160,7 @@ h1{
   transform:translateY(-1px);
 }
 
-/* =========================================================
-   BOUTON CHALLENGE
-   ========================================================= */
-
-.challenge-launch{
-  margin-top:16px;
-  width:100%;
-  border:0;
-  border-radius:14px;
-  padding:14px 16px;
-  cursor:pointer;
-  color:#fff;
-  background:linear-gradient(135deg,#2457a6,#173d78);
-  font-weight:800;
-  font-size:15px;
-  box-shadow:0 8px 20px rgba(36,87,166,.20);
-  transition:.18s ease;
-}
-
-.challenge-launch:hover{
-  transform:translateY(-2px);
-  box-shadow:0 12px 25px rgba(36,87,166,.28);
-}
-
-/* =========================================================
-   CHAT
-   ========================================================= */
+/* CHAT */
 
 .chat{
   display:flex;
@@ -238,9 +220,7 @@ h1{
   margin-bottom:8px;
 }
 
-/* =========================================================
-   CONTACT
-   ========================================================= */
+/* CONTACT */
 
 .contact{
   margin-top:12px;
@@ -261,9 +241,7 @@ h1{
   text-decoration:none;
 }
 
-/* =========================================================
-   ACTIONS
-   ========================================================= */
+/* ACTIONS */
 
 .actions{
   display:flex;
@@ -295,9 +273,7 @@ h1{
   border-color:var(--primary);
 }
 
-/* =========================================================
-   DOCUMENTS
-   ========================================================= */
+/* DOCUMENTS */
 
 .document-box{
   margin-top:14px;
@@ -326,12 +302,9 @@ h1{
   color:var(--primary-dark);
   border-radius:999px;
   padding:4px 8px;
-  margin-bottom:8px;
 }
 
-/* =========================================================
-   MODALE DOCUMENT
-   ========================================================= */
+/* MODALE DOCUMENT */
 
 .document-overlay{
   position:fixed;
@@ -375,7 +348,6 @@ h1{
   border:1px solid var(--border);
   padding:11px;
   border-radius:12px;
-  font-size:13px!important;
 }
 
 .document-close{
@@ -398,95 +370,94 @@ h1{
 .challenge{
   margin-top:14px;
   border:1px solid #d9e4f7;
-  border-radius:16px;
+  border-radius:18px;
   background:linear-gradient(135deg,#f8fbff,#eef5ff);
-  padding:17px;
+  padding:18px;
+}
+
+.challenge-header{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:flex-start;
 }
 
 .challenge-title{
   font-size:17px;
   font-weight:800;
-  margin-bottom:7px;
+  margin-bottom:6px;
+}
+
+.challenge-subtitle{
+  color:#667085;
+  font-size:13px;
+}
+
+.challenge-progress{
+  flex-shrink:0;
+  background:#fff;
+  border:1px solid #d9e4f7;
+  color:var(--primary-dark);
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.progress-track{
+  height:7px;
+  background:#dce7f7;
+  border-radius:999px;
+  overflow:hidden;
+  margin-top:14px;
+}
+
+.progress-bar{
+  height:100%;
+  background:linear-gradient(90deg,#2457a6,#5d8ed5);
+  width:20%;
+  transition:.3s ease;
 }
 
 .challenge-intro{
+  margin-top:14px;
   color:#475467;
   font-size:14px;
   line-height:1.55;
 }
 
-.challenge-progress{
-  margin-top:14px;
-}
-
-.challenge-progress-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:12px;
-  font-weight:700;
-  color:var(--primary-dark);
-  margin-bottom:6px;
-}
-
-.progress-bar{
-  height:8px;
-  background:#dfe8f7;
-  border-radius:999px;
-  overflow:hidden;
-}
-
-.progress-fill{
-  height:100%;
-  width:20%;
-  background:var(--primary);
-  border-radius:999px;
-  transition:.3s ease;
-}
-
 .challenge-step{
   margin-top:14px;
-  padding:16px;
+  padding:17px;
   background:#fff;
-  border:1px solid #d9e4f7;
-  border-radius:14px;
+  border:1px solid #dfe5ee;
+  border-radius:15px;
 }
 
 .challenge-step-number{
-  font-size:12px;
   color:var(--primary);
+  font-size:12px;
   font-weight:800;
   text-transform:uppercase;
-  letter-spacing:.04em;
+  letter-spacing:.05em;
   margin-bottom:7px;
 }
 
 .challenge-step h4{
-  margin:0 0 8px;
+  margin:0 0 10px;
   font-size:16px;
 }
 
 .challenge-question{
   color:#344054;
-  line-height:1.55;
+  line-height:1.65;
   font-size:14px;
-}
-
-.challenge-hint{
-  margin-top:11px;
-  padding:10px 12px;
-  border-radius:10px;
-  background:#fffaeb;
-  border:1px solid #fedf89;
-  color:#93370d;
-  font-size:13px;
-  line-height:1.45;
 }
 
 .challenge-form{
   display:flex;
   gap:8px;
-  margin-top:13px;
+  margin-top:14px;
 }
 
 .challenge-form input{
@@ -514,23 +485,38 @@ h1{
   cursor:pointer;
 }
 
+.challenge-button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.challenge-hint{
+  margin-top:12px;
+}
+
+.hint-button{
+  border:0;
+  background:transparent;
+  color:var(--primary);
+  padding:0;
+  cursor:pointer;
+  font-size:13px;
+  text-decoration:underline;
+}
+
+.hint-box{
+  margin-top:9px;
+  padding:10px 12px;
+  background:#f8fafc;
+  border:1px dashed #cbd5e1;
+  border-radius:10px;
+  color:#475467;
+  font-size:13px;
+  line-height:1.5;
+}
+
 .challenge-result{
-  margin-top:13px;
-}
-
-.challenge-success{
-  padding:15px;
-  border-radius:14px;
-  background:var(--success-bg);
-  border:1px solid #abefc6;
-  color:#05603a;
-  line-height:1.55;
-}
-
-.challenge-success strong{
-  display:block;
-  font-size:17px;
-  margin-bottom:6px;
+  margin-top:12px;
 }
 
 .challenge-error{
@@ -542,75 +528,125 @@ h1{
   font-size:13px;
 }
 
-.fragment-box{
-  margin-top:12px;
-  padding:12px;
-  border-radius:12px;
-  background:#f7f9fc;
-  border:1px solid var(--border);
-  text-align:center;
-}
-
-.fragment-label{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.05em;
-  color:var(--muted);
-}
-
-.fragment{
-  display:block;
-  font-size:25px;
-  font-weight:900;
-  color:var(--primary-dark);
-  letter-spacing:.12em;
-  margin-top:3px;
-}
-
-/* =========================================================
-   VICTOIRE
-   ========================================================= */
-
-.challenge-victory{
-  margin-top:14px;
-  padding:20px;
-  border-radius:17px;
-  background:linear-gradient(135deg,#ecfdf3,#f0fdf4);
+.challenge-success{
+  padding:16px;
+  border-radius:14px;
+  background:var(--success-bg);
   border:1px solid #abefc6;
   color:#05603a;
-  text-align:center;
-}
-
-.challenge-victory .trophy{
-  font-size:44px;
-  margin-bottom:7px;
-}
-
-.challenge-victory h3{
-  margin:0 0 8px;
-  font-size:21px;
-}
-
-.challenge-victory p{
-  margin:7px 0;
   line-height:1.55;
 }
 
-.secret-word{
-  display:inline-block;
-  margin:10px 0;
-  padding:8px 14px;
-  background:#fff;
-  border:2px dashed #6ce9a6;
-  border-radius:12px;
-  font-size:21px;
-  font-weight:900;
-  letter-spacing:.12em;
+.challenge-success strong{
+  display:block;
+  font-size:18px;
+  margin-bottom:6px;
 }
 
-/* =========================================================
-   FEEDBACK
-   ========================================================= */
+.challenge-locked{
+  padding:15px;
+  border-radius:13px;
+  background:#f8fafc;
+  border:1px dashed #cbd5e1;
+  color:#667085;
+  font-size:13px;
+}
+
+/* CHALLENGE MODAL */
+
+.challenge-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(13,28,53,.64);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:9998;
+}
+
+.challenge-modal{
+  width:100%;
+  max-width:650px;
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 25px 80px rgba(0,0,0,.3);
+  position:relative;
+}
+
+.challenge-modal-close{
+  position:absolute;
+  right:15px;
+  top:15px;
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#f2f4f7;
+  cursor:pointer;
+  font-size:17px;
+}
+
+.challenge-modal-top{
+  padding-right:45px;
+}
+
+.challenge-modal-top h2{
+  margin:0 0 5px;
+  font-size:21px;
+}
+
+.challenge-modal-top p{
+  margin:0;
+  color:#667085;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.challenge-stage{
+  margin-top:18px;
+}
+
+/* VICTORY */
+
+.victory{
+  text-align:center;
+  padding:25px 12px 10px;
+}
+
+.victory-icon{
+  font-size:60px;
+  margin-bottom:10px;
+}
+
+.victory h2{
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.victory p{
+  color:#475467;
+  line-height:1.6;
+  margin:8px auto;
+  max-width:520px;
+}
+
+.secret{
+  display:inline-block;
+  margin:13px 0;
+  padding:10px 17px;
+  border-radius:12px;
+  background:#eef4ff;
+  color:var(--primary-dark);
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+/* FEEDBACK */
 
 .feedback{
   margin-top:14px;
@@ -634,12 +670,12 @@ h1{
 .like-area{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:9px;
   margin-top:13px;
   flex-wrap:wrap;
 }
 
-.like-button{
+.vote-button{
   border:1px solid var(--border);
   background:#fff;
   border-radius:12px;
@@ -649,35 +685,22 @@ h1{
   transition:.18s ease;
   text-decoration:none;
   color:var(--text);
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
 }
 
-.like-button:hover{
+.vote-button:hover{
   border-color:var(--primary);
   transform:translateY(-1px);
 }
 
-.like-button.positive:hover{
+.vote-button.like:hover{
   background:#ecfdf3;
-  border-color:#6ce9a6;
 }
 
-.like-button.negative:hover{
-  background:#fff4f2;
-  border-color:#f3a6a0;
+.vote-button.dislike:hover{
+  background:#fff7ed;
 }
 
-.like-count{
-  font-size:12px;
-  color:var(--muted);
-  flex-basis:100%;
-}
-
-/* =========================================================
-   RECHERCHE
-   ========================================================= */
+/* SEARCH */
 
 .searchbar{
   position:sticky;
@@ -686,7 +709,7 @@ h1{
   backdrop-filter:blur(10px);
   padding:12px 18px 18px;
   border-top:1px solid var(--border);
-  z-index:5;
+  z-index:15;
 }
 
 .form{
@@ -725,40 +748,20 @@ h1{
   text-align:center;
 }
 
-.hidden{
-  display:none!important;
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
+.hidden{display:none!important}
 
 @media(max-width:600px){
 
-  .header{
-    padding:18px;
-  }
+  .header{padding:18px}
 
-  .content{
-    padding:15px 12px 24px;
-  }
+  .content{padding:15px 12px 24px}
 
-  .searchbar{
-    padding:10px 12px 15px;
-  }
+  .searchbar{padding:10px 12px 15px}
 
-  .msg{
-    max-width:94%;
-  }
+  .msg{max-width:94%}
 
-  .document-overlay{
-    align-items:flex-end;
-    padding:10px;
-  }
-
-  .document-modal{
-    border-radius:20px 20px 12px 12px;
-    padding:22px 17px 17px;
+  .challenge-header{
+    flex-direction:column;
   }
 
   .challenge-form{
@@ -769,9 +772,23 @@ h1{
     width:100%;
   }
 
-  .like-button{
-    flex:1;
-    justify-content:center;
+  .challenge-overlay{
+    align-items:flex-end;
+    padding:8px;
+  }
+
+  .challenge-modal{
+    max-height:95vh;
+    border-radius:21px 21px 12px 12px;
+  }
+
+  .document-overlay{
+    align-items:flex-end;
+    padding:10px;
+  }
+
+  .document-modal{
+    border-radius:20px 20px 12px 12px;
   }
 }
 </style>
@@ -790,7 +807,7 @@ h1{
     <div>
       <h1>Assistant RH</h1>
 
-      <div class="subtitle" id="orgName">
+      <div class="subtitle">
         Mairie de Conflans-Sainte-Honorine
       </div>
     </div>
@@ -813,16 +830,23 @@ h1{
       ou la bonne ressource.
     </p>
 
-    <div class="suggestions" id="suggestions"></div>
+    <div class="top-actions">
 
-    <button
-      class="challenge-launch"
-      type="button"
-      onclick="launchChallenge()">
+      <button
+        class="challenge-launch"
+        type="button"
+        onclick="openChallenge()">
 
-      🎯 Challenge Conflans — Saurez-vous relever les 5 défis ?
+        🎯 Challenge Conflans
 
-    </button>
+      </button>
+
+    </div>
+
+    <div
+      class="suggestions"
+      id="suggestions">
+    </div>
 
   </section>
 
@@ -846,24 +870,19 @@ h1{
       id="question"
       autocomplete="off"
       placeholder="Ex. « Je ne comprends pas mon bulletin de salaire »"
-      aria-label="Votre question"
-    >
+      aria-label="Votre question">
 
     <button
       class="send"
       type="submit">
-
       Envoyer
-
     </button>
 
   </form>
 
   <div class="disclaimer">
-
     Cet assistant est conçu pour vous orienter de manière générale.
     Pour une situation individuelle, contactez l'interlocuteur indiqué.
-
   </div>
 
 </div>
@@ -881,32 +900,34 @@ const ORG_NAME =
   "Mairie de Conflans-Sainte-Honorine";
 
 
-/* =========================================================
+/*
    GOOGLE FORMS
-   =========================================================
 
-   Ton formulaire :
-
-   https://docs.google.com/forms/d/e/1FAIpQLSd415h4_XtNb2YSoWM3QA1jQfxT4uVZXR_inQP4fa5PF-3znA/viewform
-
-   Le champ de réponse utilisé pour le vote est :
-
+   Ton formulaire utilise le champ :
    entry.1522524480
 
-   On envoie automatiquement :
-   "J'aime cet outil"
-   ou
-   "Je n'aime pas cet outil"
+   👍 = J'aime cet outil
+   👎 = Je pense qu'il peut être amélioré
+*/
 
-   Les réponses seront donc comptabilisées dans
-   Google Forms / Google Sheets.
-   ========================================================= */
-
-const GOOGLE_FORM_URL =
+const GOOGLE_FORM_BASE =
   "https://docs.google.com/forms/d/e/1FAIpQLSd415h4_XtNb2YSoWM3QA1jQfxT4uVZXR_inQP4fa5PF-3znA/viewform";
 
 const GOOGLE_FORM_ENTRY =
   "entry.1522524480";
+
+
+function googleVoteUrl(value){
+
+  return (
+    GOOGLE_FORM_BASE +
+    "?usp=pp_url&" +
+    GOOGLE_FORM_ENTRY +
+    "=" +
+    encodeURIComponent(value)
+  );
+
+}
 
 
 /* =========================================================
@@ -956,8 +977,7 @@ const DOCUMENTS = {
 
   Gestcarr:{
     title:"Votre Gestionnaire carrière",
-    description:
-      "Pour connaître le nom de votre Gestionnaire carrière, consultez l'annuaire RH.",
+    description:"Pour connaître le nom de votre Gestionnaire carrière, consultez l'annuaire RH.",
     type:"annuaire",
     format:"Annuaire",
     url:"https://c.conflans.mairie-conflans.fr/#!/community/Ressources%2520Humaines/b1876ea4-a47a-4cb4-b84e-076eeade8ce6/d8bad4a4-3557-4feb-8087-54df234e8080/f696bd4c-ba5b-483f-a228-13b29933ef85/viewdetail/"
@@ -965,8 +985,7 @@ const DOCUMENTS = {
 
   tempstravail:{
     title:"Règlement relatif au temps de travail",
-    description:
-      "Organisation du temps de travail pour les agents de la ville, du CCAS et du théâtre.",
+    description:"Organisation du temps de travail pour les agents de la ville, du CCAS et du théâtre.",
     type:"pdf",
     format:"PDF",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/ab19fec5-96cf-43b7-9b38-4e96e8bdcca6"
@@ -974,8 +993,7 @@ const DOCUMENTS = {
 
   cet:{
     title:"Le Compte Épargne Temps",
-    description:
-      "Pour connaître le fonctionnement du Compte Épargne Temps, consultez ce document.",
+    description:"Pour connaître le fonctionnement du Compte Épargne Temps, consultez ce document.",
     type:"pdf",
     format:"PDF",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/873c5cac-8923-4be2-8ca3-264c7676b923"
@@ -983,8 +1001,7 @@ const DOCUMENTS = {
 
   formulaireRIB:{
     title:"Formulaire de changement de coordonnées bancaires",
-    description:
-      "Formulaire à utiliser pour transmettre un nouveau RIB.",
+    description:"Formulaire à utiliser pour transmettre un nouveau RIB.",
     type:"formulaire",
     format:"Formulaire",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/df5ec181-0683-42e0-94d7-193218d840ff"
@@ -992,8 +1009,7 @@ const DOCUMENTS = {
 
   transmissiondocument:{
     title:"Comment transmettre vos documents au service RH",
-    description:
-      "Vous devez transmettre un document au service des Ressources Humaines ?",
+    description:"Vous devez transmettre un document au service des Ressources Humaines ?",
     type:"page",
     format:"Page intranet",
     url:"https://c.conflans.mairie-conflans.fr/#!/community/Ressources%2520Humaines/b1876ea4-a47a-4cb4-b84e-076eeade8ce6/d8bad4a4-3557-4feb-8087-54df234e8080/658dd1e2-3072-45ff-9cc0-61b9913de021/viewdetail/"
@@ -1001,8 +1017,7 @@ const DOCUMENTS = {
 
   versementsalaire:{
     title:"Calendrier de versement des salaires 2026",
-    description:
-      "Calendrier de versement des salaires 2026.",
+    description:"Calendrier de versement des salaires 2026.",
     type:"page",
     format:"Page intranet",
     url:"https://c.conflans.mairie-conflans.fr/#!/community/Ressources%2520Humaines/b1876ea4-a47a-4cb4-b84e-076eeade8ce6/d8bad4a4-3557-4feb-8087-54df234e8080/72601d00-ac3a-416e-becf-58d4c729c93c/viewdetail/"
@@ -1010,8 +1025,7 @@ const DOCUMENTS = {
 
   CartePluxee:{
     title:"Bulletin d'adhésion Pluxee",
-    description:
-      "Formulaire à compléter et transmettre au secteur Paie.",
+    description:"Formulaire à compléter et transmettre au secteur Paie.",
     type:"formulaire",
     format:"Formulaire",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/1d06e930-963b-46dd-84eb-e8d120113c87"
@@ -1019,8 +1033,7 @@ const DOCUMENTS = {
 
   CatalogueCNFPT:{
     title:"CNFPT : Offre de formation",
-    description:
-      "Consultez le catalogue des formations proposées par le CNFPT.",
+    description:"Consultez le catalogue des formations proposées par le CNFPT.",
     type:"page",
     format:"Page web",
     url:"https://www.cnfpt.fr/rechercher-formation?page=1&size=10"
@@ -1028,8 +1041,7 @@ const DOCUMENTS = {
 
   Formulaireinscriptionformation:{
     title:"Formulaire de demande de formation CNFPT",
-    description:
-      "Formulaire à compléter pour une demande de formation.",
+    description:"Formulaire à compléter pour une demande de formation.",
     type:"formulaire",
     format:"Formulaire",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/e4424002-3d33-442b-aecf-660f628e9a31"
@@ -1037,8 +1049,7 @@ const DOCUMENTS = {
 
   Reglementformation:{
     title:"Le règlement de formation",
-    description:
-      "Informations essentielles sur vos droits relatifs à la formation.",
+    description:"Informations essentielles sur vos droits relatifs à la formation.",
     type:"pdf",
     format:"PDF",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/1e9742a8-6173-4fa1-89ad-e12413e29eda"
@@ -1046,8 +1057,7 @@ const DOCUMENTS = {
 
   Calendrierconcours:{
     title:"Calendrier des concours et examens professionnels",
-    description:
-      "Consultez le calendrier des prochains concours et examens professionnels.",
+    description:"Consultez le calendrier des prochains concours et examens professionnels.",
     type:"pdf",
     format:"PDF",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/27a81f61-c8ea-463b-b2d0-2a8d53fca549"
@@ -1055,8 +1065,7 @@ const DOCUMENTS = {
 
   Prepaconcours:{
     title:"Préparation concours et examens professionnels",
-    description:
-      "Le CNFPT vous accompagne dans votre préparation.",
+    description:"Le CNFPT vous accompagne dans votre préparation.",
     type:"page",
     format:"Page web",
     url:"https://www.cnfpt.fr/evoluer/preparation-aux-concours-concours-examens-professionnels/preparer-concours-ou-examen-professionnel/national"
@@ -1064,8 +1073,7 @@ const DOCUMENTS = {
 
   ConnexionSMD:{
     title:"Connexion SMD",
-    description:
-      "Comment accéder à votre compte SMD depuis votre mobile.",
+    description:"Comment accéder à votre compte SMD depuis votre mobile.",
     type:"pdf",
     format:"PDF",
     url:"https://c.conflans.mairie-conflans.fr/#!/media/documents/ad6e2366-b835-43d7-834a-1bcc5658f78e"
@@ -1080,293 +1088,258 @@ const DOCUMENTS = {
 
 const FAQ = [
 
-  {
-    id:"conges",
-    category:"Congés / Absences",
-    keywords:[
-      "congé","conges","congés","congés annuels",
-      "solde congés","poser congé","poser mes congés",
-      "annuler congé","modifier congé","reporter congé",
-      "congés non pris","jours de congés","vacances",
-      "RTT","rtt","absence","CET","solde CET",
-      "compte épargne temps","congé bonifié","temps de travail"
-    ],
-    title:"Question sur vos congés, votre solde ou votre CET",
-    answer:
-      "Pour une question concernant vos congés, votre CET, votre solde de jours ou une anomalie dans votre compteur, contactez votre gestionnaire carrière.",
-    contact:"gestionnaireCarriere",
-    documents:["Gestcarr","tempstravail","cet"]
-  },
+{
+id:"conges",
+category:"Congés / Absences",
+keywords:[
+"congé","conges","congés","congés annuels","solde congés",
+"poser congé","poser mes congés","annuler congé","modifier congé",
+"reporter congé","congés non pris","jours de congés","vacances",
+"RTT","rtt","absence","CET","solde CET","compte épargne temps",
+"congé bonifié","temps de travail"
+],
+title:"Question sur vos congés, votre solde ou votre CET",
+answer:"Pour une question concernant vos congés, votre CET, votre solde de jours ou une anomalie dans votre compteur, contactez votre gestionnaire carrière.",
+contact:"gestionnaireCarriere",
+documents:["Gestcarr","tempstravail","cet"]
+},
 
-  {
-    id:"asa",
-    category:"Congés / Absences",
-    keywords:[
-      "mariage","PACS","déménagement","demenagement",
-      "décès","deces","enfant malade","mon enfant est malade",
-      "ASA","autorisation spéciale d'absence",
-      "absence exceptionnelle","absence urgente",
-      "justificatif d'absence"
-    ],
-    title:"Question sur une absence exceptionnelle (ASA)",
-    answer:
-      "Pour une question concernant une absence exceptionnelle ou une ASA, contactez votre gestionnaire carrière.",
-    contact:"gestionnaireCarriere",
-    documents:["transmissiondocument","Gestcarr"]
-  },
+{
+id:"asa",
+category:"Congés / Absences",
+keywords:[
+"mariage","PACS","déménagement","demenagement","décès","deces",
+"enfant malade","mon enfant est malade","ASA",
+"autorisation spéciale d'absence","absence exceptionnelle",
+"absence urgente","justificatif d'absence"
+],
+title:"Question sur une absence exceptionnelle (ASA)",
+answer:"Pour une question concernant une absence exceptionnelle ou une ASA, contactez votre gestionnaire carrière.",
+contact:"gestionnaireCarriere",
+documents:["transmissiondocument","Gestcarr"]
+},
 
-  {
-    id:"salaire",
-    category:"Paie",
-    keywords:[
-      "bulletin","salaire","paie","paye","remuneration",
-      "rémunération","fiche de paie","fiche de salaire",
-      "bulletin de salaire","prime","prélèvement","prelevement",
-      "remboursement","abonnement","transports","Navigo",
-      "indemnité","régime indemnitaire","RIFSEEP","IFSE","CIA",
-      "NBI","indice majoré","SFT","supplément familial",
-      "prélèvement à la source","retenue sur salaire",
-      "régularisation","heures supplémentaires","astreinte",
-      "permanence"
-    ],
-    title:"Question sur votre bulletin de salaire",
-    answer:
-      "Pour toute question sur votre dernier bulletin de salaire, son contenu, une prime, une retenue ou une variation de rémunération, contactez le secteur Paie.",
-    contact:"rhPaie",
-    documents:["versementsalaire"]
-  },
+{
+id:"salaire",
+category:"Paie",
+keywords:[
+"bulletin","salaire","paie","paye","remuneration","rémunération",
+"fiche de paie","fiche de salaire","bulletin de salaire","prime",
+"prélèvement","prelevement","remboursement","abonnement","transports",
+"Navigo","indemnité","régime indemnitaire","RIFSEEP","IFSE","CIA",
+"NBI","indice majoré","SFT","supplément familial",
+"prélèvement à la source","retenue sur salaire","régularisation",
+"heures supplémentaires","astreinte","permanence"
+],
+title:"Question sur votre bulletin de salaire",
+answer:"Pour toute question sur votre dernier bulletin de salaire, son contenu, une prime, une retenue ou une variation de rémunération, contactez le secteur Paie.",
+contact:"rhPaie",
+documents:["versementsalaire"]
+},
 
-  {
-    id:"rib",
-    category:"Paie",
-    keywords:[
-      "RIB","modifier RIB","changer RIB","changement RIB",
-      "nouvelle banque","nouveau RIB","coordonnées bancaires",
-      "coordonnees bancaires","compte bancaire",
-      "changer de banque","changement de banque"
-    ],
-    title:"Changement de coordonnées bancaires",
-    answer:
-      "Pour transmettre votre nouveau RIB, utilisez le formulaire ci-dessous. Si nécessaire, contactez également le secteur Paie.",
-    contact:"rhPaie",
-    documents:["formulaireRIB"]
-  },
+{
+id:"rib",
+category:"Paie",
+keywords:[
+"RIB","modifier RIB","changer RIB","changement RIB","nouvelle banque",
+"nouveau RIB","coordonnées bancaires","coordonnees bancaires",
+"compte bancaire","changer de banque","changement de banque"
+],
+title:"Changement de coordonnées bancaires",
+answer:"Pour transmettre votre nouveau RIB, utilisez le formulaire ci-dessous. Si nécessaire, contactez également le secteur Paie.",
+contact:"rhPaie",
+documents:["formulaireRIB"]
+},
 
-  {
-    id:"frais-mission",
-    category:"Paie",
-    keywords:[
-      "frais de mission","frais de déplacement",
-      "remboursement mission","hotel","hôtel","restauration",
-      "frais kilométriques","formulaire frais",
-      "déplacement","transports"
-    ],
-    title:"Question concernant des frais de mission ou de déplacement",
-    answer:
-      "Pour obtenir des informations sur le remboursement des frais liés à vos missions ou déplacements, contactez le service concerné.",
-    contact:"rhPaie"
-  },
+{
+id:"frais-mission",
+category:"Paie",
+keywords:[
+"frais de mission","frais de déplacement","remboursement mission",
+"hotel","hôtel","restauration","frais kilométriques",
+"formulaire frais","déplacement","transports"
+],
+title:"Question concernant des frais de mission ou de déplacement",
+answer:"Pour obtenir des informations sur le remboursement des frais liés à vos missions ou déplacements, contactez le service concerné.",
+contact:"rhPaie"
+},
 
-  {
-    id:"carte-pluxee",
-    category:"Paie",
-    keywords:[
-      "adhésion","adhérer","carte déjeuner","déjeuner",
-      "ticket restaurant","tickets restaurant",
-      "carte Pluxee","pluxee"
-    ],
-    title:"Question concernant la carte déjeuner Pluxee",
-    answer:
-      "Contactez le service Paie qui vous renseignera sur les modalités d'adhésion et son fonctionnement.",
-    contact:"rhPaie",
-    documents:["CartePluxee"]
-  },
+{
+id:"carte-pluxee",
+category:"Paie",
+keywords:[
+"adhésion","adhérer","carte déjeuner","déjeuner","ticket restaurant",
+"tickets restaurant","carte Pluxee","pluxee"
+],
+title:"Question concernant la carte déjeuner Pluxee",
+answer:"Contactez le service Paie qui vous renseignera sur les modalités d'adhésion et son fonctionnement.",
+contact:"rhPaie",
+documents:["CartePluxee"]
+},
 
-  {
-    id:"adresse",
-    category:"Dossier administratif",
-    keywords:[
-      "adresse","modifier adresse","changement adresse",
-      "nouvelle adresse","déménagement","demenagement"
-    ],
-    title:"J'ai déménagé, comment modifier mon adresse ?",
-    answer:
-      "Pour modifier votre adresse, contactez votre gestionnaire carrière afin de connaître la procédure à suivre et les éventuels justificatifs à transmettre.",
-    contact:"gestionnaireCarriere",
-    documents:["Gestcarr"]
-  },
+{
+id:"adresse",
+category:"Dossier administratif",
+keywords:[
+"adresse","modifier adresse","changement adresse","nouvelle adresse",
+"déménagement","demenagement"
+],
+title:"J'ai déménagé, comment modifier mon adresse ?",
+answer:"Pour modifier votre adresse, contactez votre gestionnaire carrière afin de connaître la procédure à suivre et les éventuels justificatifs à transmettre.",
+contact:"gestionnaireCarriere",
+documents:["Gestcarr"]
+},
 
-  {
-    id:"dossier-agent",
-    category:"Dossier administratif",
-    keywords:[
-      "dossier agent","dossier administratif",
-      "gestion administrative","domicile","coordonnées personnelles",
-      "situation familiale","mariage","PACS","divorce",
-      "naissance","enfant","livret de famille","arrêté",
-      "numéro d'agent","matricule","correction dossier",
-      "rectification données personnelles"
-    ],
-    title:"Question concernant votre dossier administratif",
-    answer:
-      "Pour une question concernant votre dossier administratif ou vos informations personnelles, contactez votre gestionnaire carrière.",
-    contact:"gestionnaireCarriere",
-    documents:["Gestcarr"]
-  },
+{
+id:"dossier-agent",
+category:"Dossier administratif",
+keywords:[
+"dossier agent","dossier administratif","gestion administrative",
+"domicile","coordonnées personnelles","situation familiale",
+"mariage","PACS","divorce","naissance","enfant","livret de famille",
+"arrêté","numéro d'agent","matricule","correction dossier",
+"rectification données personnelles"
+],
+title:"Question concernant votre dossier administratif",
+answer:"Pour une question concernant votre dossier administratif ou vos informations personnelles, contactez votre gestionnaire carrière.",
+contact:"gestionnaireCarriere",
+documents:["Gestcarr"]
+},
 
-  {
-    id:"carriere",
-    category:"Dossier administratif",
-    keywords:[
-      "carrière","carriere","avancement","promotion",
-      "grade","échelon","echelon","titularisation",
-      "mutation","mobilité","mobilite","entretien professionnel"
-    ],
-    title:"Question concernant votre carrière",
-    answer:
-      "Pour une question sur votre situation administrative, votre grade, votre échelon, un avancement ou votre évolution de carrière, contactez votre gestionnaire carrière.",
-    contact:"gestionnaireCarriere",
-    documents:["Gestcarr"]
-  },
+{
+id:"carriere",
+category:"Dossier administratif",
+keywords:[
+"carrière","carriere","avancement","promotion","grade","échelon",
+"echelon","titularisation","mutation","mobilité","mobilite",
+"entretien professionnel"
+],
+title:"Question concernant votre carrière",
+answer:"Pour une question sur votre situation administrative, votre grade, votre échelon, un avancement ou votre évolution de carrière, contactez votre gestionnaire carrière.",
+contact:"gestionnaireCarriere",
+documents:["Gestcarr"]
+},
 
-  {
-    id:"formation",
-    category:"Formation",
-    keywords:[
-      "formation","former","stage","CNFPT","catalogue",
-      "formation professionnelle","absence formation",
-      "inscription formation","demande formation",
-      "financement formation","bilan de compétences","VAE",
-      "validation des acquis","congé de formation","reconversion",
-      "projet professionnel","formation obligatoire",
-      "attestation de formation"
-    ],
-    title:"Question sur une formation",
-    answer:
-      "Pour une demande de formation, une question sur le catalogue ou le suivi d'une inscription, contactez le Service Formation.",
-    contact:"formation",
-    documents:[
-      "CatalogueCNFPT",
-      "Formulaireinscriptionformation",
-      "Reglementformation"
-    ]
-  },
+{
+id:"formation",
+category:"Formation",
+keywords:[
+"formation","former","stage","CNFPT","catalogue","formation professionnelle",
+"absence formation","inscription formation","demande formation",
+"financement formation","bilan de compétences","VAE",
+"validation des acquis","congé de formation","reconversion",
+"projet professionnel","formation obligatoire","attestation de formation"
+],
+title:"Question sur une formation",
+answer:"Pour une demande de formation, une question sur le catalogue ou le suivi d'une inscription, contactez le Service Formation.",
+contact:"formation",
+documents:[
+"CatalogueCNFPT",
+"Formulaireinscriptionformation",
+"Reglementformation"
+]
+},
 
-  {
-    id:"concours-examens",
-    category:"Formation",
-    keywords:[
-      "concours","inscription concours","calendrier concours",
-      "préparation concours","prépa concours","examen",
-      "examen professionnel","examens professionnels"
-    ],
-    title:"Renseignements sur les concours ou examens professionnels",
-    answer:
-      "Contactez le service Formation afin de connaître la marche à suivre.",
-    contact:"formation",
-    documents:["Calendrierconcours","Prepaconcours"]
-  },
+{
+id:"concours-examens",
+category:"Formation",
+keywords:[
+"concours","inscription concours","calendrier concours",
+"préparation concours","prépa concours","examen",
+"examen professionnel","examens professionnels"
+],
+title:"Renseignements sur les concours ou examens professionnels",
+answer:"Contactez le service Formation afin de connaître la marche à suivre.",
+contact:"formation",
+documents:["Calendrierconcours","Prepaconcours"]
+},
 
-  {
-    id:"cpf",
-    category:"Formation",
-    keywords:[
-      "CPF","compte personnel de formation",
-      "heures CPF","compteur CPF","solde CPF"
-    ],
-    title:"Question concernant votre CPF",
-    answer:
-      "Pour obtenir des informations sur votre compte CPF ou son utilisation, contactez le service Formation.",
-    contact:"formation"
-  },
+{
+id:"cpf",
+category:"Formation",
+keywords:[
+"CPF","compte personnel de formation","heures CPF",
+"compteur CPF","solde CPF"
+],
+title:"Question concernant votre CPF",
+answer:"Pour obtenir des informations sur votre compte CPF ou son utilisation, contactez le service Formation.",
+contact:"formation"
+},
 
-  {
-    id:"connexion-intranet",
-    category:"Intranet",
-    keywords:[
-      "intranet","connexion intranet","connecter intranet",
-      "mot de passe intranet","identifiant intranet",
-      "login intranet","accès intranet","acces intranet",
-      "C.Conflans"
-    ],
-    title:"Problème de connexion à l'intranet",
-    answer:
-      "Si vous n'arrivez pas à vous connecter à l'intranet, contactez la personne référente indiquée ci-dessous.",
-    contact:"jessyca"
-  },
+{
+id:"connexion-intranet",
+category:"Intranet",
+keywords:[
+"intranet","connexion intranet","connecter intranet",
+"mot de passe intranet","identifiant intranet","login intranet",
+"accès intranet","acces intranet","C.Conflans"
+],
+title:"Problème de connexion à l'intranet",
+answer:"Si vous n'arrivez pas à vous connecter à l'intranet, contactez la personne référente indiquée ci-dessous.",
+contact:"jessyca"
+},
 
-  {
-    id:"connexion-SMD",
-    category:"Compte SMD",
-    keywords:[
-      "connexion SMD","connecter SMD","connexion à SMD",
-      "connexion au SMD","compte SMD","compte smd",
-      "mot de passe SMD","mot de passe du SMD",
-      "identifiant SMD","identifiants SMD",
-      "identifiant du SMD","identifiants du SMD",
-      "login SMD","login du SMD","accès SMD","acces SMD",
-      "je ne connais pas mes identifiants"
-    ],
-    title:"Problème de connexion à votre compte SMD",
-    answer:
-      "Si vous n'arrivez pas à vous connecter à votre compte SMD, contactez votre gestionnaire carrière.",
-    contact:"gestionnaireCarriere",
-    documents:["Gestcarr","ConnexionSMD"]
-  },
+{
+id:"connexion-SMD",
+category:"Compte SMD",
+keywords:[
+"connexion SMD","connecter SMD","connexion à SMD",
+"connexion au SMD","compte SMD","compte smd","mot de passe SMD",
+"mot de passe du SMD","identifiant SMD","identifiants SMD",
+"identifiant du SMD","identifiants du SMD","login SMD",
+"login du SMD","accès SMD","acces SMD",
+"je ne connais pas mes identifiants"
+],
+title:"Problème de connexion à votre compte SMD",
+answer:"Si vous n'arrivez pas à vous connecter à votre compte SMD, contactez votre gestionnaire carrière.",
+contact:"gestionnaireCarriere",
+documents:["Gestcarr","ConnexionSMD"]
+},
 
-  {
-    id:"retraite",
-    category:"Retraite",
-    keywords:[
-      "retraite","départ retraite","depart retraite",
-      "partir en retraite","âge retraite","age retraite",
-      "trimestres","carrière retraite","erreur carrière",
-      "retraite progressive","pension"
-    ],
-    title:"Question concernant la retraite",
-    answer:
-      "Pour obtenir des informations sur votre retraite, contactez votre gestionnaire carrière.",
-    contact:"gestionnaireCarriere"
-  },
+{
+id:"retraite",
+category:"Retraite",
+keywords:[
+"retraite","départ retraite","depart retraite","partir en retraite",
+"âge retraite","age retraite","trimestres","carrière retraite",
+"erreur carrière","retraite progressive","pension"
+],
+title:"Question concernant la retraite",
+answer:"Pour obtenir des informations sur votre retraite, contactez votre gestionnaire carrière.",
+contact:"gestionnaireCarriere"
+},
 
-  {
-    id:"etat-services",
-    category:"Documents / Attestations",
-    keywords:[
-      "état des services","etat des services",
-      "état services","etat services"
-    ],
-    title:"Je souhaite obtenir mon état des services",
-    answer:
-      "Pour obtenir votre état des services, contactez le service Formation.",
-    contact:"formation"
-  },
+{
+id:"etat-services",
+category:"Documents / Attestations",
+keywords:[
+"état des services","etat des services","état services","etat services"
+],
+title:"Je souhaite obtenir mon état des services",
+answer:"Pour obtenir votre état des services, contactez le service Formation.",
+contact:"formation"
+},
 
-  {
-    id:"informatique",
-    category:"Informatique",
-    keywords:[
-      "ordinateur","PC","ordinateur portable","imprimante",
-      "informatique","souris","clavier","logiciel","écran",
-      "ecran","panne informatique"
-    ],
-    title:"Problème informatique",
-    answer:
-      "Pour un problème matériel ou informatique, contactez le service informatique de la collectivité.",
-    contact:"informatique"
-  },
+{
+id:"informatique",
+category:"Informatique",
+keywords:[
+"ordinateur","PC","ordinateur portable","imprimante","informatique",
+"souris","clavier","logiciel","écran","ecran","panne informatique"
+],
+title:"Problème informatique",
+answer:"Pour un problème matériel ou informatique, contactez le service informatique de la collectivité.",
+contact:"informatique"
+},
 
-  {
-    id:"easter-egg",
-    category:"Humour",
-    keywords:[
-      "licorne","en pls"
-    ],
-    title:"Nous allons prendre soin de vous 🦄",
-    answer:
-      "Calmez-vous, prenez une grande inspiration… on arrive ! 😄",
-    contact:"informatique"
-  }
+{
+id:"easter-egg",
+category:"Humour",
+keywords:["licorne","en pls"],
+title:"Nous allons prendre soin de vous 🦄",
+answer:"Calmez-vous, prenez une grande inspiration… on arrive ! 😄",
+contact:"informatique"
+}
 
 ];
 
@@ -1377,32 +1350,27 @@ const FAQ = [
 
 const suggestions = [
 
-  ["🏖️ Congés / Absences","J'ai un problème avec mes congés"],
-  ["💶 Paie","Je ne comprends pas mon dernier bulletin de salaire"],
-  ["🗂️ Dossier administratif","Comment modifier mon adresse ?"],
-  ["🎓 Formation","Je souhaite faire une formation"],
-  ["💻 Intranet","Je n'arrive pas à me connecter à l'intranet"],
-  ["🎯 Compte SMD","Je ne connais pas mes identifiants"],
-  ["📑 Documents","J'ai besoin d'une attestation"],
-  ["👩‍🦳 Retraite","Quand pourrai-je partir à la retraite ?"],
-  ["❓ Autre demande RH","J'ai une autre question RH"]
+["🏖️ Congés / Absences","J'ai un problème avec mes congés"],
+["💶 Paie","Je ne comprends pas mon dernier bulletin de salaire"],
+["🗂️ Dossier administratif","Comment modifier mon adresse ?"],
+["🎓 Formation","Je souhaite faire une formation"],
+["💻 Intranet","Je n'arrive pas à me connecter à l'intranet"],
+["🎯 Compte SMD","Je ne connais pas mes identifiants"],
+["📑 Documents","J'ai besoin d'une attestation"],
+["👩‍🦳 Retraite","Quand pourrai-je partir à la retraite ?"],
+["❓ Autre demande RH","J'ai une autre question RH"]
 
 ];
 
 
-document.getElementById("orgName").textContent =
-  ORG_NAME;
-
-
 /* =========================================================
-   SECURITE
+   OUTILS
    ========================================================= */
 
 function escapeHtml(s){
 
   return String(s).replace(
     /[&<>"']/g,
-
     c => ({
       "&":"&amp;",
       "<":"&lt;",
@@ -1415,10 +1383,6 @@ function escapeHtml(s){
 }
 
 
-/* =========================================================
-   NORMALISATION
-   ========================================================= */
-
 function normalize(s){
 
   return String(s)
@@ -1428,10 +1392,6 @@ function normalize(s){
 
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 function isMobileDevice(){
 
@@ -1443,27 +1403,20 @@ function isMobileDevice(){
 
 
 /* =========================================================
-   MOTEUR DE RECHERCHE
+   MOTEUR RH
    ========================================================= */
 
 function score(question,item){
 
   const q = normalize(question);
-
   let total = 0;
 
   for(const keyword of item.keywords){
 
-    const keywordNormalized =
-      normalize(keyword);
+    const k = normalize(keyword);
 
-    if(q.includes(keywordNormalized)){
-
-      total +=
-        keywordNormalized.length >= 7
-          ? 3
-          : 2;
-
+    if(q.includes(k)){
+      total += k.length >= 7 ? 3 : 2;
     }
 
   }
@@ -1480,27 +1433,21 @@ function findMatches(question){
       item,
       score:score(question,item)
     }))
-    .filter(result => result.score > 0)
-    .sort(
-      (a,b) =>
-        b.score - a.score
-    );
+    .filter(x => x.score > 0)
+    .sort((a,b) => b.score - a.score);
 
 }
 
 
 /* =========================================================
-   CONTACT
+   CONTACTS
    ========================================================= */
 
 function contactHtml(contactKey){
 
-  const contact =
-    CONTACTS[contactKey];
+  const contact = CONTACTS[contactKey];
 
-  if(!contact){
-    return "";
-  }
+  if(!contact) return "";
 
   const emailOk =
     contact.email &&
@@ -1511,77 +1458,52 @@ function contactHtml(contactKey){
     !contact.phone.includes("A_COMPLETER");
 
   let html = `
-
     <div class="contact">
-
       <strong>
         📍 Votre interlocuteur :
         ${escapeHtml(contact.label)}
       </strong>
-
   `;
 
   if(emailOk){
-
     html += `
-
       <div>
         ✉️
         <a href="mailto:${escapeHtml(contact.email)}">
           ${escapeHtml(contact.email)}
         </a>
       </div>
-
     `;
-
   }
 
   if(phoneOk){
-
     html += `
-
       <div>
         ☎️ ${escapeHtml(contact.phone)}
       </div>
-
     `;
-
   }
 
   html += `</div><div class="actions">`;
 
   if(emailOk){
-
     html += `
-
       <a
         class="action primary"
         href="mailto:${escapeHtml(contact.email)}">
-
         ✉️ Envoyer un email
-
       </a>
-
     `;
-
   }
 
   if(phoneOk){
-
     html += `
-
       <a
         class="action"
-        href="tel:${escapeHtml(
-          contact.phone.replace(/\s/g,"")
-        )}">
-
+        href="tel:${escapeHtml(contact.phone.replace(/\s/g,""))}">
         ☎️ Appeler
-
       </a>
-
     `;
-
   }
 
   html += `</div>`;
@@ -1621,15 +1543,11 @@ function getDocumentAction(doc){
 
 function documentButton(doc){
 
-  if(!doc || !doc.url){
-    return "";
-  }
+  if(!doc || !doc.url) return "";
 
-  const action =
-    getDocumentAction(doc);
+  const action = getDocumentAction(doc);
 
   return `
-
     <div class="document-box">
 
       <div class="document-title">
@@ -1660,7 +1578,6 @@ function documentButton(doc){
       </div>
 
     </div>
-
   `;
 
 }
@@ -1668,9 +1585,7 @@ function documentButton(doc){
 
 function openDocument(doc){
 
-  if(!doc || !doc.url){
-    return;
-  }
+  if(!doc || !doc.url) return;
 
   if(!isMobileDevice()){
 
@@ -1682,8 +1597,7 @@ function openDocument(doc){
       );
 
     if(!opened){
-      window.location.href =
-        doc.url;
+      window.location.href = doc.url;
     }
 
     return;
@@ -1697,25 +1611,18 @@ function openDocument(doc){
 function showMobileDocumentNotice(doc){
 
   const existing =
-    document.getElementById(
-      "documentModal"
-    );
+    document.getElementById("documentModal");
 
-  if(existing){
-    existing.remove();
-  }
+  if(existing) existing.remove();
 
-  const action =
-    getDocumentAction(doc);
+  const action = getDocumentAction(doc);
 
   const modal =
     document.createElement("div");
 
-  modal.id =
-    "documentModal";
+  modal.id = "documentModal";
 
   modal.innerHTML = `
-
     <div
       class="document-overlay"
       onclick="closeDocumentModal(event)">
@@ -1728,32 +1635,22 @@ function showMobileDocumentNotice(doc){
           class="document-close"
           type="button"
           onclick="closeDocumentModal()">
-
           ✕
-
         </button>
 
         <div class="document-icon">
           ${action.icon}
         </div>
 
-        <h3>
-          ${escapeHtml(
-            doc.title || "Ressource RH"
-          )}
-        </h3>
+        <h3>${escapeHtml(doc.title)}</h3>
 
         <p>
-          Vous consultez cette ressource
-          depuis un téléphone.
+          Vous consultez cette ressource depuis un téléphone.
         </p>
 
         <p class="document-info">
-
-          L'accès à certaines ressources de
-          l'intranet peut nécessiter une
-          reconnexion.
-
+          L'accès à certaines ressources de l'intranet
+          peut nécessiter une reconnexion.
         </p>
 
         <div class="actions">
@@ -1773,17 +1670,13 @@ function showMobileDocumentNotice(doc){
             class="action"
             type="button"
             onclick="closeDocumentModal()">
-
             Retour
-
           </button>
 
         </div>
 
       </div>
-
     </div>
-
   `;
 
   document.body.appendChild(modal);
@@ -1796,30 +1689,21 @@ function closeDocumentModal(event){
   if(
     event &&
     event.target !== event.currentTarget
-  ){
-    return;
-  }
+  ) return;
 
   const modal =
-    document.getElementById(
-      "documentModal"
-    );
+    document.getElementById("documentModal");
 
-  if(modal){
-    modal.remove();
-  }
+  if(modal) modal.remove();
 
 }
 
 
 /* =========================================================
-   MESSAGES
+   CHAT
    ========================================================= */
 
-function addMessage(
-  html,
-  who="bot"
-){
+function addMessage(html,who="bot"){
 
   const element =
     document.createElement("div");
@@ -1827,8 +1711,7 @@ function addMessage(
   element.className =
     "msg " + who;
 
-  element.innerHTML =
-    html;
+  element.innerHTML = html;
 
   document
     .getElementById("chat")
@@ -1843,288 +1726,308 @@ function addMessage(
 
 
 /* =========================================================
-   CHALLENGE — 5 ETAPES
+   CHALLENGE
    =========================================================
 
-   Le challenge est volontairement séparé du moteur RH.
+   CHALLENGE EN 5 ETAPES
 
-   Chaque bonne réponse donne un fragment :
+   1. Tour Montjoie
+   2. Confluence Seine / Oise
+   3. CET via l'assistant
+   4. Pardon national de la batellerie
+   5. Mot secret : BATELLERIE
 
-   Étape 1 → C
-   Étape 2 → ON
-   Étape 3 → FL
-   Étape 4 → AN
-   Étape 5 → S
-
-   Mot final :
-   CONFLANS
-
-   Les questions utilisent des éléments vérifiés
-   sur le site officiel de la Ville.
+   Les réponses sont volontairement moins évidentes
+   et les indices arrivent progressivement.
    ========================================================= */
 
-const CHALLENGE_STEPS = [
+const challengeSteps = [
 
-  {
-    title:"Le point de départ",
-    question:
-      "Conflans-Sainte-Honorine porte bien son nom : la ville est située au point de rencontre de deux cours d'eau. Lesquels ?",
+{
+  title:"Le gardien des hauteurs",
+  question:`
+    Dans le vieux Conflans, un vestige roman domine
+    encore la ville.
 
-    accepted:[
-      "seine et oise",
-      "oise et seine",
-      "la seine et l oise",
-      "la seine et la oise"
-    ],
+    Il ne se visite pas librement aujourd'hui,
+    mais son nom est directement associé à l'histoire
+    médiévale de Conflans.
 
-    hint:
-      "Indice : l'un des deux fleuves traverse Paris.",
+    Quel est le nom de ce donjon ?
+  `,
+  answers:[
+    "tour montjoie",
+    "montjoie",
+    "tour montjoie"
+  ],
+  hints:[
+    "Il s'agit d'un vestige du XIe siècle.",
+    "Son nom commence par « Tour ».",
+    "Il s'appelle la Tour Montjoie."
+  ],
+  success:"Bien joué. Premier indice récupéré : **TOUR MONTJOIE**."
+},
 
-    fragment:"C"
-  },
+{
+  title:"Deux eaux, une identité",
+  question:`
+    Conflans n'a pas choisi son nom au hasard.
 
-  {
-    title:"La grande spécialité de Conflans",
-    question:
-      "La ville est historiquement connue comme la « capitale » de quelle activité liée au fleuve ?",
+    La ville se trouve à l'endroit où deux cours d'eau
+    se rencontrent.
 
-    accepted:[
-      "batellerie",
-      "la batellerie"
-    ],
+    Lesquels ?
+  `,
+  answers:[
+    "seine oise",
+    "oise seine",
+    "la seine et l oise",
+    "seine et oise",
+    "la seine et l'oise"
+  ],
+  hints:[
+    "L'un des deux est le grand fleuve qui traverse Paris.",
+    "L'autre porte le nom d'un département voisin.",
+    "Il s'agit de la Seine et de l'Oise."
+  ],
+  success:"Exact. Deuxième indice récupéré : **SEINE + OISE**."
+},
 
-    hint:
-      "Indice : cherchez du côté des péniches, des remorqueurs et du transport fluvial.",
+{
+  title:"L'épreuve RH",
+  question:`
+    Cette fois, pas de question d'histoire.
 
-    fragment:"ON"
-  },
+    Utilisez l'Assistant RH lui-même.
 
-  {
-    title:"Retrouvez la maison commune",
-    question:
-      "À quelle adresse se trouve l'Hôtel de Ville de Conflans-Sainte-Honorine ?",
+    Trouvez le document qui explique le fonctionnement
+    du <strong>Compte Épargne Temps</strong>.
 
-    accepted:[
-      "63 rue maurice berteaux",
-      "63 rue maurice-berteaux",
-      "63 rue maurice berteaux bp 35",
-      "63 rue maurice berteaux 78700",
-      "63 rue maurice berteaux 78703"
-    ],
+    Quel est son nom ?
+  `,
+  answers:[
+    "compte epargne temps",
+    "le compte epargne temps",
+    "cet"
+  ],
+  hints:[
+    "Cherchez dans les suggestions ou demandez simplement à l'assistant : « J'ai une question sur mon CET ».",
+    "La réponse doit vous orienter vers un document PDF.",
+    "Le document s'appelle « Le Compte Épargne Temps »."
+  ],
+  success:"Parfait. Vous venez de faire exactement ce que le challenge cherche à vous apprendre : utiliser l'assistant pour retrouver une ressource RH."
+},
 
-    hint:
-      "Indice : le numéro est 63 et le nom de la rue est celui d'un ancien président du Conseil.",
+{
+  title:"Le rendez-vous des mariniers",
+  question:`
+    Chaque année, Conflans accueille un grand rendez-vous
+    lié à son identité fluviale.
 
-    fragment:"FL"
-  },
+    L'événement existe depuis 1960 et rassemble
+    habitants, mariniers et visiteurs autour du fleuve.
 
-  {
-    title:"Une petite balade au Prieuré",
-    question:
-      "Dans le parc du Prieuré, quel musée consacré à l'histoire fluviale de Conflans peut-on découvrir dans le château du Prieuré ?",
+    Quel est son nom ?
+  `,
+  answers:[
+    "pardon national de la batellerie",
+    "pardon national",
+    "pardon de la batellerie",
+    "pnb"
+  ],
+  hints:[
+    "Il a lieu traditionnellement au mois de juin.",
+    "Son nom commence par « Pardon ».",
+    "Il s'agit du Pardon national de la batellerie."
+  ],
+  success:"Bien vu. Quatrième indice récupéré : **PARDON NATIONAL DE LA BATELLERIE**."
+},
 
-    accepted:[
-      "musee de la batellerie",
-      "musée de la batellerie",
-      "musee de la batellerie et des voies navigables",
-      "musée de la batellerie et des voies navigables",
-      "musee de la batellerie et des voies navigables de conflans"
-    ],
+{
+  title:"Le mot de passe",
+  question:`
+    Dernière étape.
 
-    hint:
-      "Indice : encore une fois, les bateaux ne sont jamais très loin à Conflans…",
+    Vous avez rencontré :
 
-    fragment:"AN"
-  },
+    • un patrimoine médiéval ;
+    • le confluent de la Seine et de l'Oise ;
+    • une ressource RH ;
+    • un grand rendez-vous annuel.
 
-  {
-    title:"Le dernier verrou",
-    question:
-      "Dernière question : quel est le nom complet de la commune où vous travaillez ?",
+    Quel est le mot qui relie surtout les trois éléments
+    liés à l'identité de Conflans ?
 
-    accepted:[
-      "conflans sainte honorine",
-      "conflans-sainte-honorine",
-      "conflans ste honorine",
-      "conflans sainte-honorine"
-    ],
+    Ce n'est pas le nom de la ville.
 
-    hint:
-      "Indice : vous êtes à deux mots de la victoire… 😉",
-
-    fragment:"S"
-  }
+    C'est ce qui explique une grande partie de son histoire,
+    de son patrimoine et de son identité fluviale.
+  `,
+  answers:[
+    "batellerie",
+    "la batellerie"
+  ],
+  hints:[
+    "On parle beaucoup de bateaux, de mariniers et de voies navigables.",
+    "Conflans revendique historiquement un titre lié à cette activité.",
+    "Le mot recherché est : BATELLERIE."
+  ],
+  success:"Le coffre est ouvert."
+}
 
 ];
 
 
 let challengeState = {
   step:0,
-  fragments:[],
-  hintsUsed:0,
-  completed:false
+  completed:false,
+  hintsUsed:0
 };
 
 
-/* =========================================================
-   LANCEMENT DU CHALLENGE
-   ========================================================= */
-
-function launchChallenge(){
+function resetChallenge(){
 
   challengeState = {
     step:0,
-    fragments:[],
-    hintsUsed:0,
-    completed:false
+    completed:false,
+    hintsUsed:0
   };
 
-  renderChallenge();
-
-  setTimeout(() => {
-
-    const challenge =
-      document.getElementById(
-        "challengeBox"
-      );
-
-    if(challenge){
-
-      challenge.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-      });
-
-    }
-
-  },100);
-
 }
 
 
-/* =========================================================
-   AFFICHAGE DU CHALLENGE
-   ========================================================= */
+function openChallenge(){
 
-function renderChallenge(){
+  resetChallenge();
 
   const existing =
-    document.getElementById(
-      "challengeBox"
-    );
+    document.getElementById("challengeModal");
 
-  if(existing){
-    existing.remove();
-  }
+  if(existing) existing.remove();
 
-  const wrapper =
+  const modal =
     document.createElement("div");
 
-  wrapper.id =
-    "challengeBox";
+  modal.id =
+    "challengeModal";
 
-  wrapper.className =
-    "msg bot";
+  modal.innerHTML = `
+    <div
+      class="challenge-overlay"
+      onclick="closeChallenge(event)">
 
-  if(challengeState.completed){
+      <div
+        class="challenge-modal"
+        onclick="event.stopPropagation()">
 
-    wrapper.innerHTML =
-      challengeVictoryHtml();
+        <button
+          class="challenge-modal-close"
+          type="button"
+          onclick="closeChallenge()">
+          ✕
+        </button>
 
-  }else{
+        <div class="challenge-modal-top">
 
-    wrapper.innerHTML =
-      challengeStepHtml();
+          <h2>🎯 Challenge Conflans</h2>
 
-  }
-
-  document
-    .getElementById("chat")
-    .appendChild(wrapper);
-
-}
-
-
-/* =========================================================
-   HTML D'UNE ETAPE
-   ========================================================= */
-
-function challengeStepHtml(){
-
-  const step =
-    CHALLENGE_STEPS[
-      challengeState.step
-    ];
-
-  const current =
-    challengeState.step + 1;
-
-  const percentage =
-    (current / CHALLENGE_STEPS.length) * 100;
-
-  const fragments =
-    challengeState.fragments.length
-      ? challengeState.fragments.join(" ")
-      : "—";
-
-  return `
-
-    <div class="challenge">
-
-      <div class="challenge-title">
-
-        🎯 Challenge Conflans
-
-      </div>
-
-      <div class="challenge-intro">
-
-        Bienvenue dans la mission.
-
-        <br>
-
-        Cinq étapes. Cinq réponses.
-        Et un mot secret à reconstituer.
-
-        <br>
-
-        Et attention : ici, Google n'est pas
-        votre seul allié… votre assistant RH
-        peut aussi vous aider. 😉
-
-      </div>
-
-
-      <div class="challenge-progress">
-
-        <div class="challenge-progress-top">
-
-          <span>
-            Étape ${current} / ${CHALLENGE_STEPS.length}
-          </span>
-
-          <span>
-            ${escapeHtml(fragments)}
-          </span>
+          <p>
+            Une petite enquête en cinq étapes.
+            Pas besoin d'être expert : observez,
+            cherchez et utilisez l'Assistant RH.
+          </p>
 
         </div>
 
-        <div class="progress-bar">
+        <div id="challengeStage"
+             class="challenge-stage">
+        </div>
 
-          <div
-            class="progress-fill"
-            style="width:${percentage}%">
+      </div>
+
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  renderChallengeStep();
+
+}
+
+
+function closeChallenge(event){
+
+  if(
+    event &&
+    event.target !== event.currentTarget
+  ) return;
+
+  const modal =
+    document.getElementById("challengeModal");
+
+  if(modal) modal.remove();
+
+}
+
+
+function renderChallengeStep(){
+
+  const container =
+    document.getElementById("challengeStage");
+
+  if(!container) return;
+
+  if(challengeState.completed){
+
+    renderVictory();
+
+    return;
+  }
+
+  const index =
+    challengeState.step;
+
+  const step =
+    challengeSteps[index];
+
+  const progress =
+    ((index + 1) / challengeSteps.length) * 100;
+
+  container.innerHTML = `
+
+    <div class="challenge">
+
+      <div class="challenge-header">
+
+        <div>
+
+          <div class="challenge-title">
+            ${escapeHtml(step.title)}
+          </div>
+
+          <div class="challenge-subtitle">
+            Enquête — étape ${index + 1} sur ${challengeSteps.length}
           </div>
 
         </div>
 
+        <div class="challenge-progress">
+          ${index + 1} / ${challengeSteps.length}
+        </div>
+
       </div>
 
+      <div class="progress-track">
+        <div
+          class="progress-bar"
+          style="width:${progress}%">
+        </div>
+      </div>
 
       <div class="challenge-step">
 
         <div class="challenge-step-number">
-          Mission ${current}
+          Étape ${index + 1}
         </div>
 
         <h4>
@@ -2132,9 +2035,8 @@ function challengeStepHtml(){
         </h4>
 
         <div class="challenge-question">
-          ${escapeHtml(step.question)}
+          ${step.question}
         </div>
-
 
         <form
           class="challenge-form"
@@ -2144,288 +2046,256 @@ function challengeStepHtml(){
             id="challengeInput"
             autocomplete="off"
             placeholder="Votre réponse…"
-            aria-label="Votre réponse">
+            aria-label="Votre réponse au challenge">
 
           <button
             class="challenge-button"
             type="submit">
-
-            🔐 Valider
-
+            Valider
           </button>
 
         </form>
 
+        <div class="challenge-hint">
+
+          <button
+            class="hint-button"
+            type="button"
+            onclick="showChallengeHint()">
+
+            💡 Besoin d'un indice ?
+
+          </button>
+
+          <div
+            id="challengeHint"
+            class="hint-box hidden">
+          </div>
+
+        </div>
 
         <div
           id="challengeResult"
           class="challenge-result">
         </div>
 
-
-        <div
-          id="challengeHint"
-          class="challenge-hint hidden">
-
-          💡 ${escapeHtml(step.hint)}
-
-        </div>
-
-
-        <div class="actions">
-
-          <button
-            type="button"
-            class="action"
-            onclick="showChallengeHint()">
-
-            💡 J'ai besoin d'un indice
-
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="fragment-box">
-
-        <div class="fragment-label">
-          Fragments trouvés
-        </div>
-
-        <span class="fragment">
-          ${escapeHtml(fragments)}
-        </span>
-
       </div>
 
     </div>
-
   `;
+
+  setTimeout(() => {
+
+    const input =
+      document.getElementById("challengeInput");
+
+    if(input) input.focus();
+
+  },100);
 
 }
 
 
-/* =========================================================
-   VALIDATION D'UNE ETAPE
-   ========================================================= */
+function showChallengeHint(){
+
+  const index =
+    challengeState.step;
+
+  const step =
+    challengeSteps[index];
+
+  const hintIndex =
+    Math.min(
+      challengeState.hintsUsed,
+      step.hints.length - 1
+    );
+
+  const box =
+    document.getElementById("challengeHint");
+
+  if(!box) return;
+
+  box.classList.remove("hidden");
+
+  box.textContent =
+    "💡 " + step.hints[hintIndex];
+
+  if(challengeState.hintsUsed <
+     step.hints.length - 1){
+
+    challengeState.hintsUsed++;
+
+  }
+
+}
+
+
+function cleanChallengeAnswer(value){
+
+  return normalize(value)
+    .replace(/[’']/g," ")
+    .replace(/[-]/g," ")
+    .replace(/\s+/g," ")
+    .trim();
+
+}
+
 
 function validateChallengeStep(event){
 
   event.preventDefault();
 
   const input =
-    document.getElementById(
-      "challengeInput"
-    );
+    document.getElementById("challengeInput");
 
   const result =
-    document.getElementById(
-      "challengeResult"
-    );
+    document.getElementById("challengeResult");
 
-  if(!input || !result){
-    return;
-  }
-
-  const step =
-    CHALLENGE_STEPS[
-      challengeState.step
-    ];
+  if(!input || !result) return;
 
   const answer =
-    normalize(input.value)
-      .replace(/['’]/g," ")
-      .replace(/\s+/g," ")
-      .trim();
+    cleanChallengeAnswer(input.value);
 
-  const correct =
-    step.accepted.some(
-      accepted =>
-        normalize(accepted)
-          .replace(/['’]/g," ")
-          .replace(/\s+/g," ")
-          .trim() === answer
+  const step =
+    challengeSteps[challengeState.step];
+
+  const valid =
+    step.answers.some(
+      expected =>
+        cleanChallengeAnswer(expected) === answer
     );
 
-
-  if(correct){
-
-    challengeState.fragments.push(
-      step.fragment
-    );
+  if(!valid){
 
     result.innerHTML = `
-
-      <div class="challenge-success">
-
-        <strong>
-          ✅ Bien joué !
-        </strong>
-
-        Bonne réponse.
-
-        <br>
-
-        Vous gagnez le fragment :
-
-        <strong>
-          ${escapeHtml(step.fragment)}
-        </strong>
-
-      </div>
-
-    `;
-
-    input.disabled = true;
-
-    event.target
-      .querySelector("button")
-      .disabled = true;
-
-
-    setTimeout(() => {
-
-      challengeState.step++;
-
-      if(
-        challengeState.step >=
-        CHALLENGE_STEPS.length
-      ){
-
-        challengeState.completed =
-          true;
-
-      }
-
-      renderChallenge();
-
-      const box =
-        document.getElementById(
-          "challengeBox"
-        );
-
-      if(box){
-
-        box.scrollIntoView({
-          behavior:"smooth",
-          block:"center"
-        });
-
-      }
-
-    },850);
-
-
-  }else{
-
-    result.innerHTML = `
-
       <div class="challenge-error">
 
-        ❌ Pas tout à fait…
+        🤔 Ce n'est pas la bonne réponse.
 
-        <br>
+        <br><br>
 
-        Ce n'est pas la bonne réponse.
-        Vous pouvez retenter ou demander
-        un indice.
+        Vous pouvez demander un indice si besoin.
 
       </div>
-
     `;
 
-  }
-
-}
-
-
-/* =========================================================
-   INDICE
-   ========================================================= */
-
-function showChallengeHint(){
-
-  const hint =
-    document.getElementById(
-      "challengeHint"
-    );
-
-  if(!hint){
     return;
   }
 
-  hint.classList.remove("hidden");
+  result.innerHTML = `
+    <div class="challenge-success">
 
-  challengeState.hintsUsed++;
+      <strong>✅ Bonne réponse !</strong>
+
+      ${step.success}
+
+    </div>
+  `;
+
+  input.disabled = true;
+
+  const button =
+    event.target.querySelector("button");
+
+  if(button){
+    button.disabled = true;
+  }
+
+  setTimeout(() => {
+
+    challengeState.step++;
+    challengeState.hintsUsed = 0;
+
+    if(
+      challengeState.step >=
+      challengeSteps.length
+    ){
+
+      challengeState.completed = true;
+
+    }
+
+    renderChallengeStep();
+
+  },900);
 
 }
 
 
-/* =========================================================
-   VICTOIRE
-   ========================================================= */
+function renderVictory(){
 
-function challengeVictoryHtml(){
+  const container =
+    document.getElementById("challengeStage");
 
-  return `
+  if(!container) return;
 
-    <div class="challenge">
+  container.innerHTML = `
 
-      <div class="challenge-victory">
+    <div class="victory">
 
-        <div class="trophy">
-          🏆
-        </div>
-
-        <h3>
-          MISSION RÉUSSIE !
-        </h3>
-
-        <p>
-          Vous avez franchi les 5 étapes
-          du Challenge Conflans.
-        </p>
-
-        <div class="secret-word">
-          CONFLANS
-        </div>
-
-        <p>
-          🎉 Vous connaissez maintenant un peu
-          mieux votre ville…
-          et surtout, vous savez vous servir
-          de votre Assistant RH !
-        </p>
-
-        <p>
-          N'hésitez pas à nous dire si vous aimez
-          cet outil en appuyant sur le pouce
-          ci-dessous. ❤️
-        </p>
-
+      <div class="victory-icon">
+        🏆
       </div>
 
+      <h2>
+        MISSION RÉUSSIE !
+      </h2>
+
+      <p>
+
+        Bravo ! Vous avez terminé les
+        cinq étapes du Challenge Conflans.
+
+      </p>
+
+      <div class="secret">
+        BATELLERIE
+      </div>
+
+      <p>
+
+        Vous venez surtout de découvrir
+        une partie de ce que votre Assistant RH
+        sait faire : rechercher une information,
+        identifier le bon interlocuteur et
+        retrouver rapidement une ressource.
+
+      </p>
+
+      <p>
+
+        <strong>
+          Maintenant, vous savez vous servir
+          de votre Assistant RH. 😉
+        </strong>
+
+      </p>
+
+      <p>
+
+        N'hésitez pas à nous dire si vous aimez
+        cet outil en utilisant les boutons
+        ci-dessous.
+
+      </p>
 
       ${feedbackHtml()}
 
-
-      <div class="actions">
+      <div class="actions"
+           style="justify-content:center">
 
         <button
-          type="button"
           class="action primary"
-          onclick="launchChallenge()">
+          type="button"
+          onclick="closeChallenge()">
 
-          🔄 Refaire le challenge
+          Retour à l'assistant
 
         </button>
 
       </div>
 
     </div>
-
   `;
 
 }
@@ -2442,27 +2312,26 @@ function feedbackHtml(){
     <div class="feedback">
 
       <div class="feedback-title">
-        Votre avis nous intéresse ❤️
+        ❤️ Votre avis nous intéresse
       </div>
 
       <div class="feedback-text">
 
-        Maintenant que vous savez vous servir
-        de votre Assistant RH, dites-nous
-        ce que vous en pensez.
+        Cet assistant a été conçu pour vous
+        faire gagner du temps et vous aider
+        à trouver rapidement la bonne information.
 
         <br><br>
 
-        Un clic suffit :
+        Dites-nous simplement ce que vous en pensez :
 
       </div>
-
 
       <div class="like-area">
 
         <a
-          class="like-button positive"
-          href="${googleFormVoteUrl("J'aime cet outil")}"
+          class="vote-button like"
+          href="${googleVoteUrl("J'aime cet outil")}"
           target="_blank"
           rel="noopener noreferrer">
 
@@ -2470,47 +2339,21 @@ function feedbackHtml(){
 
         </a>
 
-
         <a
-          class="like-button negative"
-          href="${googleFormVoteUrl("Je n'aime pas cet outil")}"
+          class="vote-button dislike"
+          href="${googleVoteUrl("Je pense qu'il peut être amélioré")}"
           target="_blank"
           rel="noopener noreferrer">
 
-          👎 Je n'aime pas
+          👎 Il peut être amélioré
 
         </a>
-
-
-        <span class="like-count">
-
-          Votre réponse sera enregistrée
-          dans le formulaire de satisfaction.
-
-        </span>
 
       </div>
 
     </div>
 
   `;
-
-}
-
-
-/* =========================================================
-   URL GOOGLE FORMS PREFILL
-   ========================================================= */
-
-function googleFormVoteUrl(value){
-
-  return (
-    GOOGLE_FORM_URL +
-    "?usp=pp_url&" +
-    GOOGLE_FORM_ENTRY +
-    "=" +
-    encodeURIComponent(value)
-  );
 
 }
 
@@ -2548,10 +2391,8 @@ function answer(question){
         </p>
 
         <p>
-
           Vous pouvez également utiliser
           les suggestions proposées ci-dessus.
-
         </p>
 
       </div>
@@ -2562,42 +2403,31 @@ function answer(question){
 
   }
 
-
   const best =
     matches[0];
 
   const second =
     matches[1];
 
-
   let html = `
 
     <div class="answer">
 
       <span class="badge">
-        ${escapeHtml(
-          best.item.category
-        )}
+        ${escapeHtml(best.item.category)}
       </span>
 
       <h3>
-        ${escapeHtml(
-          best.item.title
-        )}
+        ${escapeHtml(best.item.title)}
       </h3>
 
       <p>
-        ${escapeHtml(
-          best.item.answer
-        )}
+        ${escapeHtml(best.item.answer)}
       </p>
 
-      ${contactHtml(
-        best.item.contact
-      )}
+      ${contactHtml(best.item.contact)}
 
   `;
-
 
   if(best.item.documents){
 
@@ -2605,63 +2435,45 @@ function answer(question){
       best.item.documents
         .map(
           key =>
-            documentButton(
-              DOCUMENTS[key]
-            )
+            documentButton(DOCUMENTS[key])
         )
         .join("");
 
   }
-
 
   if(
     best.item.id === "easter-egg"
   ){
 
     html += `
-
-      <div class="challenge">
+      <div class="challenge" style="margin-top:15px">
 
         <div class="challenge-title">
-          🦄 Vous avez trouvé l'Easter Egg !
+          🦄 Vous avez trouvé le petit Easter Egg !
         </div>
 
         <div class="challenge-intro">
-
-          Mais puisque vous êtes là…
-
-          <br><br>
-
-          <strong>
-            🎯 Le Challenge Conflans vous attend.
-          </strong>
-
-          <br>
-
-          Saurez-vous franchir les 5 étapes
-          et découvrir le mot secret ?
-
+          Puisque vous êtes là… pourquoi ne pas tenter
+          le vrai challenge ?
         </div>
 
         <div class="actions">
 
           <button
+            class="challenge-launch"
             type="button"
-            class="action primary"
-            onclick="launchChallenge()">
+            onclick="openChallenge()">
 
-            🎯 Lancer le challenge
+            🎯 Lancer le Challenge Conflans
 
           </button>
 
         </div>
 
       </div>
-
     `;
 
   }
-
 
   if(
     second &&
@@ -2680,20 +2492,16 @@ function answer(question){
         Si votre question est plutôt liée à
 
         <strong>
-          ${escapeHtml(
-            second.item.category
-          )}
+          ${escapeHtml(second.item.category)}
         </strong>,
 
-        dites-le-moi ou reformulez votre
-        demande.
+        dites-le-moi ou reformulez votre demande.
 
       </p>
 
     `;
 
   }
-
 
   html += `</div>`;
 
@@ -2703,17 +2511,14 @@ function answer(question){
 
 
 /* =========================================================
-   ENVOI QUESTION
+   ENVOI
    ========================================================= */
 
 function submitQuestion(q){
 
-  q =
-    q.trim();
+  q = q.trim();
 
-  if(!q){
-    return;
-  }
+  if(!q) return;
 
   addMessage(
     escapeHtml(q),
@@ -2732,10 +2537,6 @@ function submitQuestion(q){
 }
 
 
-/* =========================================================
-   FORMULAIRE PRINCIPAL
-   ========================================================= */
-
 document
   .getElementById("questionForm")
   .addEventListener(
@@ -2745,9 +2546,7 @@ document
       event.preventDefault();
 
       submitQuestion(
-        document.getElementById(
-          "question"
-        ).value
+        document.getElementById("question").value
       );
 
     }
@@ -2759,41 +2558,29 @@ document
    ========================================================= */
 
 const suggestionsContainer =
-  document.getElementById(
-    "suggestions"
-  );
-
+  document.getElementById("suggestions");
 
 suggestions.forEach(
   ([label,question]) => {
 
     const button =
-      document.createElement(
-        "button"
-      );
+      document.createElement("button");
 
-    button.className =
-      "chip";
-
-    button.type =
-      "button";
-
-    button.textContent =
-      label;
+    button.className = "chip";
+    button.type = "button";
+    button.textContent = label;
 
     button.onclick =
-      () =>
-        submitQuestion(question);
+      () => submitQuestion(question);
 
-    suggestionsContainer
-      .appendChild(button);
+    suggestionsContainer.appendChild(button);
 
   }
 );
 
 
 /* =========================================================
-   MESSAGE DE DEMARRAGE
+   DEMARRAGE
    ========================================================= */
 
 addMessage(`
@@ -2810,10 +2597,9 @@ addMessage(`
     </p>
 
     <p>
-      Et si vous voulez relever un défi,
-      cliquez sur
+      Et si vous aimez les petits défis,
       <strong>🎯 Challenge Conflans</strong>
-      juste au-dessus.
+      vous attend en haut de la page. 😉
     </p>
 
   </div>
