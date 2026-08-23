@@ -1,33 +1,70 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Assistant RH</title>
 
+<meta
+  name="description"
+  content="Assistant RH de la Mairie de Conflans-Sainte-Honorine"
+>
+
 <style>
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
 :root{
   --primary:#2457a6;
   --primary-dark:#173d78;
+  --primary-light:#eef4ff;
+
   --bg:#f4f7fb;
-  --card:#fff;
+  --card:#ffffff;
   --text:#172033;
+  --text-soft:#344054;
   --muted:#667085;
+
   --border:#dfe5ee;
   --success:#16794c;
-  --shadow:0 12px 35px rgba(23,32,51,.12);
+  --danger:#b42318;
+
+  --shadow:0 12px 35px rgba(23,32,51,.10);
+  --shadow-small:0 5px 18px rgba(23,32,51,.06);
+
   --radius:18px;
 }
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
 
 *{
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   background:var(--bg);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   color:var(--text);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
 
 button,
@@ -35,42 +72,86 @@ input{
   font:inherit;
 }
 
+button,
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+a{
+  color:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+/* =========================================================
+   APPLICATION
+   ========================================================= */
+
 .app{
+  width:100%;
   max-width:920px;
-  margin:auto;
   min-height:100vh;
+  margin:0 auto;
+
   display:flex;
   flex-direction:column;
 }
 
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 .header{
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-  color:#fff;
-  padding:24px 24px 22px;
   position:sticky;
   top:0;
-  z-index:3;
+  z-index:100;
+
+  padding:22px 24px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-dark)
+    );
+
+  box-shadow:
+    0 4px 20px rgba(23,32,51,.12);
 }
 
 .brand{
   display:flex;
-  gap:14px;
   align-items:center;
+  gap:14px;
 }
 
 .logo{
-  width:46px;
-  height:46px;
-  border-radius:14px;
-  background:rgba(255,255,255,.16);
+  width:48px;
+  height:48px;
+
   display:grid;
   place-items:center;
-  font-size:24px;
+
+  border-radius:15px;
+
+  background:rgba(255,255,255,.16);
+
+  font-size:25px;
+
+  flex:none;
 }
 
-h1{
-  font-size:22px;
+.header h1{
   margin:0 0 3px;
+
+  font-size:22px;
+  line-height:1.2;
 }
 
 .subtitle{
@@ -78,53 +159,90 @@ h1{
   opacity:.88;
 }
 
+
+/* =========================================================
+   CONTENU
+   ========================================================= */
+
 .content{
-  padding:22px 18px 30px;
   flex:1;
+
+  padding:22px 18px 30px;
 }
 
+
+/* =========================================================
+   ACCUEIL
+   ========================================================= */
+
 .welcome{
+  margin-bottom:18px;
+  padding:20px;
+
   background:var(--card);
+
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:20px;
+
   box-shadow:var(--shadow);
-  margin-bottom:18px;
 }
 
 .welcome h2{
-  font-size:19px;
   margin:0 0 8px;
+
+  font-size:19px;
 }
 
 .welcome p{
   margin:0;
+
   color:var(--muted);
-  line-height:1.5;
+
+  line-height:1.55;
 }
 
 .suggestions{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
+
   margin-top:16px;
 }
 
 .chip{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:999px;
   padding:9px 13px;
-  cursor:pointer;
+
   color:var(--text);
-  transition:.15s ease;
+
+  background:#fff;
+
+  border:1px solid var(--border);
+  border-radius:999px;
+
+  transition:
+    border-color .15s ease,
+    color .15s ease,
+    transform .15s ease,
+    box-shadow .15s ease;
 }
 
-.chip:hover{
-  border-color:var(--primary);
+.chip:hover,
+.chip:focus-visible{
   color:var(--primary);
+
+  border-color:var(--primary);
+
   transform:translateY(-1px);
+
+  box-shadow:0 3px 10px rgba(36,87,166,.10);
+
+  outline:none;
 }
+
+
+/* =========================================================
+   CHAT
+   ========================================================= */
 
 .chat{
   display:flex;
@@ -133,269 +251,584 @@ h1{
 }
 
 .msg{
-  max-width:86%;
+  max-width:88%;
+
   padding:13px 15px;
+
   border-radius:16px;
-  line-height:1.5;
+
   font-size:14px;
+  line-height:1.5;
 }
 
-.bot{
+.msg.bot{
   align-self:flex-start;
+
   background:#fff;
+
   border:1px solid var(--border);
+
   border-bottom-left-radius:5px;
 }
 
-.user{
+.msg.user{
   align-self:flex-end;
-  background:var(--primary);
+
   color:#fff;
+
+  background:var(--primary);
+
   border-bottom-right-radius:5px;
 }
 
+.msg.system{
+  align-self:center;
+
+  max-width:90%;
+
+  color:var(--muted);
+
+  background:transparent;
+
+  font-size:12px;
+  text-align:center;
+}
+
+
+/* =========================================================
+   REPONSE
+   ========================================================= */
+
 .answer{
+  padding:16px;
+
   background:#fff;
+
   border:1px solid var(--border);
   border-radius:16px;
-  padding:16px;
-  box-shadow:0 5px 18px rgba(23,32,51,.06);
+
+  box-shadow:var(--shadow-small);
 }
 
 .answer h3{
+  margin:0 0 8px;
+
   font-size:16px;
-  margin:0 0 7px;
+  line-height:1.35;
 }
 
 .answer p{
   margin:7px 0;
-  color:#344054;
-  line-height:1.5;
+
+  color:var(--text-soft);
+
+  line-height:1.55;
+}
+
+.answer-intro{
+  margin-top:0!important;
 }
 
 .badge{
-  display:inline-block;
-  background:#eef4ff;
-  color:var(--primary-dark);
+  display:inline-flex;
+  align-items:center;
+
+  margin-bottom:9px;
   padding:5px 9px;
+
+  color:var(--primary-dark);
+  background:var(--primary-light);
+
   border-radius:999px;
+
   font-size:12px;
   font-weight:700;
-  margin-bottom:8px;
 }
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
 .contact{
-  margin-top:12px;
+  margin-top:14px;
   padding:12px;
-  border-radius:12px;
+
   background:#f7f9fc;
+
   border:1px solid var(--border);
+  border-radius:12px;
 }
 
-.contact strong{
-  display:block;
-  margin-bottom:4px;
+.contact-title{
+  margin-bottom:7px;
+
+  font-weight:700;
+}
+
+.contact-line{
+  margin-top:4px;
+
+  font-size:13px;
 }
 
 .contact a{
   color:var(--primary);
+
   font-weight:700;
+
   text-decoration:none;
 }
+
+.contact a:hover{
+  text-decoration:underline;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
 
 .actions{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
+
   margin-top:12px;
 }
 
 .action{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:10px;
-  padding:8px 11px;
-  cursor:pointer;
-  color:var(--text);
-  text-decoration:none;
-  font-size:13px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:5px;
-  transition:.15s ease;
+
+  min-height:38px;
+
+  padding:8px 12px;
+
+  color:var(--text);
+  background:#fff;
+
+  border:1px solid var(--border);
+  border-radius:10px;
+
+  font-size:13px;
+  font-weight:600;
+
+  text-decoration:none;
+
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    transform .15s ease;
 }
 
-.action:hover{
+.action:hover,
+.action:focus-visible{
   border-color:var(--primary);
+
+  outline:none;
 }
 
 .action.primary{
-  background:var(--primary);
   color:#fff;
+  background:var(--primary);
   border-color:var(--primary);
 }
 
-.action.primary:hover{
+.action.primary:hover,
+.action.primary:focus-visible{
   background:var(--primary-dark);
+  border-color:var(--primary-dark);
 }
 
-/* =========================
-   DOCUMENTS
-   ========================= */
 
-.document-box{
+/* =========================================================
+   DOCUMENTS / RESSOURCES
+   ========================================================= */
+
+.resource{
   margin-top:14px;
-  padding:13px;
+  padding:14px;
+
+  background:#f8fafc;
+
   border:1px solid var(--border);
   border-radius:13px;
-  background:#f8fafc;
 }
 
-.document-title{
-  font-weight:700;
-  margin-bottom:4px;
-}
-
-.document-description{
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:10px;
-}
-
-.document-format{
-  display:inline-block;
-  font-size:11px;
-  font-weight:700;
-  background:#eef4ff;
-  color:var(--primary-dark);
-  border-radius:999px;
-  padding:4px 8px;
-  margin-bottom:8px;
-}
-
-/* =========================
-   FENÊTRE MOBILE
-   ========================= */
-
-.document-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
+.resource-header{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:9999;
+  align-items:flex-start;
+  gap:10px;
 }
 
-.document-modal{
-  width:100%;
-  max-width:430px;
-  background:#fff;
-  border-radius:20px;
-  padding:25px 20px 20px;
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
-  position:relative;
-}
-
-.document-modal h3{
-  margin:0 35px 10px 0;
-  font-size:18px;
-}
-
-.document-modal p{
-  color:#475467;
-  line-height:1.5;
-  font-size:14px;
-}
-
-.document-icon{
-  font-size:38px;
-  margin-bottom:10px;
-}
-
-.document-info{
-  background:#f7f9fc;
-  border:1px solid var(--border);
-  padding:11px;
-  border-radius:12px;
-  font-size:13px!important;
-}
-
-.document-close{
-  position:absolute;
-  right:14px;
-  top:14px;
-  border:0;
-  background:#f2f4f7;
+.resource-icon{
   width:34px;
   height:34px;
+
+  display:grid;
+  place-items:center;
+
+  flex:none;
+
+  background:var(--primary-light);
+
+  border-radius:9px;
+
+  font-size:17px;
+}
+
+.resource-title{
+  margin:0;
+
+  font-weight:700;
+  line-height:1.35;
+}
+
+.resource-description{
+  margin:7px 0 10px 44px;
+
+  color:var(--muted);
+
+  font-size:13px;
+  line-height:1.5;
+}
+
+.resource-meta{
+  margin-left:44px;
+}
+
+.resource-format{
+  display:inline-block;
+
+  padding:4px 8px;
+
+  color:var(--primary-dark);
+  background:var(--primary-light);
+
+  border-radius:999px;
+
+  font-size:11px;
+  font-weight:700;
+}
+
+.resource .actions{
+  margin-left:44px;
+}
+
+
+/* =========================================================
+   ALTERNATIVES
+   ========================================================= */
+
+.alternatives{
+  margin-top:15px;
+  padding-top:13px;
+
+  border-top:1px solid var(--border);
+}
+
+.alternatives-title{
+  margin-bottom:8px;
+
+  color:var(--muted);
+
+  font-size:12px;
+  font-weight:600;
+}
+
+.alternative-button{
+  padding:7px 10px;
+
+  color:var(--primary-dark);
+  background:var(--primary-light);
+
+  border:0;
+  border-radius:9px;
+
+  font-size:12px;
+}
+
+.alternative-button:hover{
+  background:#e3edff;
+}
+
+
+/* =========================================================
+   ETAT DE RECHERCHE
+   ========================================================= */
+
+.typing{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
+
+.typing-dot{
+  width:6px;
+  height:6px;
+
+  background:var(--muted);
+
   border-radius:50%;
-  cursor:pointer;
-  font-size:16px;
+
+  animation:typing 1.1s infinite ease-in-out;
 }
 
-.document-actions{
-  margin-top:18px;
+.typing-dot:nth-child(2){
+  animation-delay:.15s;
 }
 
-/* =========================
-   RECHERCHE
-   ========================= */
+.typing-dot:nth-child(3){
+  animation-delay:.30s;
+}
+
+@keyframes typing{
+  0%,60%,100%{
+    opacity:.25;
+    transform:translateY(0);
+  }
+
+  30%{
+    opacity:1;
+    transform:translateY(-2px);
+  }
+}
+
+
+/* =========================================================
+   BARRE DE RECHERCHE
+   ========================================================= */
 
 .searchbar{
   position:sticky;
   bottom:0;
-  background:rgba(244,247,251,.95);
-  backdrop-filter:blur(10px);
+  z-index:90;
+
   padding:12px 18px 18px;
+
+  background:rgba(244,247,251,.95);
+
+  backdrop-filter:blur(10px);
+
   border-top:1px solid var(--border);
 }
 
 .form{
   display:flex;
   gap:8px;
+
+  padding:7px 7px 7px 13px;
+
   background:#fff;
+
   border:1px solid var(--border);
   border-radius:15px;
-  padding:7px 7px 7px 13px;
+
   box-shadow:var(--shadow);
 }
 
+.form:focus-within{
+  border-color:var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(36,87,166,.10),
+    var(--shadow);
+}
+
 .form input{
-  border:0;
-  outline:0;
   flex:1;
   min-width:0;
+
+  padding:5px 0;
+
   color:var(--text);
+
   background:transparent;
+
+  border:0;
+  outline:0;
+}
+
+.form input::placeholder{
+  color:#98a2b3;
 }
 
 .send{
-  border:0;
-  background:var(--primary);
-  color:#fff;
-  border-radius:10px;
+  min-width:88px;
+
   padding:10px 15px;
-  cursor:pointer;
+
+  color:#fff;
+  background:var(--primary);
+
+  border:0;
+  border-radius:10px;
+
   font-weight:700;
+
+  transition:background .15s ease;
 }
 
-.send:hover{
+.send:hover,
+.send:focus-visible{
   background:var(--primary-dark);
+
+  outline:none;
+}
+
+.send:disabled{
+  opacity:.65;
+  cursor:not-allowed;
 }
 
 .disclaimer{
-  font-size:11px;
-  color:var(--muted);
   margin:8px 3px 0;
+
+  color:var(--muted);
+
+  font-size:11px;
+  line-height:1.4;
+
   text-align:center;
 }
 
-.hidden{
-  display:none!important;
+
+/* =========================================================
+   BOUTON NOUVELLE QUESTION
+   ========================================================= */
+
+.new-question{
+  margin-top:12px;
+
+  padding-top:12px;
+
+  border-top:1px solid var(--border);
+
+  text-align:center;
 }
+
+.new-question button{
+  color:var(--primary);
+
+  background:transparent;
+
+  border:0;
+
+  font-size:12px;
+  font-weight:700;
+}
+
+.new-question button:hover{
+  text-decoration:underline;
+}
+
+
+/* =========================================================
+   MODALE MOBILE
+   ========================================================= */
+
+.document-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.55);
+}
+
+.document-modal{
+  position:relative;
+
+  width:100%;
+  max-width:440px;
+
+  padding:25px 20px 20px;
+
+  background:#fff;
+
+  border-radius:20px;
+
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.document-modal h3{
+  margin:0 38px 10px 0;
+
+  font-size:18px;
+  line-height:1.35;
+}
+
+.document-modal p{
+  color:#475467;
+
+  font-size:14px;
+  line-height:1.5;
+}
+
+.document-icon-large{
+  margin-bottom:10px;
+
+  font-size:38px;
+}
+
+.document-info{
+  padding:11px!important;
+
+  background:#f7f9fc;
+
+  border:1px solid var(--border);
+  border-radius:12px;
+
+  font-size:13px!important;
+}
+
+.document-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+
+  width:34px;
+  height:34px;
+
+  display:grid;
+  place-items:center;
+
+  color:var(--text);
+
+  background:#f2f4f7;
+
+  border:0;
+  border-radius:50%;
+
+  font-size:16px;
+}
+
+.document-close:hover{
+  background:#e4e7ec;
+}
+
+
+/* =========================================================
+   ACCESSIBILITE
+   ========================================================= */
+
+:focus-visible{
+  outline:3px solid rgba(36,87,166,.25);
+  outline-offset:2px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media(max-width:600px){
 
@@ -405,6 +838,10 @@ h1{
 
   .content{
     padding:15px 12px 24px;
+  }
+
+  .welcome{
+    padding:17px;
   }
 
   .searchbar{
@@ -417,195 +854,265 @@ h1{
 
   .document-overlay{
     align-items:flex-end;
+
     padding:10px;
   }
 
   .document-modal{
     border-radius:20px 20px 12px 12px;
+
     padding:22px 17px 17px;
+  }
+
+  .form{
+    padding-left:11px;
+  }
+
+  .send{
+    min-width:72px;
+
+    padding:10px 11px;
+  }
+
+  .resource-description,
+  .resource-meta,
+  .resource .actions{
+    margin-left:0;
   }
 }
 </style>
 </head>
 
+
 <body>
 
 <div class="app">
 
-  <!-- =========================
-       HEADER
-       ========================= -->
 
-  <header class="header">
-    <div class="brand">
+<!-- =======================================================
+     HEADER
+     ======================================================== -->
 
-      <div class="logo">🪄</div>
+<header class="header">
 
-      <div>
-        <h1>Assistant RH</h1>
+  <div class="brand">
 
-        <div class="subtitle" id="orgName">
-          Mairie de Conflans-Sainte-Honorine
-        </div>
-      </div>
-
+    <div class="logo" aria-hidden="true">
+      🪄
     </div>
-  </header>
 
+    <div>
 
-  <!-- =========================
-       CONTENU
-       ========================= -->
-
-  <main class="content">
-
-    <section class="welcome">
-
-      <h2>Bonjour 👋</h2>
-
-      <p>
-        Posez simplement votre question, je vous orienterai
-        vers le bon interlocuteur 😊
-      </p>
+      <h1>
+        Assistant RH
+      </h1>
 
       <div
-        class="suggestions"
-        id="suggestions">
+        class="subtitle"
+        id="orgName">
+        Mairie de Conflans-Sainte-Honorine
       </div>
 
-    </section>
-
-
-    <section
-      class="chat"
-      id="chat"
-      aria-live="polite">
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       BARRE DE RECHERCHE
-       ========================= -->
-
-  <div class="searchbar">
-
-    <form
-      class="form"
-      id="questionForm">
-
-      <input
-        id="question"
-        autocomplete="off"
-        placeholder="Ex. « Je ne comprends pas mon bulletin de salaire »"
-        aria-label="Votre question"
-      >
-
-      <button
-        class="send"
-        type="submit">
-        Envoyer
-      </button>
-
-    </form>
-
-    <div class="disclaimer">
-      Cet assistant est conçu pour vous orienter de manière générale.
-      Pour une situation individuelle, contactez l'interlocuteur indiqué.
     </div>
 
   </div>
+
+</header>
+
+
+<!-- =======================================================
+     CONTENU
+     ======================================================== -->
+
+<main class="content">
+
+
+<section class="welcome">
+
+  <h2>
+    Bonjour 👋
+  </h2>
+
+  <p>
+    Posez simplement votre question,
+    je vous orienterai vers le bon
+    interlocuteur ou la bonne ressource RH.
+  </p>
+
+  <div
+    class="suggestions"
+    id="suggestions"
+    aria-label="Questions fréquentes">
+  </div>
+
+</section>
+
+
+<section
+  class="chat"
+  id="chat"
+  aria-live="polite"
+  aria-label="Conversation avec l'assistant RH">
+</section>
+
+
+</main>
+
+
+<!-- =======================================================
+     RECHERCHE
+     ======================================================== -->
+
+<div class="searchbar">
+
+  <form
+    class="form"
+    id="questionForm">
+
+    <input
+      id="question"
+      type="text"
+      autocomplete="off"
+      placeholder="Ex. « Je ne comprends pas mon bulletin de salaire »"
+      aria-label="Votre question"
+    >
+
+    <button
+      class="send"
+      id="sendButton"
+      type="submit">
+
+      Envoyer
+
+    </button>
+
+  </form>
+
+  <div class="disclaimer">
+    Cet assistant est conçu pour vous orienter
+    de manière générale. Pour une situation individuelle,
+    contactez l'interlocuteur indiqué.
+  </div>
+
+</div>
+
 
 </div>
 
 
 <script>
 
-/*
-============================================================
-CONFIGURATION
-============================================================
-*/
+/* =========================================================
+   CONFIGURATION
+   ========================================================= */
 
-const ORG_NAME =
-  "Mairie de Conflans-Sainte-Honorine";
+const CONFIG = {
+
+  organization:
+    "Mairie de Conflans-Sainte-Honorine",
+
+  responseDelay:
+    180,
+
+  maxAlternatives:
+    2
+
+};
 
 
-/*
-============================================================
-CONTACTS
-============================================================
-*/
+/* =========================================================
+   CONTACTS
+   ========================================================= */
 
 const CONTACTS = {
 
   gestionnaireCarriere: {
-    label: "Votre gestionnaire carrière",
-    email: "rhgestion@mairie-conflans.fr",
-    phone: "A_COMPLETER"
+    label:"Votre gestionnaire carrière",
+    email:"rhgestion@mairie-conflans.fr",
+    phone:"A_COMPLETER"
   },
 
   rhPaie: {
-    label: "Secteur Paie",
-    email: "rhpaie@mairie-conflans.fr",
-    phone: "0134908879"
+    label:"Secteur Paie",
+    email:"rhpaie@mairie-conflans.fr",
+    phone:"0134908879"
   },
 
   formation: {
-    label: "Secteur Formation",
-    email: "formationrh@mairie-conflans.fr",
-    phone: "0134908903"
+    label:"Secteur Formation",
+    email:"formationrh@mairie-conflans.fr",
+    phone:"0134908903"
   },
 
   jessyca: {
-    label: "Jessyca Foulon",
-    email: "jfoulon@mairie-conflans.fr",
-    phone: "0134908903"
+    label:"Jessyca Foulon",
+    email:"jfoulon@mairie-conflans.fr",
+    phone:"0134908903"
   },
 
   informatique: {
-    label: "Service informatique",
-    email: "A_COMPLETER",
-    phone: "A_COMPLETER"
+    label:"Service informatique",
+    email:"A_COMPLETER",
+    phone:"A_COMPLETER"
   }
 
 };
 
 
-/*
-============================================================
-DOCUMENTS
+/* =========================================================
+   TYPES DE RESSOURCES
 
-TYPE POSSIBLES :
+   pdf
+   page
+   formulaire
+   annuaire
+   ========================================================= */
 
-pdf
-→ 📄 Ouvrir le PDF
+const RESOURCE_TYPES = {
 
-page
-→ 🌐 Ouvrir la page
+  pdf:{
+    icon:"📄",
+    label:"Ouvrir le PDF",
+    format:"PDF"
+  },
 
-formulaire
-→ 📝 Au formulaire
+  page:{
+    icon:"🌐",
+    label:"Ouvrir la page",
+    format:"Page"
+  },
 
-annuaire
-→ 👤 Trouver mon gestionnaire
+  formulaire:{
+    icon:"📝",
+    label:"Accéder au formulaire",
+    format:"Formulaire"
+  },
 
-============================================================
-*/
+  annuaire:{
+    icon:"👤",
+    label:"Trouver mon gestionnaire",
+    format:"Annuaire"
+  }
 
-const DOCUMENTS = {
+};
 
-  Gestcarr: {
 
-    title: "Votre Gestionnaire carrière",
+/* =========================================================
+   RESSOURCES RH
+   ========================================================= */
+
+const RESOURCES = {
+
+  Gestcarr:{
+
+    title:
+      "Votre Gestionnaire carrière",
 
     description:
       "Pour connaître le nom de votre Gestionnaire carrière, cliquez sur ce lien.",
 
-    type: "annuaire",
-
-    format: "Annuaire",
+    type:
+      "annuaire",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/community/Ressources%2520Humaines/b1876ea4-a47a-4cb4-b84e-076eeade8ce6/d8bad4a4-3557-4feb-8087-54df234e8080/f696bd4c-ba5b-483f-a228-13b29933ef85/viewdetail/"
@@ -613,7 +1120,7 @@ const DOCUMENTS = {
   },
 
 
-  tempstravail: {
+  tempstravail:{
 
     title:
       "Règlement relatif au temps de travail",
@@ -621,9 +1128,8 @@ const DOCUMENTS = {
     description:
       "Organisation du temps de travail pour les agents de la ville, du CCAS et du théâtre.",
 
-    type: "pdf",
-
-    format: "PDF",
+    type:
+      "pdf",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/ab19fec5-96cf-43b7-9b38-4e96e8bdcca6"
@@ -631,7 +1137,7 @@ const DOCUMENTS = {
   },
 
 
-  cet: {
+  cet:{
 
     title:
       "Le Compte Épargne Temps",
@@ -639,9 +1145,8 @@ const DOCUMENTS = {
     description:
       "Pour connaître le fonctionnement du Compte Épargne Temps, consultez ce document.",
 
-    type: "pdf",
-
-    format: "PDF",
+    type:
+      "pdf",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/873c5cac-8923-4be2-8ca3-264c7676b923"
@@ -649,7 +1154,7 @@ const DOCUMENTS = {
   },
 
 
-  formulaireRIB: {
+  formulaireRIB:{
 
     title:
       "Formulaire de changement de coordonnées bancaires",
@@ -657,9 +1162,8 @@ const DOCUMENTS = {
     description:
       "Formulaire à utiliser pour transmettre un nouveau RIB.",
 
-    type: "formulaire",
-
-    format: "Formulaire PDF",
+    type:
+      "formulaire",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/df5ec181-0683-42e0-94d7-193218d840ff"
@@ -667,7 +1171,7 @@ const DOCUMENTS = {
   },
 
 
-  transmissiondocument: {
+  transmissiondocument:{
 
     title:
       "Comment transmettre vos documents au service RH",
@@ -675,9 +1179,8 @@ const DOCUMENTS = {
     description:
       "Vous devez transmettre un document (RIB, document d'identité, arrêt maladie...) au service des Ressources Humaines ?",
 
-    type: "page",
-
-    format: "Page intranet",
+    type:
+      "page",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/community/Ressources%2520Humaines/b1876ea4-a47a-4cb4-b84e-076eeade8ce6/d8bad4a4-3557-4feb-8087-54df234e8080/658dd1e2-3072-45ff-9cc0-61b9913de021/viewdetail/"
@@ -685,7 +1188,7 @@ const DOCUMENTS = {
   },
 
 
-  versementsalaire: {
+  versementsalaire:{
 
     title:
       "Calendrier de versement des salaires 2026",
@@ -693,9 +1196,8 @@ const DOCUMENTS = {
     description:
       "Voici le calendrier de versement des salaires pour 2026. Attention, la date de paiement peut varier en fonction de votre banque.",
 
-    type: "page",
-
-    format: "Page intranet",
+    type:
+      "page",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/community/Ressources%2520Humaines/b1876ea4-a47a-4cb4-b84e-076eeade8ce6/d8bad4a4-3557-4feb-8087-54df234e8080/72601d00-ac3a-416e-becf-58d4c729c93c/viewdetail/"
@@ -703,7 +1205,7 @@ const DOCUMENTS = {
   },
 
 
-  CartePluxee: {
+  CartePluxee:{
 
     title:
       "Bulletin adhésion Pluxee",
@@ -711,9 +1213,8 @@ const DOCUMENTS = {
     description:
       "Formulaire à compléter et transmettre au secteur Paie.",
 
-    type: "formulaire",
-
-    format: "Formulaire PDF",
+    type:
+      "formulaire",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/1d06e930-963b-46dd-84eb-e8d120113c87"
@@ -721,7 +1222,7 @@ const DOCUMENTS = {
   },
 
 
-  CatalogueCNFPT: {
+  CatalogueCNFPT:{
 
     title:
       "CNFPT : Offre de formation",
@@ -729,9 +1230,8 @@ const DOCUMENTS = {
     description:
       "Consultez le catalogue des formations proposées par le CNFPT.",
 
-    type: "page",
-
-    format: "Site externe",
+    type:
+      "page",
 
     url:
       "https://www.cnfpt.fr/rechercher-formation?page=1&size=10"
@@ -739,7 +1239,7 @@ const DOCUMENTS = {
   },
 
 
-  Formulaireinscriptionformation: {
+  Formulaireinscriptionformation:{
 
     title:
       "Formulaire de demande de formation CNFPT",
@@ -747,9 +1247,8 @@ const DOCUMENTS = {
     description:
       "Vous souhaitez vous inscrire à une formation ? Complétez ce formulaire et faites-le parvenir par email au secteur Formation.",
 
-    type: "formulaire",
-
-    format: "Formulaire PDF",
+    type:
+      "formulaire",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/e4424002-3d33-442b-aecf-660f628e9a31"
@@ -757,7 +1256,7 @@ const DOCUMENTS = {
   },
 
 
-  Reglementformation: {
+  Reglementformation:{
 
     title:
       "Le règlement de formation",
@@ -765,9 +1264,8 @@ const DOCUMENTS = {
     description:
       "Vous trouverez ici toutes les informations essentielles sur vos droits relatifs à la formation.",
 
-    type: "pdf",
-
-    format: "PDF",
+    type:
+      "pdf",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/1e9742a8-6173-4fa1-89ad-e12413e29eda"
@@ -775,7 +1273,7 @@ const DOCUMENTS = {
   },
 
 
-  Calendrierconcours: {
+  Calendrierconcours:{
 
     title:
       "Calendrier des concours et examens professionnels",
@@ -783,9 +1281,8 @@ const DOCUMENTS = {
     description:
       "Consultez le calendrier des prochains concours et examens professionnels.",
 
-    type: "pdf",
-
-    format: "PDF",
+    type:
+      "pdf",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/27a81f61-c8ea-463b-b2d0-2a8d53fca549"
@@ -793,7 +1290,7 @@ const DOCUMENTS = {
   },
 
 
-  Prepaconcours: {
+  Prepaconcours:{
 
     title:
       "Préparation concours et examens professionnels",
@@ -801,9 +1298,8 @@ const DOCUMENTS = {
     description:
       "Vous souhaitez vous préparer pour un concours ou un examen professionnel ? Le CNFPT vous accompagne.",
 
-    type: "page",
-
-    format: "Page web",
+    type:
+      "page",
 
     url:
       "https://www.cnfpt.fr/evoluer/preparation-aux-concours-concours-examens-professionnels/preparer-concours-ou-examen-professionnel/national"
@@ -811,7 +1307,7 @@ const DOCUMENTS = {
   },
 
 
-  ConnexionSMD: {
+  ConnexionSMD:{
 
     title:
       "Connexion SMD",
@@ -819,9 +1315,8 @@ const DOCUMENTS = {
     description:
       "Comment accéder à votre compte SMD depuis votre mobile.",
 
-    type: "pdf",
-
-    format: "PDF",
+    type:
+      "pdf",
 
     url:
       "https://c.conflans.mairie-conflans.fr/#!/media/documents/ad6e2366-b835-43d7-834a-1bcc5658f78e"
@@ -831,24 +1326,18 @@ const DOCUMENTS = {
 };
 
 
-/*
-============================================================
-FAQ
-============================================================
-*/
+/* =========================================================
+   FAQ
+   ========================================================= */
 
 const FAQ = [
 
-  /* =========================
-     CONGES / ABSENCES
-     ========================= */
-
   {
-    id: "conges",
+    id:"conges",
 
-    category: "Congés / Absences",
+    category:"Congés / Absences",
 
-    keywords: [
+    keywords:[
       "congé",
       "conges",
       "congés",
@@ -881,7 +1370,7 @@ const FAQ = [
     contact:
       "gestionnaireCarriere",
 
-    documents: [
+    resources:[
       "Gestcarr",
       "tempstravail",
       "cet"
@@ -890,11 +1379,11 @@ const FAQ = [
 
 
   {
-    id: "asa",
+    id:"asa",
 
-    category: "Congés / Absences",
+    category:"Congés / Absences",
 
-    keywords: [
+    keywords:[
       "mariage",
       "PACS",
       "déménagement",
@@ -919,23 +1408,19 @@ const FAQ = [
     contact:
       "gestionnaireCarriere",
 
-    documents: [
+    resources:[
       "transmissiondocument",
       "Gestcarr"
     ]
   },
 
 
-  /* =========================
-     PAIE
-     ========================= */
-
   {
-    id: "salaire",
+    id:"salaire",
 
-    category: "Paie",
+    category:"Paie",
 
-    keywords: [
+    keywords:[
       "bulletin",
       "salaire",
       "paie",
@@ -978,18 +1463,18 @@ const FAQ = [
     contact:
       "rhPaie",
 
-    documents: [
+    resources:[
       "versementsalaire"
     ]
   },
 
 
   {
-    id: "rib",
+    id:"rib",
 
-    category: "Paie",
+    category:"Paie",
 
-    keywords: [
+    keywords:[
       "RIB",
       "modifier RIB",
       "changer RIB",
@@ -1012,18 +1497,18 @@ const FAQ = [
     contact:
       "rhPaie",
 
-    documents: [
+    resources:[
       "formulaireRIB"
     ]
   },
 
 
   {
-    id: "frais-mission",
+    id:"frais-mission",
 
-    category: "Paie",
+    category:"Paie",
 
-    keywords: [
+    keywords:[
       "frais de mission",
       "frais de déplacement",
       "remboursement mission",
@@ -1040,7 +1525,7 @@ const FAQ = [
       "Question concernant des frais de mission ou de déplacement",
 
     answer:
-      "Pour obtenir des informations sur le remboursement des frais liés à vos missions ou déplacements, contactez le service concerné.",
+      "Pour obtenir des informations sur le remboursement des frais liés à vos missions ou déplacements, contactez le secteur Paie.",
 
     contact:
       "rhPaie"
@@ -1048,11 +1533,11 @@ const FAQ = [
 
 
   {
-    id: "carte-pluxee",
+    id:"carte-pluxee",
 
-    category: "Paie",
+    category:"Paie",
 
-    keywords: [
+    keywords:[
       "adhésion",
       "adhérer",
       "carte déjeuner",
@@ -1067,27 +1552,23 @@ const FAQ = [
       "Question concernant la carte déjeuner Pluxee",
 
     answer:
-      "Contactez le service Paie qui vous renseignera sur les modalités d'adhésion et son fonctionnement.",
+      "Contactez le secteur Paie qui vous renseignera sur les modalités d'adhésion et son fonctionnement.",
 
     contact:
       "rhPaie",
 
-    documents: [
+    resources:[
       "CartePluxee"
     ]
   },
 
 
-  /* =========================
-     DOSSIER ADMINISTRATIF
-     ========================= */
-
   {
-    id: "adresse",
+    id:"adresse",
 
-    category: "Dossier administratif",
+    category:"Dossier administratif",
 
-    keywords: [
+    keywords:[
       "adresse",
       "modifier adresse",
       "changement adresse",
@@ -1105,18 +1586,18 @@ const FAQ = [
     contact:
       "gestionnaireCarriere",
 
-    documents: [
+    resources:[
       "Gestcarr"
     ]
   },
 
 
   {
-    id: "dossier-agent",
+    id:"dossier-agent",
 
-    category: "Dossier administratif",
+    category:"Dossier administratif",
 
-    keywords: [
+    keywords:[
       "dossier agent",
       "dossier administratif",
       "gestion administrative",
@@ -1145,18 +1626,18 @@ const FAQ = [
     contact:
       "gestionnaireCarriere",
 
-    documents: [
+    resources:[
       "Gestcarr"
     ]
   },
 
 
   {
-    id: "carriere",
+    id:"carriere",
 
-    category: "Dossier administratif",
+    category:"Dossier administratif",
 
-    keywords: [
+    keywords:[
       "carrière",
       "carriere",
       "avancement",
@@ -1180,22 +1661,18 @@ const FAQ = [
     contact:
       "gestionnaireCarriere",
 
-    documents: [
+    resources:[
       "Gestcarr"
     ]
   },
 
 
-  /* =========================
-     FORMATION
-     ========================= */
-
   {
-    id: "formation",
+    id:"formation",
 
-    category: "Formation",
+    category:"Formation",
 
-    keywords: [
+    keywords:[
       "formation",
       "former",
       "stage",
@@ -1225,7 +1702,7 @@ const FAQ = [
     contact:
       "formation",
 
-    documents: [
+    resources:[
       "CatalogueCNFPT",
       "Formulaireinscriptionformation",
       "Reglementformation"
@@ -1234,11 +1711,11 @@ const FAQ = [
 
 
   {
-    id: "concours-examens",
+    id:"concours-examens",
 
-    category: "Formation",
+    category:"Formation",
 
-    keywords: [
+    keywords:[
       "concours",
       "inscription concours",
       "calendrier concours",
@@ -1258,7 +1735,7 @@ const FAQ = [
     contact:
       "formation",
 
-    documents: [
+    resources:[
       "Calendrierconcours",
       "Prepaconcours"
     ]
@@ -1266,11 +1743,11 @@ const FAQ = [
 
 
   {
-    id: "cpf",
+    id:"cpf",
 
-    category: "Formation",
+    category:"Formation",
 
-    keywords: [
+    keywords:[
       "CPF",
       "compte personnel de formation",
       "heures CPF",
@@ -1289,16 +1766,12 @@ const FAQ = [
   },
 
 
-  /* =========================
-     INTRANET
-     ========================= */
-
   {
-    id: "connexion-intranet",
+    id:"connexion-intranet",
 
-    category: "Intranet",
+    category:"Intranet",
 
-    keywords: [
+    keywords:[
       "intranet",
       "connexion intranet",
       "connecter intranet",
@@ -1321,16 +1794,12 @@ const FAQ = [
   },
 
 
-  /* =========================
-     COMPTE SMD
-     ========================= */
-
   {
-    id: "connexion-SMD",
+    id:"connexion-SMD",
 
-    category: "Compte SMD",
+    category:"Compte SMD",
 
-    keywords: [
+    keywords:[
       "connexion SMD",
       "connecter SMD",
       "connexion à SMD",
@@ -1359,23 +1828,19 @@ const FAQ = [
     contact:
       "gestionnaireCarriere",
 
-    documents: [
+    resources:[
       "Gestcarr",
       "ConnexionSMD"
     ]
   },
 
 
-  /* =========================
-     RETRAITE
-     ========================= */
-
   {
-    id: "retraite",
+    id:"retraite",
 
-    category: "Retraite",
+    category:"Retraite",
 
-    keywords: [
+    keywords:[
       "retraite",
       "départ retraite",
       "depart retraite",
@@ -1400,16 +1865,12 @@ const FAQ = [
   },
 
 
-  /* =========================
-     DOCUMENTS
-     ========================= */
-
   {
-    id: "etat-services",
+    id:"etat-services",
 
-    category: "Documents / Attestations",
+    category:"Documents / Attestations",
 
-    keywords: [
+    keywords:[
       "état des services",
       "etat des services",
       "état services",
@@ -1427,16 +1888,12 @@ const FAQ = [
   },
 
 
-  /* =========================
-     INFORMATIQUE
-     ========================= */
-
   {
-    id: "informatique",
+    id:"informatique",
 
-    category: "Informatique",
+    category:"Informatique",
 
-    keywords: [
+    keywords:[
       "ordinateur",
       "PC",
       "ordinateur portable",
@@ -1461,16 +1918,12 @@ const FAQ = [
   },
 
 
-  /* =========================
-     EASTER EGG
-     ========================= */
-
   {
-    id: "easter-egg",
+    id:"easter-egg",
 
-    category: "Humour",
+    category:"Humour",
 
-    keywords: [
+    keywords:[
       "licorne",
       "en pls"
     ],
@@ -1488,13 +1941,11 @@ const FAQ = [
 ];
 
 
-/*
-============================================================
-SUGGESTIONS
-============================================================
-*/
+/* =========================================================
+   SUGGESTIONS
+   ========================================================= */
 
-const suggestions = [
+const SUGGESTIONS = [
 
   [
     "🏖️ Congés / Absences",
@@ -1554,54 +2005,52 @@ const suggestions = [
 ];
 
 
-/*
-============================================================
-INITIALISATION
-============================================================
-*/
+/* =========================================================
+   UTILITAIRES
+   ========================================================= */
 
-document.getElementById("orgName").textContent =
-  ORG_NAME;
+function escapeHtml(value){
 
-
-/*
-============================================================
-SECURITE / UTILITAIRES
-============================================================
-*/
-
-function escapeHtml(s){
-
-  return String(s).replace(
+  return String(value ?? "").replace(
     /[&<>"']/g,
 
-    c => ({
+    character => ({
+
       "&":"&amp;",
       "<":"&lt;",
       ">":"&gt;",
-      "\"":"&quot;",
+      '"':"&quot;",
       "'":"&#039;"
-    }[c])
+
+    }[character])
+
   );
 
 }
 
 
-function normalize(s){
+function normalize(value){
 
-  return String(s)
+  return String(value ?? "")
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"");
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/[’']/g," ")
+    .replace(/[^\p{L}\p{N}\s-]/gu," ")
+    .replace(/\s+/g," ")
+    .trim();
 
 }
 
 
-/*
-============================================================
-DETECTION MOBILE
-============================================================
-*/
+function tokenize(value){
+
+  return normalize(value)
+    .split(/\s+/)
+    .filter(Boolean);
+
+}
+
 
 function isMobileDevice(){
 
@@ -1612,36 +2061,134 @@ function isMobileDevice(){
 }
 
 
-/*
-============================================================
-MOTEUR DE RECHERCHE
-============================================================
-*/
+/* =========================================================
+   RECHERCHE INTELLIGENTE
+   ========================================================= */
 
-function score(question,item){
+function keywordScore(question,keyword){
 
   const q =
     normalize(question);
 
-  let total = 0;
+  const k =
+    normalize(keyword);
 
-  for(const k of item.keywords){
+  if(!q || !k){
+    return 0;
+  }
 
-    const nk =
-      normalize(k);
 
-    if(q.includes(nk)){
+  /* Correspondance exacte de l'expression */
 
-      total +=
-        nk.length >= 7
-          ? 3
-          : 2;
+  if(q === k){
+    return 12;
+  }
+
+
+  /* Expression présente dans la question */
+
+  if(q.includes(k)){
+
+    if(k.length >= 15){
+      return 9;
+    }
+
+    if(k.length >= 8){
+      return 7;
+    }
+
+    return 5;
+  }
+
+
+  /* Correspondance mot par mot */
+
+  const qTokens =
+    new Set(tokenize(q));
+
+  const kTokens =
+    tokenize(k);
+
+
+  let matched = 0;
+
+  for(const token of kTokens){
+
+    if(
+      token.length >= 3 &&
+      qTokens.has(token)
+    ){
+
+      matched++;
 
     }
 
   }
 
-  return total;
+
+  if(
+    matched === kTokens.length &&
+    matched > 0
+  ){
+
+    return 6 + matched;
+  }
+
+
+  if(matched > 0){
+
+    return matched;
+  }
+
+
+  return 0;
+
+}
+
+
+function scoreFAQ(question,item){
+
+  let score = 0;
+
+
+  for(const keyword of item.keywords){
+
+    score +=
+      keywordScore(
+        question,
+        keyword
+      );
+
+  }
+
+
+  /*
+    Bonus si le titre contient
+    des mots de la question.
+  */
+
+  const qTokens =
+    tokenize(question);
+
+  const titleTokens =
+    tokenize(item.title);
+
+
+  for(const token of titleTokens){
+
+    if(
+      token.length >= 4 &&
+      qTokens.includes(token)
+    ){
+
+      score += 2;
+
+    }
+
+  }
+
+
+  return score;
 
 }
 
@@ -1650,78 +2197,95 @@ function findMatches(question){
 
   return FAQ
 
-    .map(x => ({
-      item:x,
-      score:score(question,x)
+    .map(item => ({
+
+      item,
+
+      score:
+        scoreFAQ(
+          question,
+          item
+        )
+
     }))
 
-    .filter(x =>
-      x.score > 0
+    .filter(result =>
+      result.score > 0
     )
 
-    .sort((a,b) =>
-      b.score - a.score
+    .sort(
+      (a,b) =>
+        b.score - a.score
     );
 
 }
 
 
-/*
-============================================================
-CONTACT
-============================================================
-*/
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
-function contactHtml(contactKey){
+function renderContact(contactKey){
 
-  const c =
+  const contact =
     CONTACTS[contactKey];
 
-  if(!c){
+
+  if(!contact){
     return "";
   }
 
-  const emailOk =
-    c.email &&
-    !c.email.includes("A_COMPLETER");
 
-  const phoneOk =
-    c.phone &&
-    !c.phone.includes("A_COMPLETER");
+  const emailAvailable =
+    contact.email &&
+    !contact.email.includes(
+      "A_COMPLETER"
+    );
 
-  let out = `
+
+  const phoneAvailable =
+    contact.phone &&
+    !contact.phone.includes(
+      "A_COMPLETER"
+    );
+
+
+  let html = `
 
     <div class="contact">
 
-      <strong>
+      <div class="contact-title">
         📍 Votre interlocuteur :
-        ${escapeHtml(c.label)}
-      </strong>
+        ${escapeHtml(contact.label)}
+      </div>
 
   `;
 
 
-  if(emailOk){
+  if(emailAvailable){
 
-    out += `
+    html += `
 
-      <div>
+      <div class="contact-line">
         ✉️
         <a
-          href="mailto:${escapeHtml(c.email)}">
-          ${escapeHtml(c.email)}
+          href="mailto:${escapeHtml(contact.email)}">
+          ${escapeHtml(contact.email)}
         </a>
       </div>
 
     `;
 
-  }else{
+  }
 
-    out += `
 
-      <div>
-        ✉️ Email :
-        <em>à compléter</em>
+  if(phoneAvailable){
+
+    html += `
+
+      <div class="contact-line">
+        ☎️
+        ${escapeHtml(contact.phone)}
       </div>
 
     `;
@@ -1729,23 +2293,12 @@ function contactHtml(contactKey){
   }
 
 
-  if(phoneOk){
+  if(!emailAvailable && !phoneAvailable){
 
-    out += `
+    html += `
 
-      <div>
-        ☎️ ${escapeHtml(c.phone)}
-      </div>
-
-    `;
-
-  }else{
-
-    out += `
-
-      <div>
-        ☎️ Téléphone :
-        <em>à compléter</em>
+      <div class="contact-line">
+        Coordonnées à compléter.
       </div>
 
     `;
@@ -1753,7 +2306,7 @@ function contactHtml(contactKey){
   }
 
 
-  out += `
+  html += `
 
     </div>
 
@@ -1762,13 +2315,13 @@ function contactHtml(contactKey){
   `;
 
 
-  if(emailOk){
+  if(emailAvailable){
 
-    out += `
+    html += `
 
       <a
         class="action primary"
-        href="mailto:${escapeHtml(c.email)}">
+        href="mailto:${escapeHtml(contact.email)}">
 
         ✉️ Envoyer un email
 
@@ -1779,14 +2332,14 @@ function contactHtml(contactKey){
   }
 
 
-  if(phoneOk){
+  if(phoneAvailable){
 
-    out += `
+    html += `
 
       <a
         class="action"
         href="tel:${escapeHtml(
-          c.phone.replace(/\s/g,'')
+          contact.phone.replace(/\s/g,"")
         )}">
 
         ☎️ Appeler
@@ -1798,105 +2351,125 @@ function contactHtml(contactKey){
   }
 
 
-  out += `
+  html += `
     </div>
   `;
 
-  return out;
+
+  return html;
 
 }
 
 
-/*
-============================================================
-LIBELLES DES DOCUMENTS
-============================================================
-*/
+/* =========================================================
+   RESSOURCE
+   ========================================================= */
 
-function getDocumentAction(doc){
+function getResourceType(resource){
 
-  const actions = {
-
-    pdf: {
-      icon:"📄",
-      label:"Ouvrir le PDF"
-    },
-
-    page: {
-      icon:"🌐",
-      label:"Ouvrir la page"
-    },
-
-    formulaire: {
-      icon:"📝",
-      label:"Au formulaire"
-    },
-
-    annuaire: {
-      icon:"👤",
-      label:"Trouver mon gestionnaire"
+  return (
+    RESOURCE_TYPES[
+      resource?.type
+    ] ||
+    {
+      icon:"🔗",
+      label:"Ouvrir le lien",
+      format:"Lien"
     }
-
-  };
-
-
-  return actions[doc.type] || {
-
-    icon:"🔗",
-    label:"Ouvrir le lien"
-
-  };
+  );
 
 }
 
 
-/*
-============================================================
-DOCUMENT
-============================================================
-*/
+function renderResource(resource){
 
-function documentButton(doc){
+  if(
+    !resource ||
+    !resource.url
+  ){
 
-  if(!doc || !doc.url){
     return "";
   }
 
-  const action =
-    getDocumentAction(doc);
+
+  const type =
+    getResourceType(resource);
+
+
+  /*
+    URL injectée dans href :
+    on encode les guillemets pour
+    empêcher une rupture de l'attribut.
+  */
+
+  const safeUrl =
+    escapeHtml(resource.url);
+
 
   return `
 
-    <div class="document-box">
+    <div class="resource">
 
-      <div class="document-title">
-        ${action.icon}
-        ${escapeHtml(doc.title)}
+      <div class="resource-header">
+
+        <div
+          class="resource-icon"
+          aria-hidden="true">
+
+          ${type.icon}
+
+        </div>
+
+        <div>
+
+          <div class="resource-title">
+
+            ${escapeHtml(
+              resource.title
+            )}
+
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="document-description">
+
+      <div class="resource-description">
+
         ${escapeHtml(
-          doc.description || ""
+          resource.description || ""
         )}
+
       </div>
 
-      <span class="document-format">
-        ${escapeHtml(
-          doc.format || "Lien"
-        )}
-      </span>
+
+      <div class="resource-meta">
+
+        <span class="resource-format">
+
+          ${escapeHtml(
+            resource.format ||
+            type.format
+          )}
+
+        </span>
+
+      </div>
+
 
       <div class="actions">
 
-        <button
+        <a
           class="action primary"
-          type="button"
-          onclick='openDocument(${JSON.stringify(doc)})'>
+          href="${safeUrl}"
+          target="_blank"
+          rel="noopener noreferrer">
 
-          ${action.icon}
-          ${escapeHtml(action.label)}
+          ${type.icon}
+          ${escapeHtml(type.label)}
 
-        </button>
+        </a>
 
       </div>
 
@@ -1907,76 +2480,47 @@ function documentButton(doc){
 }
 
 
-/*
-============================================================
-OUVERTURE DU DOCUMENT
-============================================================
-*/
+/* =========================================================
+   MODALE MOBILE
+   ========================================================= */
 
-function openDocument(doc){
+function openResource(resource){
 
-  if(!doc || !doc.url){
+  if(
+    !resource ||
+    !resource.url
+  ){
+
     return;
   }
 
-
-  /*
-    SUR PC :
-    ouverture directe dans un nouvel onglet.
-  */
 
   if(!isMobileDevice()){
 
-    const opened =
-      window.open(
-        doc.url,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-
-    if(!opened){
-
-      window.location.href =
-        doc.url;
-
-    }
+    window.open(
+      resource.url,
+      "_blank",
+      "noopener,noreferrer"
+    );
 
     return;
   }
 
 
-  /*
-    SUR MOBILE :
-    affichage d'une information avant ouverture.
-  */
-
-  showMobileDocumentNotice(doc);
+  showMobileResourceNotice(
+    resource
+  );
 
 }
 
 
-/*
-============================================================
-FENÊTRE MOBILE
-============================================================
-*/
+function showMobileResourceNotice(resource){
 
-function showMobileDocumentNotice(doc){
-
-  const existing =
-    document.getElementById(
-      "documentModal"
-    );
+  closeResourceModal();
 
 
-  if(existing){
-    existing.remove();
-  }
-
-
-  const action =
-    getDocumentAction(doc);
+  const type =
+    getResourceType(resource);
 
 
   const modal =
@@ -1991,32 +2535,41 @@ function showMobileDocumentNotice(doc){
 
     <div
       class="document-overlay"
-      onclick="closeDocumentModal(event)">
+      data-modal-overlay>
 
       <div
         class="document-modal"
-        onclick="event.stopPropagation()">
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resourceModalTitle">
 
         <button
           class="document-close"
           type="button"
-          onclick="closeDocumentModal()">
+          id="resourceModalClose"
+          aria-label="Fermer">
 
           ✕
 
         </button>
 
 
-        <div class="document-icon">
-          ${action.icon}
+        <div
+          class="document-icon-large"
+          aria-hidden="true">
+
+          ${type.icon}
+
         </div>
 
 
-        <h3>
+        <h3 id="resourceModalTitle">
+
           ${escapeHtml(
-            doc.title ||
+            resource.title ||
             "Ressource RH"
           )}
+
         </h3>
 
 
@@ -2041,15 +2594,16 @@ function showMobileDocumentNotice(doc){
         </p>
 
 
-        <div
-          class="actions document-actions">
+        <div class="actions">
 
           <a
             class="action primary"
-            href="${escapeHtml(doc.url)}">
+            href="${escapeHtml(resource.url)}"
+            target="_blank"
+            rel="noopener noreferrer">
 
-            ${action.icon}
-            ${escapeHtml(action.label)}
+            ${type.icon}
+            ${escapeHtml(type.label)}
 
           </a>
 
@@ -2057,7 +2611,7 @@ function showMobileDocumentNotice(doc){
           <button
             class="action"
             type="button"
-            onclick="closeDocumentModal()">
+            id="resourceModalBack">
 
             Retour
 
@@ -2072,26 +2626,62 @@ function showMobileDocumentNotice(doc){
   `;
 
 
-  document.body.appendChild(modal);
+  document.body.appendChild(
+    modal
+  );
+
+
+  const closeButton =
+    document.getElementById(
+      "resourceModalClose"
+    );
+
+
+  const backButton =
+    document.getElementById(
+      "resourceModalBack"
+    );
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeResourceModal
+  );
+
+
+  backButton?.addEventListener(
+    "click",
+    closeResourceModal
+  );
+
+
+  modal
+    .querySelector(
+      "[data-modal-overlay]"
+    )
+    ?.addEventListener(
+      "click",
+      event => {
+
+        if(
+          event.target ===
+          event.currentTarget
+        ){
+
+          closeResourceModal();
+
+        }
+
+      }
+    );
+
+
+  closeButton?.focus();
 
 }
 
 
-/*
-============================================================
-FERMETURE FENÊTRE DOCUMENT
-============================================================
-*/
-
-function closeDocumentModal(event){
-
-  if(
-    event &&
-    event.target !== event.currentTarget
-  ){
-    return;
-  }
-
+function closeResourceModal(){
 
   const modal =
     document.getElementById(
@@ -2100,115 +2690,424 @@ function closeDocumentModal(event){
 
 
   if(modal){
+
     modal.remove();
+
   }
 
 }
 
 
-/*
-============================================================
-MESSAGES
-============================================================
-*/
+/* =========================================================
+   BOUTONS DE RESSOURCES
+   ========================================================= */
+
+function bindResourceButtons(){
+
+  document
+    .querySelectorAll(
+      "[data-resource-key]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const key =
+            button.dataset.resourceKey;
+
+          const resource =
+            RESOURCES[key];
+
+          openResource(
+            resource
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   RENDU DES RESSOURCES
+   ========================================================= */
+
+function renderResources(resourceKeys){
+
+  if(
+    !Array.isArray(resourceKeys) ||
+    !resourceKeys.length
+  ){
+
+    return "";
+  }
+
+
+  return resourceKeys
+
+    .map(key => {
+
+      const resource =
+        RESOURCES[key];
+
+
+      if(
+        !resource ||
+        !resource.url
+      ){
+
+        return "";
+      }
+
+
+      const type =
+        getResourceType(resource);
+
+
+      return `
+
+        <div class="resource">
+
+          <div class="resource-header">
+
+            <div
+              class="resource-icon"
+              aria-hidden="true">
+
+              ${type.icon}
+
+            </div>
+
+            <div>
+
+              <div class="resource-title">
+
+                ${escapeHtml(
+                  resource.title
+                )}
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="resource-description">
+
+            ${escapeHtml(
+              resource.description || ""
+            )}
+
+          </div>
+
+
+          <div class="resource-meta">
+
+            <span class="resource-format">
+
+              ${escapeHtml(
+                resource.format ||
+                type.format
+              )}
+
+            </span>
+
+          </div>
+
+
+          <div class="actions">
+
+            <button
+              type="button"
+              class="action primary"
+              data-resource-key="${escapeHtml(key)}">
+
+              ${type.icon}
+              ${escapeHtml(type.label)}
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    })
+
+    .join("");
+
+}
+
+
+/* =========================================================
+   ALTERNATIVES
+   ========================================================= */
+
+function renderAlternatives(
+  matches,
+  best
+){
+
+  if(
+    !matches ||
+    matches.length < 2
+  ){
+
+    return "";
+  }
+
+
+  const alternatives =
+    matches
+
+      .filter(
+        result =>
+          result.item.id !==
+          best.item.id
+      )
+
+      .slice(
+        0,
+        CONFIG.maxAlternatives
+      );
+
+
+  if(!alternatives.length){
+
+    return "";
+  }
+
+
+  let html = `
+
+    <div class="alternatives">
+
+      <div class="alternatives-title">
+
+        Votre question concerne peut-être aussi :
+
+      </div>
+
+  `;
+
+
+  alternatives.forEach(
+    result => {
+
+      html += `
+
+        <button
+          type="button"
+          class="alternative-button"
+          data-faq-id="${escapeHtml(
+            result.item.id
+          )}">
+
+          ${escapeHtml(
+            result.item.title
+          )}
+
+        </button>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+    </div>
+  `;
+
+
+  return html;
+
+}
+
+
+/* =========================================================
+   AFFICHAGE DES ALTERNATIVES
+   ========================================================= */
+
+function bindAlternativeButtons(){
+
+  document
+    .querySelectorAll(
+      "[data-faq-id]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const faq =
+            FAQ.find(
+              item =>
+                item.id ===
+                button.dataset.faqId
+            );
+
+
+          if(faq){
+
+            displayFAQAnswer(
+              faq,
+              [ {
+                item:faq,
+                score:100
+              } ]
+            );
+
+          }
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
 
 function addMessage(
   html,
-  who="bot"
+  type="bot"
 ){
 
-  const el =
+  const element =
     document.createElement(
       "div"
     );
 
 
-  el.className =
-    "msg " + who;
+  element.className =
+    `msg ${type}`;
 
 
-  el.innerHTML =
+  element.innerHTML =
     html;
 
 
   document
     .getElementById("chat")
-    .appendChild(el);
+    .appendChild(
+      element
+    );
 
 
-  el.scrollIntoView({
-    behavior:"smooth",
-    block:"nearest"
-  });
+  requestAnimationFrame(
+    () => {
+
+      element.scrollIntoView({
+        behavior:"smooth",
+        block:"nearest"
+      });
+
+    }
+  );
+
+
+  return element;
 
 }
 
 
-/*
-============================================================
-REPONSE
-============================================================
-*/
+/* =========================================================
+   MESSAGE DE RECHERCHE
+   ========================================================= */
 
-function answer(question){
+function addTyping(){
 
-  const matches =
-    findMatches(question);
+  return addMessage(`
 
+    <div
+      class="typing"
+      aria-label="Recherche en cours">
 
-  if(!matches.length){
+      <span class="typing-dot"></span>
+      <span class="typing-dot"></span>
+      <span class="typing-dot"></span>
 
-    addMessage(`
+    </div>
 
-      <div class="answer">
+  `);
 
-        <h3>
-          Je n'ai pas identifié votre demande
-        </h3>
-
-        <p>
-
-          Essayez avec des mots comme
-
-          <strong>congés</strong>,
-
-          <strong>bulletin de salaire</strong>,
-
-          <strong>carrière</strong>,
-
-          <strong>formation</strong>,
-
-          <strong>intranet</strong>
-
-          ou
-
-          <strong>informatique</strong>.
-
-        </p>
-
-        <p>
-
-          Si vous le souhaitez, vous pouvez
-          également contacter directement
-          votre service RH.
-
-        </p>
-
-      </div>
-
-    `);
-
-    return;
-  }
+}
 
 
-  const best =
-    matches[0];
+/* =========================================================
+   REPONSE SANS RESULTAT
+   ========================================================= */
+
+function displayNoResult(){
+
+  addMessage(`
+
+    <div class="answer">
+
+      <span class="badge">
+        ❓ Recherche RH
+      </span>
+
+      <h3>
+        Je n'ai pas encore identifié votre demande
+      </h3>
+
+      <p class="answer-intro">
+
+        Essayez de reformuler votre question
+        avec un mot-clé comme :
+
+      </p>
+
+      <p>
+
+        <strong>congés</strong>,
+        <strong>bulletin de salaire</strong>,
+        <strong>carrière</strong>,
+        <strong>formation</strong>,
+        <strong>RIB</strong>,
+        <strong>intranet</strong>,
+        <strong>SMD</strong>,
+        <strong>retraite</strong>
+        ou
+        <strong>informatique</strong>.
+
+      </p>
+
+      <p>
+
+        Vous pouvez également utiliser
+        l'une des questions proposées
+        ci-dessus.
+
+      </p>
+
+    </div>
+
+  `);
+
+}
 
 
-  const second =
-    matches[1];
+/* =========================================================
+   REPONSE FAQ
+   ========================================================= */
 
+function displayFAQAnswer(
+  faq,
+  matches=[]
+){
 
   let html = `
 
@@ -2217,7 +3116,7 @@ function answer(question){
       <span class="badge">
 
         ${escapeHtml(
-          best.item.category
+          faq.category
         )}
 
       </span>
@@ -2226,143 +3125,338 @@ function answer(question){
       <h3>
 
         ${escapeHtml(
-          best.item.title
+          faq.title
         )}
 
       </h3>
 
 
-      <p>
+      <p class="answer-intro">
 
         ${escapeHtml(
-          best.item.answer
+          faq.answer
         )}
 
       </p>
 
 
-      ${contactHtml(
-        best.item.contact
+      ${renderContact(
+        faq.contact
       )}
 
   `;
 
 
-  /*
-    DOCUMENTS
-  */
-
-  if(best.item.documents){
-
-    html += best.item.documents
-
-      .map(
-        docKey =>
-          documentButton(
-            DOCUMENTS[docKey]
-          )
-      )
-
-      .join("");
-
-  }
-
-
-  /*
-    SUGGESTION D'UNE AUTRE CATEGORIE
-  */
-
   if(
-    second &&
-    second.score >= best.score - 1
+    Array.isArray(
+      faq.resources
+    ) &&
+    faq.resources.length
   ){
 
     html += `
 
-      <p
-        style="
-          margin-top:14px;
-          color:#667085;
-          font-size:13px;
-        ">
+      <div style="margin-top:14px;">
 
-        Si votre question est plutôt liée à
+        <strong style="font-size:13px;">
 
-        <strong>
-          ${escapeHtml(
-            second.item.category
-          )}
-        </strong>,
+          Ressources utiles
 
-        dites-le-moi ou reformulez votre
-        demande.
+        </strong>
 
-      </p>
+      </div>
 
     `;
+
+
+    html +=
+      renderResources(
+        faq.resources
+      );
 
   }
 
 
+  html +=
+    renderAlternatives(
+      matches,
+      {
+        item:faq
+      }
+    );
+
+
   html += `
+
+    <div class="new-question">
+
+      <button
+        type="button"
+        data-new-question>
+
+        ↩ Poser une nouvelle question
+
+      </button>
+
     </div>
+
   `;
 
 
-  addMessage(html);
+  const message =
+    addMessage(
+      html
+    );
+
+
+  bindResourceButtons();
+
+
+  bindAlternativeButtons();
+
+
+  message
+    .querySelector(
+      "[data-new-question]"
+    )
+    ?.addEventListener(
+      "click",
+      focusQuestion
+    );
 
 }
 
 
-/*
-============================================================
-ENVOI QUESTION
-============================================================
-*/
+/* =========================================================
+   REPONSE PRINCIPALE
+   ========================================================= */
 
-function submitQuestion(q){
+function answerQuestion(question){
 
-  q =
-    q.trim();
+  const matches =
+    findMatches(
+      question
+    );
 
 
-  if(!q){
+  if(!matches.length){
+
+    displayNoResult();
+
     return;
+
+  }
+
+
+  const best =
+    matches[0];
+
+
+  displayFAQAnswer(
+    best.item,
+    matches
+  );
+
+}
+
+
+/* =========================================================
+   ENVOI
+   ========================================================= */
+
+function submitQuestion(
+  question
+){
+
+  const value =
+    String(
+      question || ""
+    ).trim();
+
+
+  if(!value){
+
+    focusQuestion();
+
+    return;
+
   }
 
 
   addMessage(
-    escapeHtml(q),
+    escapeHtml(value),
     "user"
   );
 
 
-  setTimeout(
-    () => answer(q),
-    120
+  const typing =
+    addTyping();
+
+
+  setLoading(true);
+
+
+  window.setTimeout(
+    () => {
+
+      typing.remove();
+
+      answerQuestion(
+        value
+      );
+
+      setLoading(false);
+
+    },
+    CONFIG.responseDelay
   );
 
 
-  document.getElementById(
-    "question"
-  ).value = "";
+  document
+    .getElementById(
+      "question"
+    )
+    .value = "";
 
 }
 
 
-/*
-============================================================
-FORMULAIRE
-============================================================
-*/
+/* =========================================================
+   ETAT CHARGEMENT
+   ========================================================= */
 
-document
-  .getElementById("questionForm")
-  .addEventListener(
+function setLoading(
+  loading
+){
+
+  const input =
+    document.getElementById(
+      "question"
+    );
+
+
+  const button =
+    document.getElementById(
+      "sendButton"
+    );
+
+
+  input.disabled =
+    loading;
+
+
+  button.disabled =
+    loading;
+
+
+  button.textContent =
+    loading
+      ? "Recherche…"
+      : "Envoyer";
+
+}
+
+
+/* =========================================================
+   FOCUS QUESTION
+   ========================================================= */
+
+function focusQuestion(){
+
+  const input =
+    document.getElementById(
+      "question"
+    );
+
+
+  input.focus();
+
+
+  window.scrollTo({
+    top:document.body.scrollHeight,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================================
+   SUGGESTIONS
+   ========================================================= */
+
+function renderSuggestions(){
+
+  const container =
+    document.getElementById(
+      "suggestions"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  SUGGESTIONS.forEach(
+    ([label,question]) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.type =
+        "button";
+
+
+      button.className =
+        "chip";
+
+
+      button.textContent =
+        label;
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          submitQuestion(
+            question
+          );
+
+        }
+      );
+
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   FORMULAIRE
+   ========================================================= */
+
+function initializeForm(){
+
+  const form =
+    document.getElementById(
+      "questionForm"
+    );
+
+
+  form.addEventListener(
     "submit",
-    e => {
+    event => {
 
-      e.preventDefault();
+      event.preventDefault();
+
 
       submitQuestion(
         document.getElementById(
@@ -2373,50 +3467,72 @@ document
     }
   );
 
+}
 
-/*
-============================================================
-SUGGESTIONS
-============================================================
-*/
 
-const sug =
+/* =========================================================
+   INITIALISATION
+   ========================================================= */
+
+function initialize(){
+
   document.getElementById(
-    "suggestions"
-  );
+    "orgName"
+  ).textContent =
+    CONFIG.organization;
 
 
-suggestions.forEach(
-  ([label,q]) => {
-
-    const b =
-      document.createElement(
-        "button"
-      );
+  renderSuggestions();
 
 
-    b.className =
-      "chip";
+  initializeForm();
 
 
-    b.type =
-      "button";
+  /*
+    Message d'accueil initial.
+  */
+
+  addMessage(`
+
+    <div class="answer">
+
+      <span class="badge">
+        👋 Bienvenue
+      </span>
+
+      <h3>
+        Comment puis-je vous aider ?
+      </h3>
+
+      <p>
+
+        Décrivez simplement votre demande
+        RH dans vos propres mots.
+
+      </p>
+
+      <p>
+
+        Je vous orienterai vers le bon
+        interlocuteur ou vers la ressource
+        correspondante.
+
+      </p>
+
+    </div>
+
+  `);
+
+}
 
 
-    b.textContent =
-      label;
-
-
-    b.onclick =
-      () => submitQuestion(q);
-
-
-    sug.appendChild(b);
-
-  }
+document.addEventListener(
+  "DOMContentLoaded",
+  initialize
 );
 
 </script>
 
 </body>
 </html>
+```
