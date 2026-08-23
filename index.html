@@ -1285,6 +1285,26 @@ function documentButton(doc){
   if(!doc || !doc.url){
     return "";
   }
+}
+
+  // Choix du libellé selon le format
+  let buttonLabel = "📄 Consulter le document"; // valeur par défaut
+
+  const format = (doc.format || "").toLowerCase();
+
+  if(format === "pdf"){
+    buttonLabel = "📄 Ouvrir le PDF";
+  }
+  else if(format === "article" || format === "page" || format === "lien"){
+    buttonLabel = "🌐 Ouvrir la page";
+  }
+  else if(format === "formulaire"){
+    buttonLabel = "📝 Accéder au formulaire";
+  }
+  else if(format === "annuaire"){
+    buttonLabel = "👤 Trouver mon gestionnaire";
+  }
+
   return `
     <div class="document-box">
       <div class="document-title">
@@ -1301,13 +1321,13 @@ function documentButton(doc){
           class="action primary"
           type="button"
           onclick='openDocument(${JSON.stringify(doc)})'>
-          📄 Consulter le document
+          ${buttonLabel}
         </button>
       </div>
     </div>
   `;
 }
-/*
+
 ============================================================
 OUVERTURE DU DOCUMENT
 ============================================================
