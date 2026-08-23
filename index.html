@@ -1281,6 +1281,7 @@ function contactHtml(contactKey){
 DOCUMENT
 ============================================================
 */
+
 function documentButton(doc){
   if(!doc || !doc.url){
     return "";
@@ -1288,7 +1289,6 @@ function documentButton(doc){
 
   // Choix du libellé selon le format
   let buttonLabel = "📄 Consulter le document"; // valeur par défaut
-
   const format = (doc.format || "").toLowerCase();
 
   if(format === "pdf"){
@@ -1327,6 +1327,7 @@ function documentButton(doc){
   `;
 }
 
+/*
 ============================================================
 OUVERTURE DU DOCUMENT
 ============================================================
@@ -1335,25 +1336,19 @@ function openDocument(doc){
   if(!doc || !doc.url){
     return;
   }
-  /*
-    SUR PC :
-    ouverture directe du document.
-  */
+
+  // SUR PC : ouverture directe
   if(!isMobileDevice()){
     const opened = window.open(doc.url, "_blank", "noopener,noreferrer");
-    // Certains navigateurs bloquent window.open ; on garde un repli.
     if(!opened){
       window.location.href = doc.url;
     }
     return;
   }
-  /*
-    SUR MOBILE :
-    affichage d'une information avant ouverture.
-  */
+
+  // SUR MOBILE : fenêtre d'information
   showMobileDocumentNotice(doc);
 }
-/*
 ============================================================
 FENÊTRE MOBILE
 ============================================================
