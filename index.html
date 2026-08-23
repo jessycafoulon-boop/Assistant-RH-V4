@@ -23,9 +23,13 @@
   --radius:18px;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
@@ -34,8 +38,14 @@ body{
   color:var(--text);
 }
 
-button,input{font:inherit}
-button{-webkit-tap-highlight-color:transparent}
+button,
+input{
+  font:inherit;
+}
+
+button{
+  -webkit-tap-highlight-color:transparent;
+}
 
 .app{
   max-width:920px;
@@ -45,7 +55,9 @@ button{-webkit-tap-highlight-color:transparent}
   flex-direction:column;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .header{
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
@@ -53,7 +65,7 @@ button{-webkit-tap-highlight-color:transparent}
   padding:24px;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:10;
   box-shadow:0 4px 18px rgba(23,61,120,.18);
 }
 
@@ -84,14 +96,18 @@ h1{
   opacity:.88;
 }
 
-/* CONTENT */
+/* =========================================================
+   CONTENT
+   ========================================================= */
 
 .content{
   padding:22px 18px 30px;
   flex:1;
 }
 
-/* WELCOME */
+/* =========================================================
+   WELCOME
+   ========================================================= */
 
 .welcome{
   background:var(--card);
@@ -113,35 +129,11 @@ h1{
   line-height:1.5;
 }
 
-.top-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:18px;
-}
-
-.challenge-launch{
-  border:0;
-  background:linear-gradient(135deg,#2457a6,#173d78);
-  color:#fff;
-  border-radius:12px;
-  padding:11px 15px;
-  cursor:pointer;
-  font-weight:800;
-  box-shadow:0 6px 16px rgba(36,87,166,.22);
-  transition:.18s ease;
-}
-
-.challenge-launch:hover{
-  transform:translateY(-2px);
-  box-shadow:0 9px 22px rgba(36,87,166,.28);
-}
-
 .suggestions{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  margin-top:13px;
+  margin-top:18px;
 }
 
 .chip{
@@ -160,7 +152,9 @@ h1{
   transform:translateY(-1px);
 }
 
-/* CHAT */
+/* =========================================================
+   CHAT
+   ========================================================= */
 
 .chat{
   display:flex;
@@ -220,7 +214,9 @@ h1{
   margin-bottom:8px;
 }
 
-/* CONTACT */
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
 .contact{
   margin-top:12px;
@@ -241,7 +237,9 @@ h1{
   text-decoration:none;
 }
 
-/* ACTIONS */
+/* =========================================================
+   ACTIONS
+   ========================================================= */
 
 .actions{
   display:flex;
@@ -273,7 +271,9 @@ h1{
   border-color:var(--primary);
 }
 
-/* DOCUMENTS */
+/* =========================================================
+   DOCUMENTS
+   ========================================================= */
 
 .document-box{
   margin-top:14px;
@@ -302,9 +302,12 @@ h1{
   color:var(--primary-dark);
   border-radius:999px;
   padding:4px 8px;
+  margin-bottom:8px;
 }
 
-/* MODALE DOCUMENT */
+/* =========================================================
+   MODALE
+   ========================================================= */
 
 .document-overlay{
   position:fixed;
@@ -348,6 +351,7 @@ h1{
   border:1px solid var(--border);
   padding:11px;
   border-radius:12px;
+  font-size:13px!important;
 }
 
 .document-close{
@@ -364,7 +368,48 @@ h1{
 }
 
 /* =========================================================
-   CHALLENGE
+   BOUTON JEU
+   ========================================================= */
+
+.game-launcher{
+  margin-top:16px;
+  border:1px solid #d9e4f7;
+  border-radius:16px;
+  background:linear-gradient(135deg,#f8fbff,#eef5ff);
+  padding:16px;
+}
+
+.game-launcher-title{
+  font-size:16px;
+  font-weight:800;
+}
+
+.game-launcher-text{
+  margin-top:5px;
+  color:#667085;
+  font-size:13px;
+  line-height:1.45;
+}
+
+.game-button{
+  margin-top:12px;
+  border:0;
+  background:var(--primary);
+  color:#fff;
+  border-radius:11px;
+  padding:11px 15px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.18s ease;
+}
+
+.game-button:hover{
+  transform:translateY(-1px);
+  background:var(--primary-dark);
+}
+
+/* =========================================================
+   JEU
    ========================================================= */
 
 .challenge{
@@ -377,87 +422,71 @@ h1{
 
 .challenge-header{
   display:flex;
-  justify-content:space-between;
-  gap:15px;
   align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
 }
 
 .challenge-title{
-  font-size:17px;
-  font-weight:800;
-  margin-bottom:6px;
+  font-size:18px;
+  font-weight:850;
 }
 
 .challenge-subtitle{
+  margin-top:4px;
   color:#667085;
   font-size:13px;
 }
 
-.challenge-progress{
+.progress{
   flex-shrink:0;
   background:#fff;
   border:1px solid #d9e4f7;
-  color:var(--primary-dark);
   border-radius:999px;
-  padding:6px 10px;
-  font-size:12px;
+  padding:6px 9px;
+  font-size:11px;
   font-weight:800;
-}
-
-.progress-track{
-  height:7px;
-  background:#dce7f7;
-  border-radius:999px;
-  overflow:hidden;
-  margin-top:14px;
-}
-
-.progress-bar{
-  height:100%;
-  background:linear-gradient(90deg,#2457a6,#5d8ed5);
-  width:20%;
-  transition:.3s ease;
+  color:var(--primary-dark);
 }
 
 .challenge-intro{
-  margin-top:14px;
+  margin-top:15px;
+  padding:13px;
+  border-radius:13px;
+  background:#fff;
+  border:1px solid var(--border);
   color:#475467;
   font-size:14px;
   line-height:1.55;
 }
 
-.challenge-step{
-  margin-top:14px;
-  padding:17px;
+.riddle{
+  margin-top:13px;
+  padding:16px;
   background:#fff;
-  border:1px solid #dfe5ee;
-  border-radius:15px;
-}
-
-.challenge-step-number{
-  color:var(--primary);
-  font-size:12px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.05em;
-  margin-bottom:7px;
-}
-
-.challenge-step h4{
-  margin:0 0 10px;
-  font-size:16px;
-}
-
-.challenge-question{
-  color:#344054;
+  border:1px dashed #aebfdd;
+  border-radius:14px;
   line-height:1.65;
   font-size:14px;
+}
+
+.riddle-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--primary);
+  font-weight:850;
+  margin-bottom:8px;
+}
+
+.riddle strong{
+  color:var(--primary-dark);
 }
 
 .challenge-form{
   display:flex;
   gap:8px;
-  margin-top:14px;
+  margin-top:13px;
 }
 
 .challenge-form input{
@@ -485,51 +514,32 @@ h1{
   cursor:pointer;
 }
 
-.challenge-button:disabled{
-  opacity:.55;
-  cursor:not-allowed;
-}
-
-.challenge-hint{
-  margin-top:12px;
-}
-
 .hint-button{
+  margin-top:9px;
   border:0;
   background:transparent;
   color:var(--primary);
-  padding:0;
   cursor:pointer;
-  font-size:13px;
+  font-size:12px;
   text-decoration:underline;
 }
 
-.hint-box{
-  margin-top:9px;
+.challenge-hint{
+  margin-top:8px;
   padding:10px 12px;
-  background:#f8fafc;
-  border:1px dashed #cbd5e1;
   border-radius:10px;
-  color:#475467;
-  font-size:13px;
-  line-height:1.5;
-}
-
-.challenge-result{
-  margin-top:12px;
-}
-
-.challenge-error{
-  padding:11px 13px;
-  border-radius:11px;
-  background:var(--warning-bg);
+  background:#fffaeb;
   border:1px solid #fedf89;
   color:#93370d;
   font-size:13px;
 }
 
+.challenge-result{
+  margin-top:13px;
+}
+
 .challenge-success{
-  padding:16px;
+  padding:15px;
   border-radius:14px;
   background:var(--success-bg);
   border:1px solid #abefc6;
@@ -543,110 +553,38 @@ h1{
   margin-bottom:6px;
 }
 
-.challenge-locked{
-  padding:15px;
-  border-radius:13px;
-  background:#f8fafc;
-  border:1px dashed #cbd5e1;
-  color:#667085;
+.challenge-error{
+  padding:11px 13px;
+  border-radius:11px;
+  background:var(--warning-bg);
+  border:1px solid #fedf89;
+  color:#93370d;
   font-size:13px;
 }
 
-/* CHALLENGE MODAL */
-
-.challenge-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(13,28,53,.64);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  z-index:9998;
-}
-
-.challenge-modal{
-  width:100%;
-  max-width:650px;
-  max-height:92vh;
-  overflow:auto;
+.challenge-final{
+  margin-top:12px;
+  padding:17px;
   background:#fff;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 25px 80px rgba(0,0,0,.3);
-  position:relative;
+  border:1px solid #abefc6;
+  border-radius:14px;
 }
 
-.challenge-modal-close{
-  position:absolute;
-  right:15px;
-  top:15px;
-  width:36px;
-  height:36px;
-  border:0;
-  border-radius:50%;
-  background:#f2f4f7;
-  cursor:pointer;
-  font-size:17px;
-}
-
-.challenge-modal-top{
-  padding-right:45px;
-}
-
-.challenge-modal-top h2{
-  margin:0 0 5px;
-  font-size:21px;
-}
-
-.challenge-modal-top p{
-  margin:0;
-  color:#667085;
-  font-size:13px;
-  line-height:1.5;
-}
-
-.challenge-stage{
-  margin-top:18px;
-}
-
-/* VICTORY */
-
-.victory{
-  text-align:center;
-  padding:25px 12px 10px;
-}
-
-.victory-icon{
-  font-size:60px;
-  margin-bottom:10px;
-}
-
-.victory h2{
-  margin:0 0 8px;
-  font-size:25px;
-}
-
-.victory p{
-  color:#475467;
-  line-height:1.6;
-  margin:8px auto;
-  max-width:520px;
-}
-
-.secret{
-  display:inline-block;
-  margin:13px 0;
-  padding:10px 17px;
+.final-word{
+  margin:12px 0;
+  padding:13px;
   border-radius:12px;
-  background:#eef4ff;
-  color:var(--primary-dark);
-  font-size:18px;
+  background:#ecfdf3;
+  text-align:center;
+  font-size:22px;
   font-weight:900;
-  letter-spacing:.08em;
+  letter-spacing:.12em;
+  color:#05603a;
 }
 
-/* FEEDBACK */
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
 
 .feedback{
   margin-top:14px;
@@ -670,12 +608,12 @@ h1{
 .like-area{
   display:flex;
   align-items:center;
-  gap:9px;
+  gap:10px;
   margin-top:13px;
   flex-wrap:wrap;
 }
 
-.vote-button{
+.like-button{
   border:1px solid var(--border);
   background:#fff;
   border-radius:12px;
@@ -683,24 +621,27 @@ h1{
   cursor:pointer;
   font-weight:700;
   transition:.18s ease;
-  text-decoration:none;
-  color:var(--text);
 }
 
-.vote-button:hover{
+.like-button:hover{
   border-color:var(--primary);
   transform:translateY(-1px);
 }
 
-.vote-button.like:hover{
-  background:#ecfdf3;
+.like-button.liked{
+  background:#eef4ff;
+  border-color:#9ab9ed;
+  color:var(--primary-dark);
 }
 
-.vote-button.dislike:hover{
-  background:#fff7ed;
+.like-count{
+  font-size:13px;
+  color:var(--muted);
 }
 
-/* SEARCH */
+/* =========================================================
+   RECHERCHE
+   ========================================================= */
 
 .searchbar{
   position:sticky;
@@ -709,7 +650,7 @@ h1{
   backdrop-filter:blur(10px);
   padding:12px 18px 18px;
   border-top:1px solid var(--border);
-  z-index:15;
+  z-index:5;
 }
 
 .form{
@@ -748,20 +689,36 @@ h1{
   text-align:center;
 }
 
-.hidden{display:none!important}
+.hidden{
+  display:none!important;
+}
 
 @media(max-width:600px){
 
-  .header{padding:18px}
+  .header{
+    padding:18px;
+  }
 
-  .content{padding:15px 12px 24px}
+  .content{
+    padding:15px 12px 24px;
+  }
 
-  .searchbar{padding:10px 12px 15px}
+  .searchbar{
+    padding:10px 12px 15px;
+  }
 
-  .msg{max-width:94%}
+  .msg{
+    max-width:94%;
+  }
 
-  .challenge-header{
-    flex-direction:column;
+  .document-overlay{
+    align-items:flex-end;
+    padding:10px;
+  }
+
+  .document-modal{
+    border-radius:20px 20px 12px 12px;
+    padding:22px 17px 17px;
   }
 
   .challenge-form{
@@ -772,23 +729,12 @@ h1{
     width:100%;
   }
 
-  .challenge-overlay{
-    align-items:flex-end;
-    padding:8px;
+  .challenge-header{
+    flex-direction:column;
   }
 
-  .challenge-modal{
-    max-height:95vh;
-    border-radius:21px 21px 12px 12px;
-  }
-
-  .document-overlay{
-    align-items:flex-end;
-    padding:10px;
-  }
-
-  .document-modal{
-    border-radius:20px 20px 12px 12px;
+  .progress{
+    align-self:flex-start;
   }
 }
 </style>
@@ -807,7 +753,7 @@ h1{
     <div>
       <h1>Assistant RH</h1>
 
-      <div class="subtitle">
+      <div class="subtitle" id="orgName">
         Mairie de Conflans-Sainte-Honorine
       </div>
     </div>
@@ -830,22 +776,29 @@ h1{
       ou la bonne ressource.
     </p>
 
-    <div class="top-actions">
+    <div class="suggestions" id="suggestions"></div>
+
+    <div class="game-launcher">
+
+      <div class="game-launcher-title">
+        🎲 Envie de jouer ?
+      </div>
+
+      <div class="game-launcher-text">
+        Un petit parcours réservé aux agents curieux.
+        5 étapes, quelques pièges, des indices…
+        et un mot secret à découvrir.
+      </div>
 
       <button
-        class="challenge-launch"
+        class="game-button"
         type="button"
-        onclick="openChallenge()">
+        onclick="startChallenge()">
 
-        🎯 Challenge Conflans
+        🎲 Lancer la partie
 
       </button>
 
-    </div>
-
-    <div
-      class="suggestions"
-      id="suggestions">
     </div>
 
   </section>
@@ -901,33 +854,18 @@ const ORG_NAME =
 
 
 /*
-   GOOGLE FORMS
+============================================================
+GOOGLE FORMS
 
-   Ton formulaire utilise le champ :
-   entry.1522524480
+Le formulaire fourni sert à enregistrer les likes.
 
-   👍 = J'aime cet outil
-   👎 = Je pense qu'il peut être amélioré
+Le paramètre entry.1522524480 correspond à ton champ
+Google Forms "J'aime cet outil".
+============================================================
 */
 
-const GOOGLE_FORM_BASE =
-  "https://docs.google.com/forms/d/e/1FAIpQLSd415h4_XtNb2YSoWM3QA1jQfxT4uVZXR_inQP4fa5PF-3znA/viewform";
-
-const GOOGLE_FORM_ENTRY =
-  "entry.1522524480";
-
-
-function googleVoteUrl(value){
-
-  return (
-    GOOGLE_FORM_BASE +
-    "?usp=pp_url&" +
-    GOOGLE_FORM_ENTRY +
-    "=" +
-    encodeURIComponent(value)
-  );
-
-}
+const GOOGLE_FORM_LIKE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd415h4_XtNb2YSoWM3QA1jQfxT4uVZXR_inQP4fa5PF-3znA/viewform?usp=pp_url&entry.1522524480=J'aime+cet+outil";
 
 
 /* =========================================================
@@ -1141,9 +1079,10 @@ documents:["versementsalaire"]
 id:"rib",
 category:"Paie",
 keywords:[
-"RIB","modifier RIB","changer RIB","changement RIB","nouvelle banque",
-"nouveau RIB","coordonnées bancaires","coordonnees bancaires",
-"compte bancaire","changer de banque","changement de banque"
+"RIB","modifier RIB","changer RIB","changement RIB",
+"nouvelle banque","nouveau RIB","coordonnées bancaires",
+"coordonnees bancaires","compte bancaire","changer de banque",
+"changement de banque"
 ],
 title:"Changement de coordonnées bancaires",
 answer:"Pour transmettre votre nouveau RIB, utilisez le formulaire ci-dessous. Si nécessaire, contactez également le secteur Paie.",
@@ -1160,7 +1099,7 @@ keywords:[
 "formulaire frais","déplacement","transports"
 ],
 title:"Question concernant des frais de mission ou de déplacement",
-answer:"Pour obtenir des informations sur le remboursement des frais liés à vos missions ou déplacements, contactez le service concerné.",
+answer:"Pour obtenir des informations sur le remboursement des frais liés à vos missions ou déplacements, contactez le secteur Paie.",
 contact:"rhPaie"
 },
 
@@ -1181,8 +1120,8 @@ documents:["CartePluxee"]
 id:"adresse",
 category:"Dossier administratif",
 keywords:[
-"adresse","modifier adresse","changement adresse","nouvelle adresse",
-"déménagement","demenagement"
+"adresse","modifier adresse","changement adresse",
+"nouvelle adresse","déménagement","demenagement"
 ],
 title:"J'ai déménagé, comment modifier mon adresse ?",
 answer:"Pour modifier votre adresse, contactez votre gestionnaire carrière afin de connaître la procédure à suivre et les éventuels justificatifs à transmettre.",
@@ -1224,20 +1163,16 @@ documents:["Gestcarr"]
 id:"formation",
 category:"Formation",
 keywords:[
-"formation","former","stage","CNFPT","catalogue","formation professionnelle",
-"absence formation","inscription formation","demande formation",
-"financement formation","bilan de compétences","VAE",
-"validation des acquis","congé de formation","reconversion",
+"formation","former","stage","CNFPT","catalogue",
+"formation professionnelle","absence formation","inscription formation",
+"demande formation","financement formation","bilan de compétences",
+"VAE","validation des acquis","congé de formation","reconversion",
 "projet professionnel","formation obligatoire","attestation de formation"
 ],
 title:"Question sur une formation",
 answer:"Pour une demande de formation, une question sur le catalogue ou le suivi d'une inscription, contactez le Service Formation.",
 contact:"formation",
-documents:[
-"CatalogueCNFPT",
-"Formulaireinscriptionformation",
-"Reglementformation"
-]
+documents:["CatalogueCNFPT","Formulaireinscriptionformation","Reglementformation"]
 },
 
 {
@@ -1271,8 +1206,8 @@ id:"connexion-intranet",
 category:"Intranet",
 keywords:[
 "intranet","connexion intranet","connecter intranet",
-"mot de passe intranet","identifiant intranet","login intranet",
-"accès intranet","acces intranet","C.Conflans"
+"mot de passe intranet","identifiant intranet",
+"login intranet","accès intranet","acces intranet","C.Conflans"
 ],
 title:"Problème de connexion à l'intranet",
 answer:"Si vous n'arrivez pas à vous connecter à l'intranet, contactez la personne référente indiquée ci-dessous.",
@@ -1284,10 +1219,10 @@ id:"connexion-SMD",
 category:"Compte SMD",
 keywords:[
 "connexion SMD","connecter SMD","connexion à SMD",
-"connexion au SMD","compte SMD","compte smd","mot de passe SMD",
-"mot de passe du SMD","identifiant SMD","identifiants SMD",
-"identifiant du SMD","identifiants du SMD","login SMD",
-"login du SMD","accès SMD","acces SMD",
+"connexion au SMD","compte SMD","compte smd",
+"mot de passe SMD","mot de passe du SMD","identifiant SMD",
+"identifiants SMD","identifiant du SMD","identifiants du SMD",
+"login SMD","login du SMD","accès SMD","acces SMD",
 "je ne connais pas mes identifiants"
 ],
 title:"Problème de connexion à votre compte SMD",
@@ -1364,14 +1299,17 @@ const suggestions = [
 
 
 /* =========================================================
-   OUTILS
+   UTILITAIRES
    ========================================================= */
+
+document.getElementById("orgName").textContent=ORG_NAME;
+
 
 function escapeHtml(s){
 
   return String(s).replace(
     /[&<>"']/g,
-    c => ({
+    c=>({
       "&":"&amp;",
       "<":"&lt;",
       ">":"&gt;",
@@ -1408,15 +1346,16 @@ function isMobileDevice(){
 
 function score(question,item){
 
-  const q = normalize(question);
-  let total = 0;
+  const q=normalize(question);
+
+  let total=0;
 
   for(const keyword of item.keywords){
 
-    const k = normalize(keyword);
+    const k=normalize(keyword);
 
     if(q.includes(k)){
-      total += k.length >= 7 ? 3 : 2;
+      total+=k.length>=7 ? 3 : 2;
     }
 
   }
@@ -1429,84 +1368,111 @@ function score(question,item){
 function findMatches(question){
 
   return FAQ
-    .map(item => ({
+    .map(item=>({
       item,
       score:score(question,item)
     }))
-    .filter(x => x.score > 0)
-    .sort((a,b) => b.score - a.score);
+    .filter(x=>x.score>0)
+    .sort((a,b)=>b.score-a.score);
 
 }
 
 
 /* =========================================================
-   CONTACTS
+   CONTACT
    ========================================================= */
 
-function contactHtml(contactKey){
+function contactHtml(key){
 
-  const contact = CONTACTS[contactKey];
+  const contact=CONTACTS[key];
 
-  if(!contact) return "";
+  if(!contact)return "";
 
-  const emailOk =
+  const emailOk=
     contact.email &&
     !contact.email.includes("A_COMPLETER");
 
-  const phoneOk =
+  const phoneOk=
     contact.phone &&
     !contact.phone.includes("A_COMPLETER");
 
-  let html = `
+  let html=`
+
     <div class="contact">
+
       <strong>
         📍 Votre interlocuteur :
         ${escapeHtml(contact.label)}
       </strong>
+
   `;
 
   if(emailOk){
-    html += `
+
+    html+=`
+
       <div>
         ✉️
         <a href="mailto:${escapeHtml(contact.email)}">
           ${escapeHtml(contact.email)}
         </a>
       </div>
+
     `;
+
   }
 
   if(phoneOk){
-    html += `
+
+    html+=`
+
       <div>
         ☎️ ${escapeHtml(contact.phone)}
       </div>
+
     `;
+
   }
 
-  html += `</div><div class="actions">`;
+  html+=`
+    </div>
+
+    <div class="actions">
+  `;
 
   if(emailOk){
-    html += `
+
+    html+=`
+
       <a
         class="action primary"
         href="mailto:${escapeHtml(contact.email)}">
+
         ✉️ Envoyer un email
+
       </a>
+
     `;
+
   }
 
   if(phoneOk){
-    html += `
+
+    html+=`
+
       <a
         class="action"
         href="tel:${escapeHtml(contact.phone.replace(/\s/g,""))}">
+
         ☎️ Appeler
+
       </a>
+
     `;
+
   }
 
-  html += `</div>`;
+  html+="</div>";
 
   return html;
 
@@ -1543,11 +1509,12 @@ function getDocumentAction(doc){
 
 function documentButton(doc){
 
-  if(!doc || !doc.url) return "";
+  if(!doc || !doc.url)return "";
 
-  const action = getDocumentAction(doc);
+  const action=getDocumentAction(doc);
 
   return `
+
     <div class="document-box">
 
       <div class="document-title">
@@ -1578,6 +1545,7 @@ function documentButton(doc){
       </div>
 
     </div>
+
   `;
 
 }
@@ -1585,11 +1553,11 @@ function documentButton(doc){
 
 function openDocument(doc){
 
-  if(!doc || !doc.url) return;
+  if(!doc || !doc.url)return;
 
   if(!isMobileDevice()){
 
-    const opened =
+    const opened=
       window.open(
         doc.url,
         "_blank",
@@ -1597,10 +1565,11 @@ function openDocument(doc){
       );
 
     if(!opened){
-      window.location.href = doc.url;
+      window.location.href=doc.url;
     }
 
     return;
+
   }
 
   showMobileDocumentNotice(doc);
@@ -1610,19 +1579,18 @@ function openDocument(doc){
 
 function showMobileDocumentNotice(doc){
 
-  const existing =
-    document.getElementById("documentModal");
+  const existing=document.getElementById("documentModal");
 
-  if(existing) existing.remove();
+  if(existing)existing.remove();
 
-  const action = getDocumentAction(doc);
+  const action=getDocumentAction(doc);
 
-  const modal =
-    document.createElement("div");
+  const modal=document.createElement("div");
 
-  modal.id = "documentModal";
+  modal.id="documentModal";
 
-  modal.innerHTML = `
+  modal.innerHTML=`
+
     <div
       class="document-overlay"
       onclick="closeDocumentModal(event)">
@@ -1642,7 +1610,9 @@ function showMobileDocumentNotice(doc){
           ${action.icon}
         </div>
 
-        <h3>${escapeHtml(doc.title)}</h3>
+        <h3>
+          ${escapeHtml(doc.title || "Ressource RH")}
+        </h3>
 
         <p>
           Vous consultez cette ressource depuis un téléphone.
@@ -1670,13 +1640,17 @@ function showMobileDocumentNotice(doc){
             class="action"
             type="button"
             onclick="closeDocumentModal()">
+
             Retour
+
           </button>
 
         </div>
 
       </div>
+
     </div>
+
   `;
 
   document.body.appendChild(modal);
@@ -1689,12 +1663,11 @@ function closeDocumentModal(event){
   if(
     event &&
     event.target !== event.currentTarget
-  ) return;
+  )return;
 
-  const modal =
-    document.getElementById("documentModal");
+  const modal=document.getElementById("documentModal");
 
-  if(modal) modal.remove();
+  if(modal)modal.remove();
 
 }
 
@@ -1705,17 +1678,13 @@ function closeDocumentModal(event){
 
 function addMessage(html,who="bot"){
 
-  const element =
-    document.createElement("div");
+  const element=document.createElement("div");
 
-  element.className =
-    "msg " + who;
+  element.className="msg "+who;
 
-  element.innerHTML = html;
+  element.innerHTML=html;
 
-  document
-    .getElementById("chat")
-    .appendChild(element);
+  document.getElementById("chat").appendChild(element);
 
   element.scrollIntoView({
     behavior:"smooth",
@@ -1726,274 +1695,209 @@ function addMessage(html,who="bot"){
 
 
 /* =========================================================
-   CHALLENGE
-   =========================================================
+   CHALLENGE — NOUVELLE VERSION
 
-   CHALLENGE EN 5 ETAPES
+   5 étapes.
 
-   1. Tour Montjoie
-   2. Confluence Seine / Oise
-   3. CET via l'assistant
-   4. Pardon national de la batellerie
-   5. Mot secret : BATELLERIE
+   L'objectif n'est PAS de demander directement
+   le nom de la ville.
 
-   Les réponses sont volontairement moins évidentes
-   et les indices arrivent progressivement.
+   Chaque réponse fournit une lettre.
+
+   À la fin :
+   C + O + N + F + L = CONFL
+
+   Puis une dernière déduction permet de compléter
+   le mot secret.
+
+   Les questions utilisent :
+   - histoire locale
+   - patrimoine
+   - batellerie
+   - géographie
+   - mairie / collectivité
+   - observation
+   - logique
+
+   Le parcours est volontairement moins enfantin.
    ========================================================= */
 
-const challengeSteps = [
+const CHALLENGE_STEPS=[
 
 {
-  title:"Le gardien des hauteurs",
-  question:`
-    Dans le vieux Conflans, un vestige roman domine
-    encore la ville.
+title:"Le fleuve n'est pas un hasard",
+text:`
+Vous êtes au bord d'un fleuve.
 
-    Il ne se visite pas librement aujourd'hui,
-    mais son nom est directement associé à l'histoire
-    médiévale de Conflans.
+Pendant longtemps, ce territoire a vécu au rythme
+des mariniers, des péniches et du transport fluvial.
 
-    Quel est le nom de ce donjon ?
-  `,
-  answers:[
-    "tour montjoie",
-    "montjoie",
-    "tour montjoie"
-  ],
-  hints:[
-    "Il s'agit d'un vestige du XIe siècle.",
-    "Son nom commence par « Tour ».",
-    "Il s'appelle la Tour Montjoie."
-  ],
-  success:"Bien joué. Premier indice récupéré : **TOUR MONTJOIE**."
+Mais avant de donner une réponse, une question :
+
+<strong>
+Quel mot désigne le métier lié au transport de marchandises
+ou de personnes par voie d'eau ?
+</strong>
+
+<br><br>
+
+Votre réponse doit être un seul mot.
+`,
+answers:["batellerie","batelier"],
+letter:"C",
+hint:"Le patrimoine local est fortement lié à la navigation fluviale."
 },
 
 {
-  title:"Deux eaux, une identité",
-  question:`
-    Conflans n'a pas choisi son nom au hasard.
+title:"Deux cours d'eau, un point de rencontre",
+text:`
+Deux cours d'eau se rejoignent.
 
-    La ville se trouve à l'endroit où deux cours d'eau
-    se rencontrent.
+L'un est bien connu de tous les Franciliens.
+L'autre est plus discret, mais son nom est indispensable
+pour comprendre la géographie du territoire.
 
-    Lesquels ?
-  `,
-  answers:[
-    "seine oise",
-    "oise seine",
-    "la seine et l oise",
-    "seine et oise",
-    "la seine et l'oise"
-  ],
-  hints:[
-    "L'un des deux est le grand fleuve qui traverse Paris.",
-    "L'autre porte le nom d'un département voisin.",
-    "Il s'agit de la Seine et de l'Oise."
-  ],
-  success:"Exact. Deuxième indice récupéré : **SEINE + OISE**."
+<strong>
+Quel est le nom de la rivière qui rejoint la Seine
+à Conflans-Sainte-Honorine ?
+</strong>
+`,
+answers:["oise"],
+letter:"O",
+hint:"Son nom commence par une voyelle et c'est aussi le nom d'un département."
 },
 
 {
-  title:"L'épreuve RH",
-  question:`
-    Cette fois, pas de question d'histoire.
+title:"Le témoin de pierre",
+text:`
+Il existe dans la ville un édifice ancien qui n'a rien
+d'un immeuble administratif moderne.
 
-    Utilisez l'Assistant RH lui-même.
+Sa silhouette domine le centre historique et rappelle
+l'époque médiévale.
 
-    Trouvez le document qui explique le fonctionnement
-    du <strong>Compte Épargne Temps</strong>.
-
-    Quel est son nom ?
-  `,
-  answers:[
-    "compte epargne temps",
-    "le compte epargne temps",
-    "cet"
-  ],
-  hints:[
-    "Cherchez dans les suggestions ou demandez simplement à l'assistant : « J'ai une question sur mon CET ».",
-    "La réponse doit vous orienter vers un document PDF.",
-    "Le document s'appelle « Le Compte Épargne Temps »."
-  ],
-  success:"Parfait. Vous venez de faire exactement ce que le challenge cherche à vous apprendre : utiliser l'assistant pour retrouver une ressource RH."
+<strong>
+Quel est le nom de cette tour médiévale emblématique ?
+</strong>
+`,
+answers:["tour montjoie","montjoie","tour de montjoie"],
+letter:"N",
+hint:"Son nom est composé de deux mots. Le second commence par M."
 },
 
 {
-  title:"Le rendez-vous des mariniers",
-  question:`
-    Chaque année, Conflans accueille un grand rendez-vous
-    lié à son identité fluviale.
+title:"La mémoire de la voie d'eau",
+text:`
+Vous cherchez maintenant un lieu consacré à l'histoire
+de la navigation intérieure.
 
-    L'événement existe depuis 1960 et rassemble
-    habitants, mariniers et visiteurs autour du fleuve.
+Ce lieu raconte notamment la vie des mariniers,
+les bateaux et l'évolution de la batellerie.
 
-    Quel est son nom ?
-  `,
-  answers:[
-    "pardon national de la batellerie",
-    "pardon national",
-    "pardon de la batellerie",
-    "pnb"
-  ],
-  hints:[
-    "Il a lieu traditionnellement au mois de juin.",
-    "Son nom commence par « Pardon ».",
-    "Il s'agit du Pardon national de la batellerie."
-  ],
-  success:"Bien vu. Quatrième indice récupéré : **PARDON NATIONAL DE LA BATELLERIE**."
+<strong>
+Quel musée emblématique de Conflans est consacré
+à cette histoire ?
+</strong>
+`,
+answers:[
+"musée de la batellerie",
+"musee de la batellerie",
+"musée de la batellerie et des voies navigables",
+"musee de la batellerie et des voies navigables"
+],
+letter:"F",
+hint:"Le nom du musée contient le mot « batellerie »."
 },
 
 {
-  title:"Le mot de passe",
-  question:`
-    Dernière étape.
+title:"Dernière étape : soyez attentif",
+text:`
+Vous avez maintenant quatre lettres.
 
-    Vous avez rencontré :
+Mais elles ne forment pas encore le mot final.
 
-    • un patrimoine médiéval ;
-    • le confluent de la Seine et de l'Oise ;
-    • une ressource RH ;
-    • un grand rendez-vous annuel.
+Il vous manque une dernière lettre.
 
-    Quel est le mot qui relie surtout les trois éléments
-    liés à l'identité de Conflans ?
+Indice :
 
-    Ce n'est pas le nom de la ville.
+<strong>
+Je suis la première lettre du mot qui désigne
+un lieu où l'on exerce le pouvoir municipal.
+</strong>
 
-    C'est ce qui explique une grande partie de son histoire,
-    de son patrimoine et de son identité fluviale.
-  `,
-  answers:[
-    "batellerie",
-    "la batellerie"
-  ],
-  hints:[
-    "On parle beaucoup de bateaux, de mariniers et de voies navigables.",
-    "Conflans revendique historiquement un titre lié à cette activité.",
-    "Le mot recherché est : BATELLERIE."
-  ],
-  success:"Le coffre est ouvert."
+<br><br>
+
+Ce lieu est évidemment celui où travaillent
+les élus et les services de la collectivité.
+
+<strong>
+Quelle est cette lettre ?
+</strong>
+`,
+answers:["m","mairie"],
+letter:"L",
+hint:"Le mot recherché est « mairie » : quelle est sa première lettre ?"
 }
 
 ];
 
 
-let challengeState = {
+let challengeState={
   step:0,
-  completed:false,
-  hintsUsed:0
+  letters:[],
+  started:false,
+  hints:0,
+  completed:false
 };
 
 
-function resetChallenge(){
+/* =========================================================
+   OUVERTURE DU JEU
+   ========================================================= */
 
-  challengeState = {
+function startChallenge(){
+
+  challengeState={
     step:0,
-    completed:false,
-    hintsUsed:0
+    letters:[],
+    started:true,
+    hints:0,
+    completed:false
   };
 
-}
+  const chat=document.getElementById("chat");
 
+  const old=document.getElementById("challengeMessage");
 
-function openChallenge(){
+  if(old)old.remove();
 
-  resetChallenge();
+  const wrapper=document.createElement("div");
 
-  const existing =
-    document.getElementById("challengeModal");
+  wrapper.id="challengeMessage";
 
-  if(existing) existing.remove();
+  wrapper.className="msg bot";
 
-  const modal =
-    document.createElement("div");
+  wrapper.innerHTML=challengeHtml();
 
-  modal.id =
-    "challengeModal";
+  chat.appendChild(wrapper);
 
-  modal.innerHTML = `
-    <div
-      class="challenge-overlay"
-      onclick="closeChallenge(event)">
-
-      <div
-        class="challenge-modal"
-        onclick="event.stopPropagation()">
-
-        <button
-          class="challenge-modal-close"
-          type="button"
-          onclick="closeChallenge()">
-          ✕
-        </button>
-
-        <div class="challenge-modal-top">
-
-          <h2>🎯 Challenge Conflans</h2>
-
-          <p>
-            Une petite enquête en cinq étapes.
-            Pas besoin d'être expert : observez,
-            cherchez et utilisez l'Assistant RH.
-          </p>
-
-        </div>
-
-        <div id="challengeStage"
-             class="challenge-stage">
-        </div>
-
-      </div>
-
-    </div>
-  `;
-
-  document.body.appendChild(modal);
+  wrapper.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
 
   renderChallengeStep();
 
 }
 
 
-function closeChallenge(event){
+/* =========================================================
+   INTERFACE DU JEU
+   ========================================================= */
 
-  if(
-    event &&
-    event.target !== event.currentTarget
-  ) return;
+function challengeHtml(){
 
-  const modal =
-    document.getElementById("challengeModal");
-
-  if(modal) modal.remove();
-
-}
-
-
-function renderChallengeStep(){
-
-  const container =
-    document.getElementById("challengeStage");
-
-  if(!container) return;
-
-  if(challengeState.completed){
-
-    renderVictory();
-
-    return;
-  }
-
-  const index =
-    challengeState.step;
-
-  const step =
-    challengeSteps[index];
-
-  const progress =
-    ((index + 1) / challengeSteps.length) * 100;
-
-  container.innerHTML = `
+  return `
 
     <div class="challenge">
 
@@ -2002,300 +1906,341 @@ function renderChallengeStep(){
         <div>
 
           <div class="challenge-title">
-            ${escapeHtml(step.title)}
+            🕵️ Une petite mission ?
           </div>
 
           <div class="challenge-subtitle">
-            Enquête — étape ${index + 1} sur ${challengeSteps.length}
-          </div>
-
-        </div>
-
-        <div class="challenge-progress">
-          ${index + 1} / ${challengeSteps.length}
-        </div>
-
-      </div>
-
-      <div class="progress-track">
-        <div
-          class="progress-bar"
-          style="width:${progress}%">
-        </div>
-      </div>
-
-      <div class="challenge-step">
-
-        <div class="challenge-step-number">
-          Étape ${index + 1}
-        </div>
-
-        <h4>
-          ${escapeHtml(step.title)}
-        </h4>
-
-        <div class="challenge-question">
-          ${step.question}
-        </div>
-
-        <form
-          class="challenge-form"
-          onsubmit="validateChallengeStep(event)">
-
-          <input
-            id="challengeInput"
-            autocomplete="off"
-            placeholder="Votre réponse…"
-            aria-label="Votre réponse au challenge">
-
-          <button
-            class="challenge-button"
-            type="submit">
-            Valider
-          </button>
-
-        </form>
-
-        <div class="challenge-hint">
-
-          <button
-            class="hint-button"
-            type="button"
-            onclick="showChallengeHint()">
-
-            💡 Besoin d'un indice ?
-
-          </button>
-
-          <div
-            id="challengeHint"
-            class="hint-box hidden">
+            5 étapes · 1 mot secret · 0 question enfantine
           </div>
 
         </div>
 
         <div
-          id="challengeResult"
-          class="challenge-result">
+          class="progress"
+          id="challengeProgress">
+          1 / 5
         </div>
 
       </div>
+
+      <div class="challenge-intro">
+
+        <strong>Les règles :</strong>
+
+        <br>
+
+        Pas besoin de connaître par cœur le règlement RH.
+        Ici, il faut surtout avoir un peu de curiosité,
+        connaître son environnement de travail et savoir
+        chercher.
+
+        <br><br>
+
+        Chaque bonne réponse vous donnera une lettre.
+        À la fin, assemblez-les pour découvrir le mot secret.
+
+      </div>
+
+      <div id="challengeStep"></div>
+
+      <div id="challengeHint"></div>
+
+      <div id="challengeResult"></div>
 
     </div>
+
   `;
 
-  setTimeout(() => {
+}
 
-    const input =
-      document.getElementById("challengeInput");
 
-    if(input) input.focus();
+/* =========================================================
+   AFFICHAGE ETAPE
+   ========================================================= */
+
+function renderChallengeStep(){
+
+  if(challengeState.completed){
+    renderChallengeVictory();
+    return;
+  }
+
+  const step=
+    CHALLENGE_STEPS[challengeState.step];
+
+  const container=
+    document.getElementById("challengeStep");
+
+  if(!container)return;
+
+  document.getElementById("challengeProgress")
+    .textContent=
+      `${challengeState.step+1} / ${CHALLENGE_STEPS.length}`;
+
+  container.innerHTML=`
+
+    <div class="riddle">
+
+      <div class="riddle-label">
+        Étape ${challengeState.step+1}
+      </div>
+
+      ${step.text}
+
+    </div>
+
+    <form
+      class="challenge-form"
+      onsubmit="validateChallenge(event)">
+
+      <input
+        id="challengeAnswer"
+        autocomplete="off"
+        placeholder="Votre réponse…"
+        aria-label="Réponse à l'énigme">
+
+      <button
+        class="challenge-button"
+        type="submit">
+
+        🔐 Valider
+
+      </button>
+
+    </form>
+
+    <button
+      class="hint-button"
+      type="button"
+      onclick="showChallengeHint()">
+
+      💡 J'ai besoin d'un indice
+
+    </button>
+
+  `;
+
+  setTimeout(()=>{
+
+    const input=
+      document.getElementById("challengeAnswer");
+
+    if(input)input.focus();
 
   },100);
 
 }
 
 
-function showChallengeHint(){
+/* =========================================================
+   VALIDATION
+   ========================================================= */
 
-  const index =
-    challengeState.step;
-
-  const step =
-    challengeSteps[index];
-
-  const hintIndex =
-    Math.min(
-      challengeState.hintsUsed,
-      step.hints.length - 1
-    );
-
-  const box =
-    document.getElementById("challengeHint");
-
-  if(!box) return;
-
-  box.classList.remove("hidden");
-
-  box.textContent =
-    "💡 " + step.hints[hintIndex];
-
-  if(challengeState.hintsUsed <
-     step.hints.length - 1){
-
-    challengeState.hintsUsed++;
-
-  }
-
-}
-
-
-function cleanChallengeAnswer(value){
-
-  return normalize(value)
-    .replace(/[’']/g," ")
-    .replace(/[-]/g," ")
-    .replace(/\s+/g," ")
-    .trim();
-
-}
-
-
-function validateChallengeStep(event){
+function validateChallenge(event){
 
   event.preventDefault();
 
-  const input =
-    document.getElementById("challengeInput");
+  const input=
+    document.getElementById("challengeAnswer");
 
-  const result =
+  if(!input)return;
+
+  const answer=
+    normalize(input.value)
+      .replace(/[’']/g," ")
+      .replace(/\s+/g," ")
+      .trim();
+
+  const step=
+    CHALLENGE_STEPS[challengeState.step];
+
+  const valid=
+    step.answers.some(expected=>{
+      return normalize(expected)
+        .replace(/[’']/g," ")
+        .replace(/\s+/g," ")
+        .trim()===answer;
+    });
+
+  const result=
     document.getElementById("challengeResult");
 
-  if(!input || !result) return;
+  if(valid){
 
-  const answer =
-    cleanChallengeAnswer(input.value);
+    challengeState.letters.push(step.letter);
 
-  const step =
-    challengeSteps[challengeState.step];
+    result.innerHTML=`
 
-  const valid =
-    step.answers.some(
-      expected =>
-        cleanChallengeAnswer(expected) === answer
-    );
+      <div class="challenge-success">
 
-  if(!valid){
+        <strong>
+          ✓ Bonne réponse.
+        </strong>
 
-    result.innerHTML = `
-      <div class="challenge-error">
-
-        🤔 Ce n'est pas la bonne réponse.
-
-        <br><br>
-
-        Vous pouvez demander un indice si besoin.
+        Vous gagnez la lettre
+        <strong style="display:inline;font-size:18px;">
+          ${step.letter}
+        </strong>.
 
       </div>
+
     `;
 
-    return;
+    input.disabled=true;
+
+    event.target.querySelector("button").disabled=true;
+
+    setTimeout(()=>{
+
+      challengeState.step++;
+
+      if(
+        challengeState.step>=CHALLENGE_STEPS.length
+      ){
+
+        challengeState.completed=true;
+        renderChallengeVictory();
+
+      }else{
+
+        result.innerHTML="";
+
+        renderChallengeStep();
+
+      }
+
+    },900);
+
+  }else{
+
+    result.innerHTML=`
+
+      <div class="challenge-error">
+
+        🤔 Pas cette fois.
+
+        <br>
+
+        Relisez bien la question :
+        la formulation contient probablement
+        l'information dont vous avez besoin.
+
+      </div>
+
+    `;
+
   }
-
-  result.innerHTML = `
-    <div class="challenge-success">
-
-      <strong>✅ Bonne réponse !</strong>
-
-      ${step.success}
-
-    </div>
-  `;
-
-  input.disabled = true;
-
-  const button =
-    event.target.querySelector("button");
-
-  if(button){
-    button.disabled = true;
-  }
-
-  setTimeout(() => {
-
-    challengeState.step++;
-    challengeState.hintsUsed = 0;
-
-    if(
-      challengeState.step >=
-      challengeSteps.length
-    ){
-
-      challengeState.completed = true;
-
-    }
-
-    renderChallengeStep();
-
-  },900);
 
 }
 
 
-function renderVictory(){
+/* =========================================================
+   INDICE
+   ========================================================= */
 
-  const container =
-    document.getElementById("challengeStage");
+function showChallengeHint(){
 
-  if(!container) return;
+  const step=
+    CHALLENGE_STEPS[challengeState.step];
 
-  container.innerHTML = `
+  const container=
+    document.getElementById("challengeHint");
 
-    <div class="victory">
+  if(!container)return;
 
-      <div class="victory-icon">
-        🏆
-      </div>
+  challengeState.hints++;
 
-      <h2>
-        MISSION RÉUSSIE !
-      </h2>
+  container.innerHTML=`
 
-      <p>
+    <div class="challenge-hint">
 
-        Bravo ! Vous avez terminé les
-        cinq étapes du Challenge Conflans.
+      💡 <strong>Indice :</strong>
+      ${escapeHtml(step.hint)}
 
-      </p>
+    </div>
 
-      <div class="secret">
-        BATELLERIE
-      </div>
+  `;
 
-      <p>
+}
 
-        Vous venez surtout de découvrir
-        une partie de ce que votre Assistant RH
-        sait faire : rechercher une information,
-        identifier le bon interlocuteur et
-        retrouver rapidement une ressource.
 
-      </p>
+/* =========================================================
+   VICTOIRE
+   ========================================================= */
 
-      <p>
+function renderChallengeVictory(){
+
+  const stepContainer=
+    document.getElementById("challengeStep");
+
+  const result=
+    document.getElementById("challengeResult");
+
+  const hint=
+    document.getElementById("challengeHint");
+
+  if(stepContainer)stepContainer.innerHTML="";
+
+  if(hint)hint.innerHTML="";
+
+  const letters=
+    challengeState.letters.join("");
+
+  if(!result)return;
+
+  result.innerHTML=`
+
+    <div class="challenge-final">
+
+      <div class="challenge-success">
 
         <strong>
-          Maintenant, vous savez vous servir
-          de votre Assistant RH. 😉
+          🏆 MISSION RÉUSSIE
         </strong>
+
+        Vous avez franchi les cinq étapes.
+
+        <br><br>
+
+        Vos lettres :
+
+        <strong>
+          ${challengeState.letters.join(" · ")}
+        </strong>
+
+      </div>
+
+      <div class="final-word">
+        ${letters}
+      </div>
+
+      <p>
+
+        Et voilà le mot secret.
+
+        Vous venez surtout de faire quelque chose
+        de plus utile que de simplement résoudre une énigme :
+        <strong>vous avez appris à utiliser votre assistant,
+        à chercher une information et à croiser les indices.</strong>
 
       </p>
 
       <p>
 
-        N'hésitez pas à nous dire si vous aimez
-        cet outil en utilisant les boutons
-        ci-dessous.
+        Maintenant, vous savez vous servir de votre
+        Assistant RH ! 😉
+
+        <br><br>
+
+        N'hésitez pas à nous dire si vous aimez cet outil
+        en appuyant sur le pouce ci-dessous.
 
       </p>
 
       ${feedbackHtml()}
 
-      <div class="actions"
-           style="justify-content:center">
-
-        <button
-          class="action primary"
-          type="button"
-          onclick="closeChallenge()">
-
-          Retour à l'assistant
-
-        </button>
-
-      </div>
-
     </div>
+
   `;
 
 }
@@ -2307,6 +2252,11 @@ function renderVictory(){
 
 function feedbackHtml(){
 
+  const alreadyLiked=
+    localStorage.getItem(
+      "assistantRH_liked"
+    )==="true";
+
   return `
 
     <div class="feedback">
@@ -2317,37 +2267,40 @@ function feedbackHtml(){
 
       <div class="feedback-text">
 
-        Cet assistant a été conçu pour vous
-        faire gagner du temps et vous aider
-        à trouver rapidement la bonne information.
+        Cet assistant a été conçu pour vous faire
+        gagner du temps et vous aider à trouver
+        rapidement la bonne information.
 
-        <br><br>
+        <br>
 
-        Dites-nous simplement ce que vous en pensez :
+        Si vous l'avez trouvé utile,
+        dites-le-nous !
 
       </div>
 
       <div class="like-area">
 
-        <a
-          class="vote-button like"
-          href="${googleVoteUrl("J'aime cet outil")}"
-          target="_blank"
-          rel="noopener noreferrer">
+        <button
+          id="likeButton"
+          class="like-button ${alreadyLiked ? "liked":""}"
+          type="button"
+          onclick="likeAssistant()">
 
-          👍 J'aime cet outil
+          ${alreadyLiked
+            ? "👍 Merci !"
+            : "👍 J'aime cet outil"}
 
-        </a>
+        </button>
 
-        <a
-          class="vote-button dislike"
-          href="${googleVoteUrl("Je pense qu'il peut être amélioré")}"
-          target="_blank"
-          rel="noopener noreferrer">
+        <span
+          class="like-count"
+          id="likeCount">
 
-          👎 Il peut être amélioré
+          ${alreadyLiked
+            ? "Votre avis a déjà été enregistré."
+            : "Un clic suffit ❤️"}
 
-        </a>
+        </span>
 
       </div>
 
@@ -2358,14 +2311,84 @@ function feedbackHtml(){
 }
 
 
+/*
+============================================================
+ENREGISTREMENT DU LIKE
+
+On ouvre le Google Form pré-rempli.
+
+IMPORTANT :
+Google Forms ne permet pas de récupérer directement
+dans cette page le nombre total de réponses.
+
+En revanche, chaque clic envoyé au formulaire
+sera comptabilisé dans Google Forms.
+
+Tu pourras ensuite consulter :
+Google Forms → Réponses
+ou relier le formulaire à Google Sheets.
+============================================================
+*/
+
+function likeAssistant(){
+
+  const button=
+    document.getElementById("likeButton");
+
+  const count=
+    document.getElementById("likeCount");
+
+  if(!button || !count)return;
+
+  const alreadyLiked=
+    localStorage.getItem(
+      "assistantRH_liked"
+    )==="true";
+
+  if(alreadyLiked){
+
+    count.textContent=
+      "Votre avis a déjà été enregistré 👍";
+
+    return;
+
+  }
+
+  localStorage.setItem(
+    "assistantRH_liked",
+    "true"
+  );
+
+  button.classList.add("liked");
+
+  button.textContent=
+    "👍 Merci !";
+
+  count.textContent=
+    "Merci pour votre avis ❤️";
+
+  /*
+  ----------------------------------------------------------
+  On ouvre le formulaire Google Forms.
+  ----------------------------------------------------------
+  */
+
+  window.open(
+    GOOGLE_FORM_LIKE_URL,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+}
+
+
 /* =========================================================
    REPONSE RH
    ========================================================= */
 
 function answer(question){
 
-  const matches =
-    findMatches(question);
+  const matches=findMatches(question);
 
   if(!matches.length){
 
@@ -2391,8 +2414,10 @@ function answer(question){
         </p>
 
         <p>
+
           Vous pouvez également utiliser
           les suggestions proposées ci-dessus.
+
         </p>
 
       </div>
@@ -2403,13 +2428,11 @@ function answer(question){
 
   }
 
-  const best =
-    matches[0];
+  const best=matches[0];
 
-  const second =
-    matches[1];
+  const second=matches[1];
 
-  let html = `
+  let html=`
 
     <div class="answer">
 
@@ -2431,56 +2454,18 @@ function answer(question){
 
   if(best.item.documents){
 
-    html +=
-      best.item.documents
-        .map(
-          key =>
-            documentButton(DOCUMENTS[key])
-        )
-        .join("");
-
-  }
-
-  if(
-    best.item.id === "easter-egg"
-  ){
-
-    html += `
-      <div class="challenge" style="margin-top:15px">
-
-        <div class="challenge-title">
-          🦄 Vous avez trouvé le petit Easter Egg !
-        </div>
-
-        <div class="challenge-intro">
-          Puisque vous êtes là… pourquoi ne pas tenter
-          le vrai challenge ?
-        </div>
-
-        <div class="actions">
-
-          <button
-            class="challenge-launch"
-            type="button"
-            onclick="openChallenge()">
-
-            🎯 Lancer le Challenge Conflans
-
-          </button>
-
-        </div>
-
-      </div>
-    `;
+    html+=best.item.documents
+      .map(key=>documentButton(DOCUMENTS[key]))
+      .join("");
 
   }
 
   if(
     second &&
-    second.score >= best.score - 1
+    second.score>=best.score-1
   ){
 
-    html += `
+    html+=`
 
       <p
         style="
@@ -2503,7 +2488,7 @@ function answer(question){
 
   }
 
-  html += `</div>`;
+  html+="</div>";
 
   addMessage(html);
 
@@ -2516,9 +2501,9 @@ function answer(question){
 
 function submitQuestion(q){
 
-  q = q.trim();
+  q=q.trim();
 
-  if(!q) return;
+  if(!q)return;
 
   addMessage(
     escapeHtml(q),
@@ -2526,22 +2511,24 @@ function submitQuestion(q){
   );
 
   setTimeout(
-    () => answer(q),
+    ()=>answer(q),
     120
   );
 
-  document.getElementById(
-    "question"
-  ).value = "";
+  document.getElementById("question").value="";
 
 }
 
+
+/* =========================================================
+   FORMULAIRE
+   ========================================================= */
 
 document
   .getElementById("questionForm")
   .addEventListener(
     "submit",
-    event => {
+    event=>{
 
       event.preventDefault();
 
@@ -2557,21 +2544,23 @@ document
    SUGGESTIONS
    ========================================================= */
 
-const suggestionsContainer =
+const suggestionsContainer=
   document.getElementById("suggestions");
 
 suggestions.forEach(
-  ([label,question]) => {
+  ([label,question])=>{
 
-    const button =
+    const button=
       document.createElement("button");
 
-    button.className = "chip";
-    button.type = "button";
-    button.textContent = label;
+    button.className="chip";
 
-    button.onclick =
-      () => submitQuestion(question);
+    button.type="button";
+
+    button.textContent=label;
+
+    button.onclick=
+      ()=>submitQuestion(question);
 
     suggestionsContainer.appendChild(button);
 
@@ -2580,7 +2569,7 @@ suggestions.forEach(
 
 
 /* =========================================================
-   DEMARRAGE
+   MESSAGE DE DEMARRAGE
    ========================================================= */
 
 addMessage(`
@@ -2597,9 +2586,9 @@ addMessage(`
     </p>
 
     <p>
-      Et si vous aimez les petits défis,
-      <strong>🎯 Challenge Conflans</strong>
-      vous attend en haut de la page. 😉
+      Et si vous avez envie de jouer…
+      <strong>🎲 Envie de jouer ?</strong>
+      vous attend juste au-dessus. 😉
     </p>
 
   </div>
