@@ -1266,7 +1266,7 @@ const GAME_STEPS = [
     ],
 
     correct:1,
-    letter:"R",
+    letter:"A",
     explanation:
       "Exact. Le bulletin indique la rémunération ; le calendrier permet de connaître les dates de versement.",
     hint:
@@ -1288,7 +1288,7 @@ const GAME_STEPS = [
     ],
 
     correct:1,
-    letter:"E",
+    letter:"C",
     explanation:
       "Exact. Le formulaire RIB est associé au secteur Paie.",
     hint:
@@ -1310,7 +1310,7 @@ const GAME_STEPS = [
     ],
 
     correct:0,
-    letter:"P",
+    letter:"T",
     explanation:
       "Exact. Le CET concerne l'épargne et l'utilisation ultérieure de certains jours.",
     hint:
@@ -1332,7 +1332,7 @@ const GAME_STEPS = [
     ],
 
     correct:1,
-    letter:"A",
+    letter:"I",
     explanation:
       "Exact. Le parcours pertinent croise plusieurs ressources Formation.",
     hint:
@@ -1354,11 +1354,34 @@ const GAME_STEPS = [
     ],
 
     correct:1,
-    letter:"J",
+    letter:"O",
     explanation:
       "Bien joué. Vous avez identifié la logique du jeu : rechercher, explorer, trouver la procédure puis passer à l'action.",
     hint:
       "Vous avez fait exactement cela pendant les quatre premières étapes."
+  }
+,
+
+  {
+    title:"Étape 6 — La dernière action",
+    case:
+      "Toutes les informations utiles ont été retrouvées. Le dossier est complet : il reste à utiliser la bonne ressource et à effectuer la démarche adaptée.",
+    question:
+      "Que doit faire l'agent une fois la bonne information et le bon interlocuteur identifiés ?",
+
+    options:[
+      "Recommencer toute l'enquête",
+      "Passer à l'action avec la ressource ou le service identifié",
+      "Ignorer la procédure",
+      "Changer de sujet"
+    ],
+
+    correct:1,
+    letter:"N",
+    explanation:
+      "Exact. Le but de l'Assistant RH est de vous permettre de trouver la bonne information puis de passer à l'action.",
+    hint:
+      "La dernière étape n'est plus de chercher : c'est de faire."
   }
 
 ];
@@ -2280,7 +2303,7 @@ function showFinalCode(){
       </div>
 
       <p>
-        Vous avez récupéré cinq lettres :
+        Vous avez récupéré six lettres :
       </p>
 
       <div class="letters">
@@ -2301,33 +2324,20 @@ function showFinalCode(){
           🧠 Le dernier raisonnement
         </strong>
 
-        Ces lettres ne constituent pas directement
-        le mot de passe.
-
-        <br><br>
-
-        Elles sont les initiales des cinq étapes
-        du raisonnement :
+        Les six lettres forment directement le mot
+        de passe.
 
         <br><br>
 
         <strong>
-          R — E — P — A — J
+          A — C — T — I — O — N
         </strong>
 
         <br><br>
 
-        Mais quelque chose cloche.
-
-        <br><br>
-
-        Une lettre a été volontairement introduite
-        comme un leurre.
-
-        <br><br>
-
-        Retirez la lettre qui ne correspond pas
-        à une étape utile de votre enquête.
+        Elles suivent la logique de votre enquête :
+        trouver l'information, croiser les ressources,
+        puis passer à l'action.
 
       </div>
 
@@ -2340,10 +2350,8 @@ function showFinalCode(){
 
         <p>
           Indice supplémentaire :
-          vous avez utilisé l'Assistant pour
-          <strong>chercher</strong>,
-          <strong>croiser</strong> et
-          <strong>agir</strong>.
+          les lettres récupérées doivent être lues
+          dans l'ordre des six étapes.
         </p>
 
         <input
@@ -2631,3 +2639,5 @@ addMessage(`
 
 </body>
 </html>
+
+
