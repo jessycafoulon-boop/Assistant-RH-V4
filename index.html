@@ -688,7 +688,45 @@ h1{
 .hidden{
   display:none!important;
 }
-
+============================================================
+INITIALISATION
+============================================================
+*/
+document.getElementById("orgName").textContent = ORG_NAME;
+/*
+============================================================
+SECURITE / UTILITAIRES
+============================================================
+*/
+function escapeHtml(s){
+  return String(s).replace(
+    /[&<>"']/g,
+    c => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      "\"":"&quot;",
+      "'":"&#039;"
+    }[c])
+  );
+}
+function normalize(s){
+  return String(s)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"");
+}
+/*
+============================================================
+DETECTION MOBILE
+============================================================
+*/
+function isMobileDevice(){
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(
+    navigator.userAgent
+  );
+}
+/*
 /* =========================================================
    MOBILE
 ========================================================= */
